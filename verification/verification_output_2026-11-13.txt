@@ -1,0 +1,68 @@
+=== verify_closure_theorems.py ===
+=== [1] 基本常数与真空纠缠刚度 ===
+l_P  = 1.616255e-35 m
+eta0 = 9.570183e+68 m^-2
+K0   = 4.815454e+42 N   (check hbar*c*eta0/(2*pi) = 4.815454e+42 N)
+
+=== [2] Jordan <-> Einstein 共形变换与 eta -> 0+ 离心势垒 (SymPy 验证) ===
+VERIFIED: Jordan <-> Einstein conformal action equivalence (kinetic prefactor 2*omega + 3 > 0; U_E = (eta_0/eta)^2 V_eff)
+
+=== [3] Natário 无散度度规 ADM 欧拉投影恒等式 (SymPy 精确验证) ===
+VERIFIED: u^mu u^nu (nabla_mu nabla_nu eta - g_{mu nu} Box eta) === nabla_3D^2 eta
+
+=== [4] Natário 薄壳 C^2 形状函数外曲率剪切能与 Schwarzschild 无视界上界 ===
+int_0^1 (s'')^2 du = 30/7  => prefactor = (1/6)*(30/7) = 5/7
+R1=10m, dr=1m, vs=300m/s: E_shear(eta0) = 2.164e+35 J (equiv mass 2.408e+18 kg)
+No-horizon upper bound (Planck scale): drho=4.63e+113 J/m^3 => R_max = 2.792e-36 m
+No-horizon upper bound (Electroweak (100 GeV)^4): drho=2.09e+45 J/m^3 => R_max = 4.162e-02 m
+No-horizon upper bound (QCD bag (145 MeV)^4): drho=9.22e+33 J/m^3 => R_max = 1.979e+04 m
+
+=== [5] 保体积球谐形变面积二阶变分与 Rayleigh 导体静电失稳 ===
+l=2: dA/(R0^2 a^2) = 2,  dE_Q/a^2 = -LQ*Q**2/(4*pi*R0)
+l=3: dA/(R0^2 a^2) = 5,  dE_Q/a^2 = -LQ*Q**2/(2*pi*R0)
+l=6: dA/(R0^2 a^2) = 20,  dE_Q/a^2 = -5*LQ*Q**2/(4*pi*R0)
+
+=== [6] 正二十面体 Ih 群顶点球谐求和与 Fibonacci 任意子 Verlinde 维数 ===
+l=1: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=2: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=3: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=4: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=5: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=6: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 8.0960713783
+sum_{a=1}^12 Y_6^Ih(Omega_a) = 8.0960713783 == 12*sqrt(143/(100*pi)) = 8.0960713783
+Verlinde exact dim(tau^12): S^2 (g=0) = 89 (6.48 qubits), T^2 (g=1) = 322 (8.33 qubits)
+
+ALL SYMBOLIC AND NUMERICAL CHECKS PASSED.
+
+=== check_Ih_Y6.py ===
+off 0 s 1 vertex spread 0.90676 0.0
+off 0 s -1 vertex spread 0.0 0.0
+off 0 s 1j vertex spread 0.45338 0.45338
+off 0 s (-0-1j) vertex spread 0.45338 0.45338
+off 0.628 s 1 vertex spread 0.0 0.0
+off 0.628 s -1 vertex spread 0.90676 0.0
+off 0.628 s 1j vertex spread 0.45338 0.45338
+off 0.628 s (-0-1j) vertex spread 0.45338 0.45338
+
+=== checks_constants_rates.py ===
+lP 1.61625502392855e-35 eta0 9.570182792894672e+68 K0 4.815453886722423e+42 check K=hbar c eta/2pi 4.8154538867224235e+42
+2pi/(hbar c eta0) vs 8piG/c^4 2.0766474428449717e-43 2.0766474428449717e-43
+DSW dS BMV 1e-14kg,100um 1.3469127137552696e-151
+DSW dS 1g,1mm 1.3469127137552697e-125
+DSW dS 1kg,1m 1.3469127137552695e-107
+DSW Rindler a=g (formal) 9.755575897299596e-101
+12 tau anyons sphere dim 89 phi^10 122.99186938124426 log2 6.475733430966398 ln 4.48863636973214
+A_I/A_sphere 1.0645935180531956
+delta eta/eta ~ (lP/a)^2 for a= 1e-10 2.6122803023742773e-50
+delta eta/eta ~ (lP/a)^2 for a= 1e-15 2.612280302374277e-40
+delta eta/eta ~ (lP/a)^2 for a= 1e-19 2.612280302374278e-32
+VZ dL ~ sqrt(lP L) 1.0 4.0202674338015744e-18
+VZ dL ~ sqrt(lP L) 4000.0 2.542640378762636e-16
+m g d/hbar [rad/s per unit eps] 9.292871136911866e+16
+Gamma_AD white (pref^2 * S/2) 431787269836.2481
+H0 per yr 6.943199999999999e-11 LLR 1e-13/yr in H0 units 0.0014402580942504898
+n=1 split ratio 2^(-1/3) 0.7937005259840998
+T_GH 2.6744574366554683e-30
+BB exponent ~ Mc^2/kT for 1kg 2.434010417032317e+69
+S_dS ~ pi c^2/(G hbar H^2)...  2.2331924001710845e+122
+TCC T<= 1997.2772796637832 Gyr
