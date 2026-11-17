@@ -1,0 +1,100 @@
+{
+  "constants": {
+    "lP_m": 1.61625502392855e-35,
+    "mP_kg": 2.176434342051127e-08,
+    "EP_J": 1956081636.0991087
+  },
+  "module_1_astroparticle": {
+    "km3net_energy_PeV": 220.0,
+    "cm_energy_TeV": 20.31845758886771,
+    "kinematic_liv_limit": 2.066115702479339e-37,
+    "vmad_theorem7_gamma_100Mpc": 3.03827301417535e-82,
+    "qg_foam_gamma_100Mpc": 6.199160129762147e+37,
+    "scattering_length_sea_over_ice": 2.4,
+    "muon_shielding_profile": [
+      {
+        "depth_m": 0.0,
+        "attenuation_factor": 1.0,
+        "approx_flux_m2_s": 100.0
+      },
+      {
+        "depth_m": 1000.0,
+        "attenuation_factor": 0.00016708889215958408,
+        "approx_flux_m2_s": 0.01670888921595841
+      },
+      {
+        "depth_m": 4000.0,
+        "attenuation_factor": 8.829977809275116e-07,
+        "approx_flux_m2_s": 8.829977809275116e-05
+      },
+      {
+        "depth_m": 10000.0,
+        "attenuation_factor": 9.576435010996532e-10,
+        "approx_flux_m2_s": 9.576435010996532e-08
+      }
+    ]
+  },
+  "module_2_stratified_turbulence": {
+    "munk_required_diffusivity_m2_s": 0.0001,
+    "interior_bg_diffusivity_m2_s": 1e-05,
+    "munk_tidal_power_TW": 2.1,
+    "bbl_ozmidov_scale_m": 31.622776601683793,
+    "bbl_local_diffusivity_m2_s": 0.2,
+    "bbl_100MW_temp_rise_K": 0.001954640132426869,
+    "vertical_diffusion_3000m_yr": 28519.27903262605
+  },
+  "module_3_acoustics_and_theorem7": {
+    "sofar_effective_lambdabar_m": 0.9421972631040205,
+    "basalt_vs_gamburtsev_ratio": 10000.000000000004,
+    "sofar_vs_gamburtsev_ratio": 4e+22,
+    "sofar_vs_basalt_ratio": 3.999999999999999e+18,
+    "archimedes_static_suppression": 1e-12,
+    "scholte_freq_Hz": 10.0,
+    "scholte_speed_m_s": 440.0,
+    "scholte_water_decay_scale_m": 7.325044536972956,
+    "scholte_amp_at_100m": 1.177880255731569e-06,
+    "scholte_amp_at_4000m": 6.983058471360432e-238
+  },
+  "module_4_supercritical_and_confinement": {
+    "hydrothermal_TH_K": 680.0,
+    "deep_sea_TC_K": 274.65,
+    "carnot_efficiency": 0.5961029411764707,
+    "extractable_free_power_MW": 89.4154411764706,
+    "widom_eps_liquid": 80.0,
+    "widom_eps_supercritical": 2.5,
+    "widom_fresnel_power_reflection": 0.4893811020468322,
+    "trench_depth_m": 10900.0,
+    "hydrostatic_pressure_MPa": 109.602225,
+    "confinement_force_on_10m_cavity_N": 137730217950.83823
+  },
+  "module_5_mhd_and_plob": {
+    "seawater_conductivity_S_m": 4.0,
+    "skin_depth_3p3GHz_m": 0.004380595634623119,
+    "power_atten_1m_3p3GHz": 5.235782052628015e-199,
+    "skin_depth_76Hz_m": 28.865782825195136,
+    "power_atten_4000m_76Hz": 4.340770886785164e-121,
+    "blue_green_ext_coeff_m_minus_1": 0.04,
+    "plob_optical_cases": [
+      {
+        "distance_m": 100.0,
+        "optical_transmission": 0.01831563888873418,
+        "plob_q2_ebits_per_mode": 0.02666886246432323,
+        "years_per_ebit_at_1e15Hz": 1.1882054533229636e-21
+      },
+      {
+        "distance_m": 1000.0,
+        "optical_transmission": 4.248354255291589e-18,
+        "plob_q2_ebits_per_mode": 6.129079616048701e-18,
+        "years_per_ebit_at_1e15Hz": 5.170121747326501e-06
+      },
+      {
+        "distance_m": 4000.0,
+        "optical_transmission": 3.257488532207521e-70,
+        "plob_q2_ebits_per_mode": 4.6995625511684595e-70,
+        "years_per_ebit_at_1e15Hz": 6.742773921830296e+46
+      }
+    ],
+    "mhd_magnetic_reynolds": 0.0005026548245743669,
+    "mhd_induced_field_nT": 22.61946710584651
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "constants": {
+    "lP_m": 1.61625502392855e-35,
+    "eta0_m_minus_2": 9.570182792894672e+68,
+    "K0_N": 4.815453886722423e+42,
+    "T_GH_K": 2.6744574366554683e-30
+  },
+  "module_1_theorem7_decoherence": {
+    "bmv_lab_gamma_1s": 0.7162649988434449,
+    "icecube_ngc1068_vmad_gamma": 4.3751131404125014e-83,
+    "icecube_ngc1068_qg_foam_n2_gamma": 1.8443782204251017e+28,
+    "gamburtsev_vs_wais_suppression_factor": 1.0000000000000002e+16,
+    "sites": [
+      {
+        "site": "甘布尔泽夫冷焊克拉通山脊 (Dome A 下)",
+        "rms_displacement_m": 1e-11,
+        "decoherence_ratio_vs_gamburtsev": 1.0,
+        "ref_gamma_1e_minus_10kg_1s": 7.162649988434448e-07,
+        "note": "10亿年零碰撞刚性陆核 + 冷基底零滑动"
+      },
+      {
+        "site": "普通活跃大陆基岩基准",
+        "rms_displacement_m": 1e-08,
+        "decoherence_ratio_vs_gamburtsev": 1000000.0000000002,
+        "ref_gamma_1e_minus_10kg_1s": 0.7162649988434449,
+        "note": "常规微震与地壳潮汐应变"
+      },
+      {
+        "site": "沃斯托克湖冰水界面",
+        "rms_displacement_m": 1e-05,
+        "decoherence_ratio_vs_gamburtsev": 1000000000000.0002,
+        "ref_gamma_1e_minus_10kg_1s": 716264.9988434449,
+        "note": "35.9 MPa 高压液态水体对流与水力脉动"
+      },
+      {
+        "site": "西南极裂谷思韦茨冰川底部",
+        "rms_displacement_m": 0.001,
+        "decoherence_ratio_vs_gamburtsev": 1.0000000000000002e+16,
+        "ref_gamma_1e_minus_10kg_1s": 7162649988.434449,
+        "note": "高地热融水泄洪 + 剧烈底冰滑动冰震"
+      }
+    ]
+  },
+  "module_2_subglacial_heatpipe": {
+    "thermal_diffusion_4000m_yr": 441681.2431870611,
+    "climb_1500m_dP_MPa": 13.493655,
+    "supercooling_pure_K": 1.0025785665,
+    "supercooling_aerated_K": 1.32237819,
+    "plume_volume_m3": 500000000000.0,
+    "plume_latent_heat_J": 1.53139e+20,
+    "power_cases": [
+      {
+        "power_MW": 1.0,
+        "melt_mass_rate_kg_s": 2.9940119760479043,
+        "water_volume_flow_m3_s": 0.0029940119760479044,
+        "plume_formation_timescale_yr": 4852682.079752579,
+        "basin_100x100km_flux_W_m2": 0.0001,
+        "surface_ir_temp_rise_K": 4.5527338356839e-05
+      },
+      {
+        "power_MW": 10.0,
+        "melt_mass_rate_kg_s": 29.940119760479043,
+        "water_volume_flow_m3_s": 0.029940119760479042,
+        "plume_formation_timescale_yr": 485268.20797525794,
+        "basin_100x100km_flux_W_m2": 0.001,
+        "surface_ir_temp_rise_K": 0.00045527338356838996
+      },
+      {
+        "power_MW": 100.0,
+        "melt_mass_rate_kg_s": 299.4011976047904,
+        "water_volume_flow_m3_s": 0.2994011976047904,
+        "plume_formation_timescale_yr": 48526.8207975258,
+        "basin_100x100km_flux_W_m2": 0.01,
+        "surface_ir_temp_rise_K": 0.0045527338356838995
+      },
+      {
+        "power_MW": 1000.0,
+        "melt_mass_rate_kg_s": 2994.011976047904,
+        "water_volume_flow_m3_s": 2.9940119760479043,
+        "plume_formation_timescale_yr": 4852.68207975258,
+        "basin_100x100km_flux_W_m2": 0.1,
+        "surface_ir_temp_rise_K": 0.045527338356838996
+      }
+    ]
+  },
+  "module_3_anita_pueo_dual_channels": {
+    "sm_cross_section_0p6EeV_cm2": 1.5e-32,
+    "anita_chords": [
+      {
+        "event": "ANITA-I (2006, 仰角 -27°)",
+        "nadir_elevation_deg": -27.0,
+        "chord_length_km": 5784.746947681305,
+        "column_density_g_cm2": 2603136126.4565873,
+        "nucleon_column_cm_minus_2": 1.567645217096273e+33,
+        "sm_optical_depth": 23.514678256444096,
+        "sm_direct_transmission": 6.133452263153654e-11,
+        "dark_portal_max_cross_section_cm2": 4.421581956176615e-34,
+        "cross_section_suppression_vs_sm": 0.029477213041177435
+      },
+      {
+        "event": "ANITA-III (2014, 仰角 -35°)",
+        "nadir_elevation_deg": -35.0,
+        "chord_length_km": 7308.510951985028,
+        "column_density_g_cm2": 3288829928.393264,
+        "nucleon_column_cm_minus_2": 1.9805796764484955e+33,
+        "sm_optical_depth": 29.708695146727433,
+        "sm_direct_transmission": 1.2522113423112843e-13,
+        "dark_portal_max_cross_section_cm2": 3.499718737914508e-34,
+        "cross_section_suppression_vs_sm": 0.023331458252763386
+      }
+    ],
+    "collimated_beam_cases": [
+      {
+        "half_angle_deg": 0.5,
+        "vertical_footprint_radius_km": 0.35780157942111035,
+        "vertical_footprint_area_km2": 0.40219288119226637,
+        "slant_27deg_footprint_radius_km": 0.7881256978425325,
+        "slant_27deg_footprint_area_km2": 1.9513755072034873,
+        "balloon_single_shot_overlap_ratio": 1.3009170048023248e-06,
+        "icecube_off_axis_hit_prob": 0.0
+      },
+      {
+        "half_angle_deg": 1.0,
+        "vertical_footprint_radius_km": 0.715657662056921,
+        "vertical_footprint_area_km2": 1.6090165951209443,
+        "slant_27deg_footprint_radius_km": 1.5763714493309706,
+        "slant_27deg_footprint_area_km2": 7.806691070949105,
+        "balloon_single_shot_overlap_ratio": 5.20446071396607e-06,
+        "icecube_off_axis_hit_prob": 0.0
+      },
+      {
+        "half_angle_deg": 2.0,
+        "vertical_footprint_radius_km": 1.431751549161657,
+        "vertical_footprint_area_km2": 6.439990045873707,
+        "slant_27deg_footprint_radius_km": 3.1537037668917067,
+        "slant_27deg_footprint_area_km2": 31.245801280467468,
+        "balloon_single_shot_overlap_ratio": 2.083053418697831e-05,
+        "icecube_off_axis_hit_prob": 0.0
+      },
+      {
+        "half_angle_deg": 3.0,
+        "vertical_footprint_radius_km": 2.1487189506046898,
+        "vertical_footprint_area_km2": 14.504711694759893,
+        "slant_27deg_footprint_radius_km": 4.73296016510787,
+        "slant_27deg_footprint_area_km2": 70.37454033571464,
+        "balloon_single_shot_overlap_ratio": 4.691636022380976e-05,
+        "icecube_off_axis_hit_prob": 0.0
+      },
+      {
+        "half_angle_deg": 5.0,
+        "vertical_footprint_radius_km": 3.5870352045628837,
+        "vertical_footprint_area_km2": 40.42231208409356,
+        "slant_27deg_footprint_radius_km": 7.90112393678008,
+        "slant_27deg_footprint_area_km2": 196.1225905133014,
+        "balloon_single_shot_overlap_ratio": 0.00013074839367553426,
+        "icecube_off_axis_hit_prob": 0.0
+      }
+    ]
+  },
+  "module_4_wilkes_mascon_and_theorem1": {
+    "observed_mascon_anomaly_mGal": 50.0,
+    "residual_tolerance_mGal": 5.0,
+    "burial_depth_km": 15.0,
+    "masked_mass_kg": 168557002232443.88,
+    "masked_mass_metric_tons": 168557002232.44388,
+    "grace_altitude_masked_mass_kg": 1.6198327914537856e+17,
+    "schwarzschild_radius_m": 2.5034626261206414e-13,
+    "theorem1_W_max_J": 1.5149147866876227e+31,
+    "T_GH_K": 2.6744574366554683e-30,
+    "landauer_bits_at_T_GH": 5.918937720645128e+83,
+    "landauer_bits_at_270p5K": 5.852106101323449e+51,
+    "runtime_at_100MW_yr": 4800475279132833.0,
+    "runtime_over_universe_age": 347860.5274733937
+  },
+  "module_5_polar_gravity_wave_amplifier": {
+    "scale_height_km": 6.8,
+    "target_altitude_km": 140.0,
+    "density_ratio_140km_to_surface": 1.1445717422761858e-09,
+    "amplitude_amplification_factor": 29558.234492947675,
+    "thermosphere_heating_K_per_day": 80.0,
+    "required_wave_energy_flux_W_m2": 0.00014888888888888891,
+    "equivalent_surface_velocity_perturbation_m_s": 0.014584183648679578
+  }
+}
