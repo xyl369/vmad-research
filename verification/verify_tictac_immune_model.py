@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-VMAD 2004 尼米兹 Tic Tac 事件与“行星级热力学免疫系统模型” · 数值与符号复算总脚本
+VMAD 跨介质超空化包络、热力学隐身边界与相空间吸引子的第一性原理数值校核 (verify_transmedium_hydro_bounds.py)
 对应专题文档（路线 B · 双轨并行）：
-- 01-VMAD描述与分析/02-物理审计与验证方案/2004尼米兹TicTac事件与VMAD热力学免疫模型颗粒度对齐冷酷审计_2026-11-17.md
-- 01-VMAD描述与分析/06-节点架构与场景推演/VMAD_2004尼米兹TicTac事件与行星级热力学免疫系统模型_极限推演与颗粒度对齐报告.md
+- 跨介质流固耦合边界、近临界极化表皮散射与受控相空间动力学约束分析
 
 五大定量复算模块（含 4 项原创独立推演 A–D）：
 1. 动态实例化：证伪“蛮力引力波压缩重水成 BEC”，按定理六式 (4-2) 计算 Natario 低刚度薄壳剪切能；
-   [独立推演 A] 基于 DOC-1416 与定理五推导从静态正二十面体到轴向剪切胶囊 (Tic Tac) 的长径比相变，并核算“阅后即焚”闭合适度与 UHFGW 频段。
+   [独立推演 A] 基于 DOC-1416 与定理五推导从静态正二十面体到轴向剪切椭球胶囊包络的长径比相变，并核算拓扑荷撤除后的绝热弛豫闭合尺度与 UHFGW 频段。
 2. 黑白反演：深海 GRIN 渐变折射率阻抗匹配黑体 & 对流排热容量 vs 空中多源辐射/激波热负荷；
    证明近临界 delta_eta / 微米空化泡表皮的无损多重米氏散射兰伯特哑光白反照率 (R_spec -> 0, A -> 1)。
 3. 十字形沸水：排除 10^43 W 远场 GR 四极引力波与深源 exp(-kh) 静态穿透；
@@ -107,8 +106,8 @@ def module_1_soliton_instantiation_and_shape() -> dict:
     print(f"  [基准 A: R1=10m, dr=1m, v=300m/s] GR={e_gr_hover:.3e} J -> VMAD={e_vmad_hover:.3e} J ({e_vmad_hover/TNT_J_PER_KG*1e3:.1f} g TNT)")
     print(f"  [基准 B: R1=6m, dr=0.5m, v=10.7km/s] GR={e_gr_nimitz:.3e} J -> VMAD={e_vmad_nimitz:.3e} J ({e_vmad_nimitz/KWH_TO_J:.2f} kWh)")
 
-    # 1.3 [独立推演 A] 基于 DOC-1416 浅壳理论与定向移位应力拉长胶囊形 (Tic Tac)
-    # 母节点受各向同性静水压保持球对称正二十面体 (Ih); 探针沿运动轴带单向偶极移位剪切 K_ij,
+    # 1.3 [独立推演 A] 基于 DOC-1416 浅壳理论与定向移位应力拉长椭球胶囊包络
+    # 固定基座节点受各向同性静水压保持球对称正二十面体 (Ih); 局域激发孤立子沿运动轴带单向偶极移位剪切 K_ij,
     # 轴向-环向主应力各向异性使最小弹性-表面张力包络拉长为半球端盖胶囊:
     length_ft = 40.0
     width_ft = 12.0
@@ -116,7 +115,7 @@ def module_1_soliton_instantiation_and_shape() -> dict:
     diameter_m = 3.75
     aspect_ratio = length_m / diameter_m
     sigma_ratio_axial = aspect_ratio  # 薄膜张力平衡近似 sigma_axial / sigma_hoop ~ L / D
-    # 阅后即焚绝热闭合时间尺度和特征崩塌高频引力波 (UHFGW) 频段 (DOC-0553, DOC-1412, DOC-1413)
+    # 短时相干孤立子的绝热弛豫闭合时间尺度和特征崩塌高频引力波 (UHFGW) 频段 (DOC-0553, DOC-1412, DOC-1413)
     tau_light_s = 2.0 * 6.0 / C
     tau_acoustic_air_ms = (diameter_m / 340.0) * 1e3
     f_uhfgw_mhz = (C / (2.0 * 6.0)) / 1e6
@@ -155,7 +154,7 @@ def module_1_soliton_instantiation_and_shape() -> dict:
 def module_2_albedo_inversion_and_thermal_shield() -> dict:
     print("\n=== [模块 2] 黑白反演：深海 GRIN 匹配黑体 vs 空中多重散射兰伯特哑光白 ===")
 
-    # 2.1 深海母节点 (4,000 m, T_sink ~ 274.65 K = 1.5 C, 绝非 2.7 K)
+    # 2.1 深海固定基座节点 (4,000 m, T_sink ~ 274.65 K = 1.5 C, 绝非 2.7 K)
     T_deep_sea_K = 274.65
     lam_vis = 500e-9   # m
     L_grin = 1.0       # m, 渐变折射率外包层厚度
@@ -167,7 +166,7 @@ def module_2_albedo_inversion_and_thermal_shield() -> dict:
     dT_plume = 0.05    # K (极隐蔽微弱温升)
     P_conv_deep = rho_sw * cp_sw * area_node_cs * v_current * dT_plume
 
-    print(f"深海母节点 (T_sink={T_deep_sea_K:.2f} K): L_GRIN={L_grin:.1f} m 可见光 WKB 反射率 = {R_grin:.3e} (绝对纯黑/零反射)")
+    print(f"深海固定基座节点 (T_sink={T_deep_sea_K:.2f} K): L_GRIN={L_grin:.1f} m 可见光 WKB 反射率 = {R_grin:.3e} (绝对纯黑/零反射)")
     print(f"  深海底层流 (v=5 cm/s, dT=0.05 K) 无痕对流散热容量 = {P_conv_deep/1e6:.1f} MW ({P_conv_deep/1e9:.3f} GW)")
 
     # 2.2 空中探针暴露环境：太阳常数 vs 相控阵雷达相干光子轰击 vs 高速气动激波能量通量
@@ -511,9 +510,12 @@ def main() -> None:
         "module_4_cap_attractor": module_4_cap_attractor_and_pingpong_tomography(),
         "module_5_schmidt_immune_controller": module_5_schmidt_immune_controller_and_theorem7_targeting(),
     }
-    out_path = Path(__file__).resolve().parent / "tictac_immune_verification_results.json"
-    out_path.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"\nALL ASSERTIONS PASSED. Results saved to: {out_path}")
+    payload = json.dumps(results, indent=2, ensure_ascii=False) + "\n"
+    out_path = Path(__file__).resolve().parent / "transmedium_hydro_verification_results.json"
+    legacy_path = Path(__file__).resolve().parent / "tictac_immune_verification_results.json"
+    out_path.write_text(payload, encoding="utf-8")
+    legacy_path.write_text(payload, encoding="utf-8")
+    print("\nALL ASSERTIONS PASSED. Results saved to: verification/transmedium_hydro_verification_results.json")
 
 
 if __name__ == "__main__":

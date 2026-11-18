@@ -155,7 +155,7 @@ SOFAR 薛定谔同构 (250 Hz): 有效约化波长 lambdabar_0 = 0.942 m
 
 ALL ASSERTIONS PASSED. Results saved to: verification/deepsea_physics_verification_results.json
 
-=== [SUITE 6/6] verify_tictac_immune_model.py ===
+=== [SUITE 6/6] verify_transmedium_hydro_bounds.py ===
 === [模块 1] 动态实例化：Natario 低刚度薄壳孤立子 vs 蛮力引力波 & 胶囊相变 ===
 蛮力 GW 束 (f=1 kHz, h=1e-2, A=100 m^2): 能流=3.171e+37 W/m^2, 总功率=3.171e+39 W (8.28e+12 L_sun)
   海水中天然重水丰度仅 156 ppm，且电离(>13.6 eV)与 BEC(超冷相干)相图互斥 -> 证伪蛮力凝结假说
@@ -166,7 +166,7 @@ ALL ASSERTIONS PASSED. Results saved to: verification/deepsea_physics_verificati
   拓扑荷撤除后绝热闭合适度: tau_light=40.0 ns, 空气声弛豫~11.0 ms, 崩塌 UHFGW 特征频 ~ 25.0 MHz
 
 === [模块 2] 黑白反演：深海 GRIN 匹配黑体 vs 空中多重散射兰伯特哑光白 ===
-深海母节点 (T_sink=274.65 K): L_GRIN=1.0 m 可见光 WKB 反射率 = 1.583e-15 (绝对纯黑/零反射)
+深海固定基座节点 (T_sink=274.65 K): L_GRIN=1.0 m 可见光 WKB 反射率 = 1.583e-15 (绝对纯黑/零反射)
   深海底层流 (v=5 cm/s, dT=0.05 K) 无痕对流散热容量 = 102.3 MW (0.102 GW)
 空中威胁对账: 太阳热负荷=62.27 kW | SPY-1B 50km 处能流=3.03 W/m^2 (光子通量=1.38e+24 s^-1 m^-2)
   20,000 ft 气动激波能量拦截通量 (若无滑移度规隔离) = 4.418e+12 W
@@ -196,4 +196,4 @@ ALL ASSERTIONS PASSED. Results saved to: verification/deepsea_physics_verificati
   生物神经元离子通道 (1e-24 kg, 1 nm, T=1 s):    Gamma_AD = 8.645e-22 (零退相干且幺正零加热)
   同时间窗选择性过滤比 = 1.00e+30 倍 (1 ms QPU vs 1 s 生物过滤比 = 3.68e+26 倍)
 
-ALL ASSERTIONS PASSED. Results saved to: verification/tictac_immune_verification_results.json
+ALL ASSERTIONS PASSED. Results saved to: verification/transmedium_hydro_verification_results.json

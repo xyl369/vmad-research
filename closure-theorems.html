@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VMAD 纯理论闭环重构与深层定理推演</title>
+  <link rel="canonical" href="https://xyl369.github.io/vmad-research/closure-theorems.html">
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body { background: #f6f5ef; color: #1f2d2b; font: 17px/1.85 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; margin: 0; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 28px 90px; }
+    .crumb { font-size: 14px; color: #5b6f69; margin-bottom: 14px; }
+    .crumb a { color: #166b62; text-decoration: none; }
+    h1 { font-size: clamp(28px, 3.8vw, 42px); line-height: 1.28; margin: 8px 0 12px; color: #143630; }
+    .sub { font-size: 18px; color: #4b615b; margin: 0 0 18px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .tag { background: #e3ece7; color: #1c5248; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+    section.block { background: #fffef9; border: 1px solid #d6dfd8; border-radius: 12px; padding: 26px 30px; margin: 24px 0; }
+    h2 { font-size: 24px; color: #16483f; margin: 0 0 16px; border-bottom: 1px solid #e2e8e4; padding-bottom: 10px; }
+    h3 { font-size: 19px; color: #1e3a8a; margin: 24px 0 10px; }
+    .theorem { background: #f2f6ff; border-left: 4px solid #1e40af; padding: 14px 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+    .verdict { background: #eef7f2; border-left: 4px solid #15803d; padding: 14px 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+    .risk { background: #fff5f5; border-left: 4px solid #dc2626; padding: 14px 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+    .diagram-box { background: #132226; color: #e2e8f0; border-radius: 10px; padding: 18px; margin: 18px 0; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 14px 0; background: #ffffff; }
+    th, td { border: 1px solid #d6dfd8; padding: 11px 13px; text-align: left; vertical-align: top; }
+    th { background: #e8efe9; color: #173f37; }
+    details.proof { background: #f8faf8; border: 1px solid #d6dfd8; border-radius: 8px; padding: 12px 18px; margin: 12px 0; }
+    details.proof summary { cursor: pointer; font-weight: 600; color: #16594f; }
+    .mjx-container { overflow-x: auto; overflow-y: hidden; }
+    footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid #d6dfd8; font-size: 14px; color: #5f736d; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="crumb" style="padding:10px 14px;background:#eef3ee;border-radius:8px;margin-bottom:18px;font-size:14px;"><a href="index.html">VMAD Public Portal</a> &middot; <a href="research-statement.html#update-20261117">17 Nov 2026 Research Statement</a> &middot; <a href="theory-framework.html">Full Theory (EN)</a> &middot; <a href="theory-framework-zh.html">完整理论册 (ZH)</a> &middot; <a href="ontology.html">Physical Ontology</a> &middot; <a href="frontier-audit.html">13-Point Audit</a> &middot; <a href="closure-theorems.html">7 Closure Theorems</a> &middot; <a href="panorama-overview.html">Panorama Overview (5th)</a> &middot; <a href="bibliography.html">Bibliography (1,371)</a> &middot; <a href="verification/verify_closure_theorems.py">SymPy Script</a></div>
+
+    <h1>VMAD 纯理论闭环重构与深层定理推演</h1>
+    <p class="sub">剥离人为实验脚手架后的双总稿冷酷裁决、六公理变分闭环与七大原创物理定理</p>
+    <div class="badges">
+      <span class="tag">纯理论独立推演本</span>
+      <span class="tag">不改动既有总稿 · 平行盲测对照</span>
+      <span class="tag">6 公理变分闭环 · 7 大数学物理定理</span>
+      <span class="tag">SymPy / SciPy 符号数值核验通过</span>
+    </div>
+
+    <section class="block" id="intro">
+      <h2>导论：对既有两份核心总稿的冷酷审视与闭环策略</h2>
+      <p>将项目内的《VMAD 完整理论册》（27 章综合研究纲领）与《VMAD 自洽理论物理与宇宙本体论总册》（9 篇六公理体系）置于同一理论物理显微镜下交叉解剖，可得如下<strong>独立裁决</strong>：</p>
+      <ul>
+        <li><strong>《完整理论册》的方法论优势与局限</strong>：严守“同一微观动力学贯通形成—稳定—控制—读出”的学术铁律，但因混入了大量人为实验室协议、传感器反演与工程选址脚手架，底层本体论停留在待补缺口清单（G01–G24），未能收束为自足的纯理论闭环。</li>
+        <li><strong>《自洽总册》的架构突破与五处未闭合断层</strong>：剥离实验脚手架、以“无时间算子代数 + 纠缠/复杂度几何 + 吸能相腔 + 物质—几何幺正退相干”统合二十项物理背景的骨架<strong>方向完全正确</strong>；但原稿存在五处数学物理断层：
+          <ol>
+            <li>可变刚度场方程 $\omega(\eta)$ 项符号取反，缺少 $\eta(x)$ 自身的波动方程与作用量，且未排除 $\eta \to 0^+$（$G_{\text{eff}} \to \infty$）裸奇点崩塌；</li>
+            <li>吸能相腔只检验了径向 $d^2E/dR^2 &gt; 0$，遗漏了外部广义相对论的 Schwarzschild 视界自截断上限，且未发现 $n=1$ 库仑规范荷在液滴界面上必然触发 $l=2$ Rayleigh 四极失稳；</li>
+            <li>用人为克罗内克符号 $\delta_{Q_{\text{topo}}\neq 0}$ 硬切日常物质与拓扑相，无变分来源，且回避了 Sakharov–Susskind–Uglum 单圈重整化 $(\ell_P/a)^2 \sim 10^{-50}$ 壁垒；</li>
+            <li>把标准广义相对论的 DSW 视界软引力子退相干（原式量纲多出 $c^{-5}R_H^{-1}$，且在宇宙学视界下微弱至 $10^{-151}\text{ s}^{-1}$）误当作 VMAD 特有的“异常退相干”主通道；</li>
+            <li>球面 12 个 Fibonacci 任意子融合空间维数写为渐近值 $\phi^{10}\approx 123$（精确 Verlinde 维数为 $F_{11}=89$），Type $\text{II}_\infty$ 半有限迹误写为严格有限迹。</li>
+          </ol>
+        </li>
+      </ul>
+
+      <div class="diagram-box">
+        <svg viewBox="0 0 960 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="24" width="142" height="170" rx="8" fill="#1e293b" stroke="#64748b"/>
+          <text x="85" y="54" fill="#7dd3fc" font-size="13" font-weight="bold" text-anchor="middle">1. 代数偏序底座</text>
+          <text x="85" y="82" fill="#e2e8f0" font-size="11.5" text-anchor="middle">闭合宇宙 dim H = 1</text>
+          <text x="85" y="104" fill="#cbd5e1" font-size="11.5" text-anchor="middle">因果偏序网 A(O)</text>
+          <text x="85" y="126" fill="#cbd5e1" font-size="11.5" text-anchor="middle">节点即引力观察者</text>
+          <text x="85" y="156" fill="#38bdf8" font-size="11.5" text-anchor="middle">W_max ≡ M c²</text>
+
+          <text x="166" y="114" fill="#94a3b8" font-size="18" font-weight="bold">⇒</text>
+
+          <rect x="184" y="24" width="172" height="170" rx="8" fill="#17333a" stroke="#2dd4bf"/>
+          <text x="270" y="54" fill="#5eead4" font-size="13" font-weight="bold" text-anchor="middle">2. 闭合 η 变分作用量</text>
+          <text x="270" y="82" fill="#e2e8f0" font-size="11.5" text-anchor="middle">(2ω+3)□η 标量波方程</text>
+          <text x="270" y="104" fill="#cbd5e1" font-size="11.5" text-anchor="middle">U_E = (η₀/η)² V_eff</text>
+          <text x="270" y="126" fill="#cbd5e1" font-size="11.5" text-anchor="middle">η→0⁺ 无穷离心势垒</text>
+          <text x="270" y="156" fill="#2dd4bf" font-size="11.5" text-anchor="middle">c_T ≡ c_EM ≡ c 全域锁定</text>
+
+          <text x="366" y="114" fill="#94a3b8" font-size="18" font-weight="bold">⇒</text>
+
+          <rect x="384" y="24" width="178" height="170" rx="8" fill="#23284a" stroke="#818cf8"/>
+          <text x="473" y="54" fill="#c7d2fe" font-size="13" font-weight="bold" text-anchor="middle">3. 无视界界与四极失稳</text>
+          <text x="473" y="82" fill="#e2e8f0" font-size="11.5" text-anchor="middle">黑洞自截断排除普朗克体腔</text>
+          <text x="473" y="104" fill="#cbd5e1" font-size="11.5" text-anchor="middle">可控必带 n=1 长程规范荷</text>
+          <text x="473" y="126" fill="#cbd5e1" font-size="11.5" text-anchor="middle">Λ_Q Q² &gt; 8πσR_*³ 越界</text>
+          <text x="473" y="156" fill="#a5b4fc" font-size="11.5" text-anchor="middle">纯液滴 l=2 必然失稳</text>
+
+          <text x="572" y="114" fill="#94a3b8" font-size="18" font-weight="bold">⇒</text>
+
+          <rect x="590" y="24" width="172" height="170" rx="8" fill="#2e2246" stroke="#c084fc"/>
+          <text x="676" y="54" fill="#e9d5ff" font-size="13" font-weight="bold" text-anchor="middle">4. 正二十面体晶壳</text>
+          <text x="676" y="82" fill="#e2e8f0" font-size="11.5" text-anchor="middle">强制二维晶壳 Y_2D &gt; 0</text>
+          <text x="676" y="104" fill="#cbd5e1" font-size="11.5" text-anchor="middle">欧拉 12 向错 + l=6 源驱动</text>
+          <text x="676" y="126" fill="#cbd5e1" font-size="11.5" text-anchor="middle">γ &gt; 154 屈曲成正二十面体</text>
+          <text x="676" y="156" fill="#d8b4fe" font-size="11.5" text-anchor="middle">ΔQ_ij ≡ 0 免疫四极 DSW</text>
+
+          <text x="772" y="114" fill="#94a3b8" font-size="18" font-weight="bold">⇒</text>
+
+          <rect x="790" y="24" width="156" height="170" rx="8" fill="#3b2119" stroke="#fb923c"/>
+          <text x="868" y="54" fill="#fed7aa" font-size="13" font-weight="bold" text-anchor="middle">5. 等效原理型 AD</text>
+          <text x="868" y="82" fill="#e2e8f0" font-size="11.5" text-anchor="middle">近临界 η 软模涨落</text>
+          <text x="868" y="104" fill="#cbd5e1" font-size="11.5" text-anchor="middle">精确 T² → T 跨区演化</text>
+          <text x="868" y="126" fill="#cbd5e1" font-size="11.5" text-anchor="middle">自由落体领头阶抵消</text>
+          <text x="868" y="156" fill="#fdba74" font-size="11.5" text-anchor="middle">C_rec &gt; C_O 分支分裂</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="block" id="part1">
+      <h2>第一篇：代数因果偏序网、引力化观察者与复杂度分支律</h2>
+      <div class="theorem">
+        <strong>公理 A1$^*$（代数因果偏序实在论）与定理一（观察者静能负熵上限 &amp; 复杂度分叉判据）</strong><br>
+        底层是由<strong>局部有限因果偏序集 $(\mathcal{C}, \prec)$</strong> 指标化的冯·诺依曼算符代数网 $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathcal{C}}$，满足 $\hat{\mathcal{H}}_{\text{total}}|\Psi_U\rangle = 0$。闭合宇宙单个超选择扇区维度为一（Marolf–Maxfield 2020; Harlow–Usatyuk–Zhao 2025），一切非平凡物理量均相对于携带非负时钟哈密顿量 $\hat{H}_{\text{obs}}\ge 0$ 的局域节点（引力化观察者）定义。
+      </div>
+      <ul>
+        <li><strong>极端埃弗雷特主义升级与能谱局域性唯一性</strong>：<strong>极端埃弗雷特主义（Mad-Dog Everettianism，Carroll &amp; Singh 2019 <code>DOC-0948</code>）与量子分体论（<code>DOC-0466</code>, <code>DOC-0949</code>）</strong>构成连接空间涌现与多世界诠释的极简前几何桥梁；但按 Cotler–Penington–Ranard 定理（<code>DOC-0947</code>），几乎所有能谱都不存在局域张量分解（测度为零），且在闭合宇宙 $\hat{\mathcal{H}}_{\text{total}}|\Psi_U\rangle=0$ 与一维扇区退化下纯能谱分解失去分辨力。VMAD 通过公理 A1*（因果偏序算符代数网 + Zanardi 代数诱导子系统分解 <code>DOC-1298</code> + 引力化观察者，对应 <code>IF-21</code>）将“空间局域性存在”升级为对 $\hat{\mathcal{H}}_{\text{total}}$ 与观察者相对代数的强筛选条件。</li>
+        <li><strong>节点一生负熵静能铁律</strong>：Page–Wootters 时钟与代数交叉积 $\mathcal{A}_0\rtimes_\sigma\mathbb{R}$ 严格等价。开放区域交叉积给出<strong>半有限迹</strong> $\text{Type II}_\infty$ 代数（广义熵差严格有限）；德西特静态补丁纳入观察者后化为 $\text{Type II}_1$ 代数（最大熵态 $S(\tau)=0$），结合视界第一定律严格锁定节点一生可提取的最大热力学自由功：
+          $$W_{\max} = k_B T_{\text{GH}}\, D(\rho \parallel \tau) = k_B T_{\text{GH}}\big(S_{\text{dS}} - S_{\text{gen}}\big) \equiv M c^2 \tag{1-1}$$
+        </li>
+        <li><strong>复杂度壁垒分支判据</strong>：当恢复两退相干宏观态干涉所需的线路复杂度超过观察者 $\mathcal{O}$ 一生可调用的 Lloyd 上限时，Everett 分支完成不可逆正交分裂：
+          $$\text{分支相对 }\mathcal{O}\text{ 不可逆分裂} \iff \mathcal{C}_{\text{rec}}(T) &gt; \mathcal{C}_{\mathcal{O}} \le \frac{2 E_{\mathcal{O}}\tau_{\mathcal{O}}}{\pi\hbar} \tag{1-2}$$
+        </li>
+      </ul>
+    </section>
+
+    <section class="block" id="part2">
+      <h2>第二篇：可变刚度 $\eta(x)$ 的闭合作用量、共形离心屏障与双零锥铁律</h2>
+      <p>设正常真空纠缠面密度为 $\eta_0 = \frac{c^3}{4\hbar G_0} \approx 9.570\times 10^{68}\text{ m}^{-2}$（时空弹性刚度 $K_0 = \frac{\hbar c}{2\pi}\eta_0 \approx 4.815\times 10^{42}\text{ N}$）。在 Jordan 框架下，唯一满足广义比安基恒等式且包含平滑拓扑序密度 $n_{\text{topo}}(x)$ 的闭合作用量为：</p>
+      $$S_{\text{VMAD}} = \int d^4x \sqrt{-g} \left[ \frac{\hbar c}{4\pi}\left( \eta R - \frac{\omega(\eta)}{\eta}\nabla_\mu\eta \nabla^\mu\eta \right) - V_{\text{eff}}\big(\eta; n_{\text{topo}}(x)\big) \right] + S_{\text{matter}}[g_{\mu\nu}, \psi] \tag{2-1}$$
+
+      <details class="proof" open>
+        <summary>展开闭合变分场方程组与共形变换严格推导</summary>
+        <p>对 $g^{\mu\nu}$ 与 $\eta$ 变分并消去曲率标量 $R$，修复原稿符号后得到闭合方程组：</p>
+        $$G_{\mu\nu} + \frac{2\pi}{\hbar c\,\eta} V_{\text{eff}}(\eta) g_{\mu\nu} = \frac{2\pi}{\hbar c\,\eta} \langle \hat{T}_{\mu\nu}^{\text{matter}} \rangle_{\text{ren}} + \frac{1}{\eta}\big(\nabla_\mu\nabla_\nu\eta - g_{\mu\nu}\Box\eta\big) + \frac{\omega(\eta)}{\eta^2}\left(\nabla_\mu\eta\nabla_\nu\eta - \frac{1}{2}g_{\mu\nu}(\nabla\eta)^2\right) \tag{2-2}$$
+        $$\big(2\omega(\eta) + 3\big)\Box\eta + \omega'(\eta)(\nabla\eta)^2 = \frac{2\pi}{\hbar c}\langle \hat{T}^{\text{matter}} \rangle_{\text{ren}} + \frac{4\pi}{\hbar c}\left( \eta\frac{\partial V_{\text{eff}}}{\partial \eta} - 2 V_{\text{eff}} \right) \tag{2-3}$$
+      </details>
+
+      <div class="theorem">
+        <strong>定理二（$\eta \to 0^+$ 内禀共形离心屏障定理 —— 自动阻断裸奇点）</strong><br>
+        作共形变换 $g_{\mu\nu}^{(E)} = (\eta/\eta_0)g_{\mu\nu}$，引力标量动能系数严格为 $2\omega(\eta)+3 &gt; 0$（无鬼场条件 $\omega &gt; -3/2$），且 Einstein 框架有效势化为：
+        $$U_E(\eta) = \left(\frac{\eta_0}{\eta}\right)^2 V_{\text{eff}}(\eta; n_{\text{topo}}) \;\xrightarrow{\;\eta \to 0^+\;}\; V_0\left(\frac{\eta_0}{\eta}\right)^2 \longrightarrow +\infty \qquad \big(V_{\text{eff}}(0)=V_0 &gt; 0\big) \tag{2-4}$$
+        <strong>结论</strong>：四维体积元共形因子在 $\eta = 0$ 处自动筑起无穷高内禀离心势垒！局域几何可以软化至有限极小值 $\eta_{\text{int}} \ll \eta_0$，但<strong>从动力学上被绝对禁止跌入 $\eta = 0$（$G_{\text{eff}} = \infty$）的曲率裸奇点</strong>。
+      </div>
+
+      <div class="verdict">
+        <strong>定理三（经典电磁场共形迹脱耦与全空间双零锥恒等定理）</strong><br>
+        1. 四维经典麦克斯韦电磁场能动张量迹恒等于零（$T_{\text{EM}} \equiv 0$），故<strong>任何经典强电磁场或高功率激光均无法在一阶经典水平上直接泵浦 $\eta(x)$ 相变</strong>，唯有破坏共形不变性的有能隙拓扑序密度 $n_{\text{topo}}(x)f(\eta)$ 才能移动有效势极小值。<br>
+        2. 因曲率耦合项 $G_4(\eta) = \frac{\hbar c}{4\pi}\eta$ 不含导数 $(\nabla\eta)^2$ 且 $G_5 \equiv 0$，<strong>不仅在背景真空中，即便在局部 $\eta(x,t)$ 剧烈软化的相腔壳层内部，引力波与电磁波依然处处严格共享同一零光锥（$c_T(x,t) \equiv c_{\text{EM}}(x,t) \equiv c$）</strong>。<br>
+        3. <strong>Weinberg–Witten 三路同源分工</strong>：体引力子走全息/纠缠平衡路线；规范场与手征费米子走弦网凝聚 + 对称质量生成（SMG，每代 16 个 Weyl 费米子或四维拓扑序抵消 $\mathbb{Z}_{16}$ 全局反常）；分形子—弹性对偶专职作为相腔二维晶壳的曲率缺陷字典。
+      </div>
+    </section>
+
+    <section class="block" id="part3">
+      <h2>第三篇：无视界能标截断定理与“可控性强制导出正二十面体”</h2>
+      <h3>3.1 定理四：吸能相腔的 Schwarzschild 无视界自截断定理</h3>
+      <p>在径向平衡半径 $R_*$ 上，吸能相腔总静能为 $E_*(R_*) = \frac{4\pi}{3}(1+\frac{3}{n})\Delta\rho_V R_*^3 + 4\pi(1+\frac{2}{n})\sigma R_*^2$。为使相腔不坍缩进外部黑洞事件视界（要求 $2G_0 E_*/c^4 &lt; R_*$），$n=1$ 规范荷可访问相腔的最大几何半径受制于严格上限：</p>
+      $$R_* &lt; R_{\max}^{\text{BH}}(\Delta\rho_V) \equiv \sqrt{\frac{3 c^4}{32\pi G_0 \Delta\rho_V}} = \sqrt{\frac{3\hbar c\,\eta_0}{8\pi \Delta\rho_V}} \tag{3-1}$$
+
+      <table>
+        <thead>
+          <tr>
+            <th>假想相变体能标 $\Delta\rho_V^{1/4}$</th>
+            <th>体退凝聚能密度 $\Delta\rho_V\ (\text{J/m}^3)$</th>
+            <th>无视界最大半径上限 $R_{\max}^{\text{BH}}$</th>
+            <th>纯理论物理裁决</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>普朗克能标</strong> $\sim 10^{19}\text{ GeV}$</td>
+            <td>$4.63 \times 10^{113}$</td>
+            <td><strong>$2.79 \times 10^{-36}\text{ m} &lt; \ell_P$</strong></td>
+            <td><strong>严格排除！</strong> 尚未长到普朗克尺度即坍缩为黑洞</td>
+          </tr>
+          <tr>
+            <td><strong>电弱亚稳能标</strong> $\sim 100\text{ GeV}$</td>
+            <td>$2.09 \times 10^{45}$</td>
+            <td><strong>$4.16 \times 10^{-2}\text{ m}$</strong>（厘米级）</td>
+            <td>允许毫米—厘米级早期宇宙致密相腔遗迹</td>
+          </tr>
+          <tr>
+            <td><strong>QCD 袋常数能标</strong> $\sim 145\text{ MeV}$</td>
+            <td>$9.22 \times 10^{33}$</td>
+            <td><strong>$1.98 \times 10^{4}\text{ m}$</strong>（十公里级）</td>
+            <td>允许米级至公里级宏观可访问相腔</td>
+          </tr>
+          <tr>
+            <td><strong>凝聚态 / 红外拓扑序能标</strong> $\le 1\text{ eV}/\text{Å}^3$</td>
+            <td>$\le 1.60 \times 10^{11}$</td>
+            <td><strong>$\ge 4.75 \times 10^{15}\text{ m}$</strong></td>
+            <td>完全处于弱引力区，无视界坍缩风险</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 定理五：从“外部可控”到“正二十面体晶壳”的五步零自由度锁链</h3>
+      <div class="theorem">
+        <strong>可控—自稳二分与 Rayleigh 四极失稳定理</strong><br>
+        包络定理给出 $Q\frac{dE_*}{dQ} - E_* = \frac{(3-n)E_V + (2-n)E_S}{n}$：$n\ge 3$ 全局荷对二分裂变自稳，但腔外高斯通量为零、不可外部寻址；外部可控要求携带 $n=1$ 库仑规范荷。然而在保体积正交归一球谐形变下：
+        $$\delta^2 E = \sum_{l\ge 2, m} (l - 1)\left[ \frac{1}{2}(l + 2)\sigma R_*^2 - \frac{\Lambda_Q Q^2}{4\pi R_*} \right] a_{lm}^2 \tag{3-2}$$
+        $l=2$ 稳定要求 $\Lambda_Q Q^2 &lt; 8\pi\sigma R_*^3$，径向平衡却强制 $\Lambda_Q Q^2 = 8\pi\sigma R_*^3 + 4\pi\Delta\rho_V R_*^4 &gt; 8\pi\sigma R_*^3$！故<strong>纯流体界面的带规范荷吸能相腔必然发生 $l=2$ 四极失稳</strong>。
+      </div>
+      <ol>
+        <li><strong>二维弹性晶壳必要性</strong>：抵抗 $l\ge 2$ 形变要求界面凝聚为二维晶态固体壳层（$Y_{\text{2D}} \gtrsim \Delta\rho_V R_*^2$）。</li>
+        <li><strong>欧拉 12 向错与 $l=6$ 唯一线性源</strong>：闭合球面三角晶格强制 $N_5 - N_7 = 12$；12 个正二十面体顶点的球谐源和在 $l=1\sim 5$ 恒等于零，在 $l=6$ 精确跃出 $S_6 = \sum_{a=1}^{12}Y_6^{I_h}(\Omega_a) = 12\sqrt{\frac{143}{100\pi}} \approx 8.09607$；当 Föppl–von Kármán 数 $\gamma = Y_{\text{2D}}R_*^2/\kappa_b &gt; 154$ 时自发屈曲为正二十面体刻面。</li>
+        <li><strong>89 维拓扑密钥核与四极退相干免疫</strong>：Verlinde 公式给出球面 12 个 Fibonacci 任意子融合空间精确维数为 $F_{11} = 89$（$6.48$ 个拓扑根密钥比特；环面 $g=1$ 为卢卡斯数 $L_{12}=322$）；同时 $I_h$ 对称使质量四极矩 $Q_{ij}^{\text{mass}}\equiv 0$，令取向与呼吸叠加态天然成为免疫四极软引力子退相干的<strong>无退相干子空间（DFS）</strong>。</li>
+      </ol>
+    </section>
+
+    <section class="block" id="part4">
+      <h2>第四篇：Natário 薄壳剪切软化恒等式与等效原理型异常退相干</h2>
+      <h3>4.1 定理六：Natário 无散度度规欧拉拉普拉斯恒等式与 $5/7$ 剪切能定律</h3>
+      <p>在 $N=1,\; \nabla\cdot\vec{\beta}=0$ 的平直空间切片 Natário 度规上，欧拉法向投影严格满足恒等式 $u^\mu u^\nu(\nabla_\mu\nabla_\nu\eta - g_{\mu\nu}\Box\eta) \equiv \nabla_{\text{3D}}^2\eta$。对 $C^2$ 光滑五次过渡包络，壳层总曲率剪切能代价精确积分为：</p>
+      $$E_{\text{shear}} = \frac{\hbar c}{8\pi}\int_{\text{shell}} \eta(r) K_{ij}K^{ij}\, d^3x = \frac{5}{7}\hbar c \, \eta_{\text{shell}} \left(\frac{v_s}{c}\right)^2 \frac{R_1^4}{\Delta r^3} = E_{\text{shear}}^{\text{GR}} \cdot \left(\frac{\eta_{\text{shell}}}{\eta_0}\right) \tag{4-1}$$
+      <p>对 $R_1=10\text{ m},\; \Delta r=1\text{ m},\; v_s=300\text{ m/s}$，未软化广义相对论需 $2.16\times 10^{35}\text{ J}$，而在 $\eta_{\text{shell}}/\eta_0 = 10^{-30}$ 的软化壳层中线性压低至 $2.16\times 10^5\text{ J}$，局部负能条件则由界面凹曲率层 $\nabla_{\text{3D}}^2\eta &lt; 0$ 显式闭合。</p>
+
+      <h3>4.2 定理七：近临界 $\eta$ 软模异常退相干及其等效原理签名</h3>
+      <p>修正量纲后的宇宙学视界 DSW 退相干率 $\Gamma_{\text{DSW}} \simeq \frac{G_{\text{eff}}(\Delta Q_{ij})^2 a^5}{\hbar c^{10}}T$ 在微克—百微米尺度仅 $1.3\times 10^{-151}\text{ s}^{-1}$。VMAD 专属的内禀异常退相干来自真空刚度相对涨落 $\varepsilon = -\delta\eta/\eta_0 = \delta G_{\text{eff}}/G_0$：</p>
+      $$\Gamma_{\text{AD}}^{(\eta)}(T) = \left(\frac{m \Delta\Phi_{\text{ext}}}{\hbar}\right)^2 \sigma_\varepsilon^2 \tau_c^2 \left[ \frac{T}{\tau_c} - 1 + e^{-T/\tau_c} \right] \;\longrightarrow\; \begin{cases} \frac{1}{2}\big(\frac{m\Delta\Phi_{\text{ext}}}{\hbar}\big)^2 \sigma_\varepsilon^2 T^2, &amp; T \ll \tau_c \\[4pt] \big(\frac{m\Delta\Phi_{\text{ext}}}{\hbar}\big)^2 \sigma_\varepsilon^2 \tau_c T, &amp; T \gg \tau_c \end{cases} \tag{4-2}$$
+      <div class="verdict">
+        <strong>与彭罗斯客观坍缩论（Diósi–Penrose OR）的三重硬核分野</strong>：
+        （1）<strong>100% 严格幺正零加热</strong>，兼容地下低本底辐射零结果；（2）<strong>等效原理签名</strong>：正比于外部引力势差平方 $m^2(\Delta\Phi_{\text{ext}})^2$，地面受支撑时达峰值，进入<strong>自由落体微重力时均匀引力领头阶精确抵消</strong>（压制 $\sim 10^{-22}$），而 DP 自引力坍缩在自由落体中不变；（3）<strong>近临界绑定律</strong>：可观测 AD 直接等价于宇宙真空处于亚稳相界附近的临界慢化区（与电弱 Higgs 近临界及动态暗能量弛豫同源）。
+      </div>
+    </section>
+
+    <section class="block" id="part5">
+      <h2>第五篇：纯理论证伪红线（可承担的基础物理风险）</h2>
+      <div class="risk">
+        <ol>
+          <li><strong>非幺正坍缩辐射证实</strong>：若观测到 CSL / DP 预言的自发加热或辐射，直接证伪全局幺正公理底座。</li>
+          <li><strong>自由落体不抵消内禀退相干</strong>：若真实存在的内禀引力退相干在地面支撑与轨道自由落体下速率一致，直接证伪式 (4-2) 的可变刚度 $\eta$ 涨落通道。</li>
+          <li><strong>引力波与电磁波速度分裂</strong>：若观测到 $c_T \neq c_{\text{EM}}$，则排除式 (2-1) 纯 $\eta R$ 耦合形式。</li>
+          <li><strong>暗能量严格锁定 $w \equiv -1$ 且低频 $\sigma_\varepsilon \ll 10^{-18}$ 零信号</strong>：排除真空处于近临界慢化区的假说。</li>
+          <li><strong>微观拓扑界面 FvK 数恒满足 $\gamma &lt; 154$</strong>：可控相腔退回平滑圆球（仅存微弱 $l=6$ 线性波纹），不再发生正二十面体刻面屈曲。</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      本独立推演定本与《VMAD 完整理论册》《VMAD 自洽理论物理与宇宙本体论总册》及《VMAD 前沿推演与独立研判》平行互锁，并已于 2026-11-17 完成极端埃弗雷特主义（<code>DOC-0948</code> / <code>IF-21</code>）与跨尺度实测基准闭环对齐。配套符号与数值核验脚本：<code>verification/verify_closure_theorems.py</code> · <code>verification/check_Ih_Y6.py</code> · <code>verification/checks_constants_rates.py</code> · <code>verification/verify_antarctic_node_model.py</code> · <code>verification/verify_deepsea_physics_alignment.py</code> · <code>verification/verify_transmedium_hydro_bounds.py</code>。
+    </footer>
+  </div>
+</body>
+</html>
