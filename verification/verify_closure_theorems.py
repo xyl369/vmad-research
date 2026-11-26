@@ -16,6 +16,11 @@ VMAD 理论深层推演与独立闭环定本 · 符号与数值复算总脚本
 8. 正二十面体 Ih 群 l=1..5 严格归零、l=6 顶点源和 12*sqrt(143/100pi) 与 Fibonacci 任意子 Verlinde 维数
 """
 
+# [2026-11-21 Unified Arbitration Note]:
+# Section [4] verifies the exact geometric ADM projection and C^2 thin-shell 5/7 shear integral.
+# However, in canonical 2*omega+3 > 0 scalar-tensor fields, soft-shell shear energy reduction
+# is EXCLUDED by the Einstein-frame Dirichlet gradient wall (E_grad ~ 8.4e47 J; see verify_nogo_bounds.py).
+
 import numpy as np
 import sympy as sp
 from scipy.special import sph_harm
@@ -146,7 +151,7 @@ I_suu = sp.integrate(sp.diff(s_prof, us, 2) ** 2, (us, 0, 1))
 assert I_suu == sp.Rational(30, 7)
 R1_val, dr_val, vs_val = 10.0, 1.0, 300.0
 E_shear_GR = (5.0 / (28.0 * G)) * c**2 * vs_val**2 * (R1_val**4 / dr_val**3)
-print(f"int_0^1 (s'')^2 du = {I_suu}  => prefactor = (1/6)*(30/7) = 5/7")
+print(f"int_0^1 (s'')^2 du = {I_suu}  => prefactor = (1/6)*(30/7) = 5/7  [geometric integral exact; canonical soft-shell saving EXCLUDED by Dirichlet gradient wall, see verify_nogo_bounds.py]")
 print(f"R1=10m, dr=1m, vs=300m/s: E_shear(eta0) = {E_shear_GR:.3e} J (equiv mass {E_shear_GR/c**2:.3e} kg)")
 
 for label, drho_val in [

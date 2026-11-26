@@ -1,0 +1,121 @@
+================================================================================
+VMAD Reproducible Verification Suite — Live Execution Log (2026-11-26)
+Aligned to Unified Arbitration Synthesis (2026-11-21)
+================================================================================
+
+>>> [SUITE 1/4] python3 verification/verify_nogo_bounds.py
+=== [1] UV Entanglement Rigidity & Firewall Bound ===
+l_P        = 1.616255e-35 m
+eta_0      = 9.570183e+68 m^-2
+K_0        = 4.815454e+42 N
+E_firewall (A=100 m^2) = 7.488e+80 J
+
+=== [2] Dirichlet Gradient Wall (Falsifying Canonical Soft-Shell Metric Reduction) ===
+1-ton, R=10 m object (omega>=40000): r_s/R = 1.485e-25, delta_max = 1.927e-15
+Non-black-hole ceiling (r_s/R < 1, omega>=40000): delta_max < 4.9999e-03
+Retracted soft-shell (eta/eta0=1e-30, R=10m):
+  Exterior harmonic floor (2w+3=1): E_grad >= 7.219e+47 J (1193x E_BH; r_s/R = 1193)
+  Exterior harmonic floor (2w+3=3): E_grad >= 2.166e+48 J (3579x E_BH)
+  Thin-shell dr=1m ramp  (2w+3=3): E_grad  = 2.166e+49 J (35788x E_BH) => COLLAPSES INTO BLACK HOLE
+
+=== [3] No-Horizon Truncation & Surface Weight Bounds ===
+  Sea-level air hover (rho <= 1.2 kg/m^3): Lambda_phase <= 8.48 keV (0.0085 MeV)
+  Seawater neutral buoyancy (rho <= 1e3 kg/m^3): Lambda_phase <= 45.56 keV (0.0456 MeV)
+  Granite bedrock support, R=10m (rho <= 8e6 kg/m^3): Lambda_phase <= 430.92 keV (0.4309 MeV)
+  QCD 145 MeV: R_max(no-horizon) = 19.79 km, but M(R=10m) = 4.30e+20 kg => RULED OUT on planetary surfaces
+
+=== [4] Palatini omega -> -3/2 Algebraic Scale Corner (SymPy Exact Check) ===
+VERIFIED: At omega = -3/2, Einstein-frame kinetic prefactor -2*(2*omega+3) === 0 (non-propagating algebraic scale mode).
+OPEN TARGET (G01/G03): 1-loop SM radiative survival of chi_m = 0 decoupling without Palatini surface singularities.
+
+=== [5] Branch B' 1.1422 AU Tidal Crossover, 3-Point Ratio & Spin-Echo/Heating Signatures ===
+xi_crit = R_earth * sqrt(R_earth / r_s_earth) = 1.7074e+11 m = 1.1414 AU
+Moon / Earth AD ratio (xi > 1.1422 AU, g^2 regime) = 0.0275
+Moon / Earth AD ratio (xi < 1.1422 AU, R^2 tidal regime) = 0.0744
+Hahn spin-echo suppression at T/tau_c = 0.1: 60.0x
+Hahn spin-echo suppression at T/tau_c = 0.05: 120.0x
+100 kHz levitated oscillator heating suppression (tau_c=1 s): 2.533e-12
+
+=== [6] Optical-Clock Probe Sensitivity (Main Branch Near-Field) ===
+Optical clock (nu=5e14 Hz) phase shift at delta=3e-16 over 1 s: 0.942 rad (~1 rad)
+
+=== [7] LIGO O3b Strain Exclusion of Naive Ornstein-Uhlenbeck Noise vs Smooth UV Cutoff ===
+BMV calibrated sigma_eps = 1.52e-17 (prefactor mgd/hbar = 9.299e+16 rad/s)
+At 100 Hz: LIGO O3b ceiling ~ 3.0e-24 Hz^-1/2
+  Naive OU/Lorentzian (tau_c=1 s) ASD(100 Hz) = 4.84e-20 Hz^-1/2  => RULED OUT by 1.6e+04x!
+  Gaussian f_UV=5.0 Hz full-band max(ASD/L1_O3b) = 4.90e+02 (exceeds L1 in 10-35 Hz band -> tightened!)
+  Gaussian f_UV=1.5 Hz full-band max(ASD/L1_O3b) = 1.00e-02 < 1 (SURVIVES all 10-3000 Hz; ASD(100 Hz)=0.00e+00)
+
+ALL NO-GO BOUNDS, PALATINI LIMIT, AD CROSSOVER & LIGO SPECTRAL ASSERTIONS PASSED.
+
+>>> [SUITE 2/4] python3 verification/verify_closure_theorems.py
+=== [1] 基本常数与真空纠缠刚度 ===
+l_P  = 1.616255e-35 m
+eta0 = 9.570183e+68 m^-2
+K0   = 4.815454e+42 N   (check hbar*c*eta0/(2*pi) = 4.815454e+42 N)
+
+=== [2] Jordan <-> Einstein 共形变换与 eta -> 0+ 离心势垒 (SymPy 验证) ===
+VERIFIED: Jordan <-> Einstein conformal action equivalence (kinetic prefactor 2*omega + 3 > 0; U_E = (eta_0/eta)^2 V_eff)
+
+=== [3] Natário 无散度度规 ADM 欧拉投影恒等式 (SymPy 精确验证) ===
+VERIFIED: u^mu u^nu (nabla_mu nabla_nu eta - g_{mu nu} Box eta) === nabla_3D^2 eta
+
+=== [4] Natário 薄壳 C^2 形状函数外曲率剪切能与 Schwarzschild 无视界上界 ===
+int_0^1 (s'')^2 du = 30/7  => prefactor = (1/6)*(30/7) = 5/7  [geometric integral exact; canonical soft-shell saving EXCLUDED by Dirichlet gradient wall, see verify_nogo_bounds.py]
+R1=10m, dr=1m, vs=300m/s: E_shear(eta0) = 2.164e+35 J (equiv mass 2.408e+18 kg)
+No-horizon upper bound (Planck scale): drho=4.63e+113 J/m^3 => R_max = 2.792e-36 m
+No-horizon upper bound (Electroweak (100 GeV)^4): drho=2.09e+45 J/m^3 => R_max = 4.162e-02 m
+No-horizon upper bound (QCD bag (145 MeV)^4): drho=9.22e+33 J/m^3 => R_max = 1.979e+04 m
+
+=== [5] 保体积球谐形变面积二阶变分与 Rayleigh 导体静电失稳 ===
+l=2: dA/(R0^2 a^2) = 2,  dE_Q/a^2 = -LQ*Q**2/(4*pi*R0)
+l=3: dA/(R0^2 a^2) = 5,  dE_Q/a^2 = -LQ*Q**2/(2*pi*R0)
+l=6: dA/(R0^2 a^2) = 20,  dE_Q/a^2 = -5*LQ*Q**2/(4*pi*R0)
+
+=== [6] 正二十面体 Ih 群顶点球谐求和与 Fibonacci 任意子 Verlinde 维数 ===
+l=1: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=2: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=3: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=4: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=5: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 0.0000000000
+l=6: ||sum_{a=1}^12 Y_{lm}(Omega_a)||_2 = 8.0960713783
+sum_{a=1}^12 Y_6^Ih(Omega_a) = 8.0960713783 == 12*sqrt(143/(100*pi)) = 8.0960713783
+Verlinde exact dim(tau^12): S^2 (g=0) = 89 (6.48 qubits), T^2 (g=1) = 322 (8.33 qubits)
+
+ALL SYMBOLIC AND NUMERICAL CHECKS PASSED.
+
+>>> [SUITE 3/4] python3 verification/check_Ih_Y6.py
+off 0 s 1 vertex spread 0.90676 0.0
+off 0 s -1 vertex spread 0.0 0.0
+off 0 s 1j vertex spread 0.45338 0.45338
+off 0 s (-0-1j) vertex spread 0.45338 0.45338
+off 0.628 s 1 vertex spread 0.0 0.0
+off 0.628 s -1 vertex spread 0.90676 0.0
+off 0.628 s 1j vertex spread 0.45338 0.45338
+off 0.628 s (-0-1j) vertex spread 0.45338 0.45338
+
+>>> [SUITE 4/4] python3 verification/checks_constants_rates.py
+lP 1.61625502392855e-35 eta0 9.570182792894672e+68 K0 4.815453886722423e+42 check K=hbar c eta/2pi 4.8154538867224235e+42
+2pi/(hbar c eta0) vs 8piG/c^4 2.0766474428449717e-43 2.0766474428449717e-43
+DSW dS BMV 1e-14kg,100um 1.3469127137552696e-151
+DSW dS 1g,1mm 1.3469127137552697e-125
+DSW dS 1kg,1m 1.3469127137552695e-107
+DSW Rindler a=g (formal) 9.755575897299596e-101
+12 tau anyons sphere dim 89 phi^10 122.99186938124426 log2 6.475733430966398 ln 4.48863636973214
+A_I/A_sphere 1.0645935180531956
+delta eta/eta ~ (lP/a)^2 for a= 1e-10 2.6122803023742773e-50
+delta eta/eta ~ (lP/a)^2 for a= 1e-15 2.612280302374277e-40
+delta eta/eta ~ (lP/a)^2 for a= 1e-19 2.612280302374278e-32
+VZ dL ~ sqrt(lP L) 1.0 4.0202674338015744e-18
+VZ dL ~ sqrt(lP L) 4000.0 2.542640378762636e-16
+m g d/hbar [rad/s per unit eps] 9.292871136911866e+16
+Gamma_AD white (pref^2 * S/2) 431787269836.2481
+H0 per yr 6.943199999999999e-11 LLR 1e-13/yr in H0 units 0.0014402580942504898
+n=1 split ratio 2^(-1/3) 0.7937005259840998
+T_GH 2.6744574366554683e-30
+BB exponent ~ Mc^2/kT for 1kg 2.434010417032317e+69
+S_dS ~ pi c^2/(G hbar H^2)...  2.2331924001710845e+122
+TCC T<= 1997.2772796637832 Gyr
+
+>>> [PLOT] python3 verification/plot_ligo_o3b_bounds.py
+VERIFIED: Generated /Users/xiaoyi/.gemini/antigravity/brain/d553fb60-9542-468d-973e-dcb55bb2c56d/scratch/vmad-research-work/assets/ligo_o3b_vmad_bounds.png (271016 bytes)

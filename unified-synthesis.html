@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unified Synthesis (Route A, 21 Nov 2026) | Xiaoyi Li · VMAD</title>
+  <meta name="description" content="Route A foundational physics edition of the VMAD 21 Nov 2026 Unified Arbitration: A1-A6 axioms, rigidity no-go walls, shape-stiff scale-soft bifurcation, morphology phase diagram, and dual-channel anomalous decoherence." />
+  <style>
+:root {
+  --ink: #1e293b;
+  --muted: #475569;
+  --line: #dbe3ec;
+  --accent: #1d4e78;
+  --accent-soft: #eef4fa;
+  --warn-bg: #fff7ed;
+  --warn-border: #ea580c;
+  --ok-bg: #ecfdf5;
+  --ok-ink: #065f46;
+  --soft: #f8fafc;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font: 15.5px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+.top {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.identity {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-left: auto;
+  font-size: 13px;
+}
+.topnav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.topnav a:hover, .topnav a.active { color: var(--accent); font-weight: 600; }
+.languages {
+  display: flex;
+  gap: 6px;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+.languages button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--muted);
+  padding: 2px 6px;
+}
+.languages button[aria-pressed="true"] {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+}
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+h1 {
+  font-size: 30px;
+  line-height: 1.28;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+  color: #0f172a;
+}
+h2 {
+  font-size: 21px;
+  line-height: 1.35;
+  margin: 34px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  color: #0f172a;
+}
+h3 {
+  font-size: 16.5px;
+  line-height: 1.45;
+  margin: 22px 0 8px;
+  color: #0f172a;
+}
+p { margin: 0 0 14px; }
+ul, ol { margin: 8px 0 16px; padding-left: 22px; }
+li { margin-bottom: 8px; }
+.meta-line {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.question-box {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 18px 22px;
+  margin: 20px 0 26px;
+  border-radius: 0 6px 6px 0;
+}
+.question-box p:last-child { margin-bottom: 0; }
+.callout {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 18px 0;
+  font-size: 14.5px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 18px 0 24px;
+}
+.card {
+  border: 1px solid var(--line);
+  background: var(--soft);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+.card h3 { margin-top: 0; font-size: 15.5px; }
+.card p:last-child { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin: 16px 0 22px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  background: var(--soft);
+  font-weight: 600;
+  color: #0f172a;
+}
+.badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.b-ok { background: #dcfce7; color: #166534; }
+.b-no { background: #fee2e2; color: #991b1b; }
+.b-open { background: #fef3c7; color: #92400e; }
+.b-info { background: #e0f2fe; color: #075985; }
+figure {
+  margin: 22px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  line-height: 1.55;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+pre {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+footer {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+html[data-language="en"] [data-lang="zh"] { display: none !important; }
+html[data-language="zh"] [data-lang="en"] { display: none !important; }
+@media print {
+  .top, .languages, .no-print { display: none !important; }
+  body { font-size: 9.8pt; line-height: 1.46; color: #000; }
+  .wrap { max-width: 100%; padding: 0; }
+  h1 { font-size: 16.5pt; margin-bottom: 6pt; }
+  h2 { font-size: 12.2pt; margin: 13pt 0 7pt; page-break-after: avoid; }
+  p { margin-bottom: 8pt; }
+  li { margin-bottom: 4pt; }
+  table { font-size: 8.8pt; line-height: 1.4; }
+  th, td { padding: 5pt 6pt; }
+  figure { margin: 10pt 0; padding: 8pt; }
+  figure img { max-height: 235pt; width: auto; margin: 0 auto; }
+  footer { padding: 8pt 0 0; font-size: 8.5pt; }
+  .card, .question-box, figure, tr { page-break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="identity" href="index.html">Xiaoyi Li · VMAD</a><nav class="topnav"><a href="index.html"><span data-lang="en">Overview</span><span data-lang="zh">总览</span></a><a href="research-statement.html"><span data-lang="en">Research Statement</span><span data-lang="zh">研究说明</span></a><a href="unified-synthesis.html" class="active"><span data-lang="en">Unified Synthesis</span><span data-lang="zh">统合定本</span></a><a href="bibliography.html"><span data-lang="en">Physics Bibliography</span><span data-lang="zh">物理文献目录</span></a><a href="VMAD_Research_Statement_2026-11-26.pdf">PDF ↗</a><a href="https://github.com/xyl369/vmad-research" target="_blank" rel="noopener">GitHub ↗</a><a href="https://orcid.org/0009-0000-0482-2376" target="_blank" rel="noopener">ORCID ↗</a></nav><div class="languages"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></header>
+<main class="wrap">
+
+<p class="eyebrow" data-lang="en">Route A Foundational Physics Edition · Aligned to 21 Nov 2026 Arbitration</p>
+<p class="eyebrow" data-lang="zh">路线 A 基础物理纯净版 · 对齐 2026-11-21 整体理论统合定本</p>
+
+<h1 data-lang="en">VMAD Unified Theoretical Arbitration (21 November 2026)</h1>
+<h1 data-lang="zh">VMAD 整体理论统合仲裁定本（2026-11-21 · 公开物理版）</h1>
+
+<div class="callout">
+  <p data-lang="en"><strong>Epistemic Discipline:</strong> Every proposition below carries an explicit tag—<span class="badge b-ok">THEOREM</span> (derived from established GR, operator-algebra, continuum-mechanics, or thermodynamics results and verified by code), <span class="badge b-open">HYPOTHESIS / OPEN</span> (requiring stated assumptions or unresolved microscopic derivations), or <span class="badge b-no">EXCLUDED</span> (quantitatively ruled out by VMAD's own axioms and/or experiments). Conditional downstream engineering/scenario exercises from local notebooks are intentionally separated from this foundational physics dossier.</p>
+  <p data-lang="zh"><strong>认识论分级纪律：</strong>全文所有命题严格标注 <span class="badge b-ok">定理</span>（已由既有数学物理定理导出并经代码核验）、<span class="badge b-open">推演/开放</span>（显式标明前提与待攻克缺口）或 <span class="badge b-no">排除</span>（已被自身公设或实测证伪）。条件性下游工程/场景推演与本基础物理公开定本保持严格隔离。</p>
+</div>
+
+<h2 data-lang="en">1. Unified Axiom Set (<code>A1–A6</code>)</h2>
+<h2 data-lang="zh">一、统合版六大公设（<code>A1–A6</code>）</h2>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th data-lang="en">Core Physical Formulation</th>
+      <th data-lang="zh">核心物理表述</th>
+      <th data-lang="en">Status</th>
+      <th data-lang="zh">状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A1</strong></td>
+      <td data-lang="en"><strong>Pre-Geometric Algebraic Substrate:</strong> Local von Neumann algebras over a causal poset; closed-universe WDW constraint H<sub>total</sub>|&Psi;<sub>U</sub>&rang; = 0; gravitating observer Type II<sub>1</sub> crossed product with Araki relative entropy fixes lifetime extractable work W<sub>max</sub> = M<sub>obs</sub>c<sup>2</sup>.</td>
+      <td data-lang="zh"><strong>前几何代数底板：</strong>因果偏序集上的局域冯·诺依曼算子代数网；闭合宇宙 WDW 零能约束；观察者 Type II<sub>1</sub> 交叉积与荒木相对熵锁定一生最大可提取功 W<sub>max</sub> = M<sub>obs</sub>c<sup>2</sup>。</td>
+      <td><span class="badge b-ok">THEOREM</span></td>
+    </tr>
+    <tr>
+      <td><strong>A2</strong></td>
+      <td data-lang="en"><strong>Relational Time &amp; Complexity Branching:</strong> Page–Wootters conditional clock + Type III<sub>1</sub> &rtimes; &Ropf; &rarr; Type II modular flow; sub-exponential non-isometric codes stay linear to O(e<sup>&minus;S<sub>BH</sub>/2</sup>) (no Gisin–Polchinski signaling); Everett branching occurs when recovery complexity exceeds observer capacity C<sub>rec</sub>(T) &gt; C<sub>O</sub>.</td>
+      <td data-lang="zh"><strong>关系时间与复杂度分支：</strong>Page–Wootters 条件时钟与交叉积模流同构；亚指数非等距编码保持线性杜绝超光速；不可逆分支判据 C<sub>rec</sub>(T) &gt; C<sub>O</sub>。</td>
+      <td><span class="badge b-ok">THEOREM</span> + <span class="badge b-open">CONJ.</span></td>
+    </tr>
+    <tr>
+      <td><strong>A3</strong></td>
+      <td data-lang="en"><strong>Emergent Geometry &amp; UV Tensor Rigidity:</strong> Sakharov induced gravity locks macro tensor stiffness K<sub>0</sub> = c<sup>4</sup>/(8&pi;G<sub>0</sub>) &approx; 4.82&times;10<sup>42</sup> N via UV entanglement density &eta;<sub>0</sub> = 1/(4&ell;<sub>P</sub><sup>2</sup>); scale-invariant renormalization protects WEP and zero &alpha;<sub>EM</sub> drift.</td>
+      <td data-lang="zh"><strong>涌现几何与紫外张量刚度：</strong>Sakharov 诱导引力由紫外纠缠密度 &eta;<sub>0</sub> 锁死宏观刚度 K<sub>0</sub> &approx; 4.82&times;10<sup>42</sup> N；标度不变重整化保护弱等效原理与 &alpha;<sub>EM</sub> 零漂移。</td>
+      <td><span class="badge b-ok">THEOREM</span></td>
+    </tr>
+    <tr>
+      <td><strong>A4</strong></td>
+      <td data-lang="en"><strong>Scale-Soft Corner (Main Branch, &omega; &rarr; &minus;3/2):</strong> Jacobson entanglement equilibrium fixes traceless Einstein equations. At 2&omega;+3 &rarr; 0, &delta; &equiv; &minus;(1/2)ln(&eta;/&eta;<sub>0</sub>) becomes a non-propagating algebraic scale field (g<sup>matter</sup><sub>&mu;&nu;</sub> = e<sup>2&delta;</sup>g&#771;<sub>&mu;&nu;</sub>, &part;U<sub>E</sub>/&part;&delta; = e<sup>4&delta;</sup>T) with zero 5th-force tail; requires &chi;<sub>m</sub> &approx; 0 decoupling from ordinary matter and a gapped hidden-sector source &delta; = &chi;<sub>t</sub>n<sub>topo</sub> (<code>G01/G03</code>). Canonical 2&omega;+3 &gt; 0 dual-field propagation is retained as <strong>Branch B&prime;</strong>.</td>
+      <td data-lang="zh"><strong>标度软方向（主线，&omega; &rarr; &minus;3/2）：</strong>Jacobson 纠缠平衡仅锁定无迹部分，在 Palatini 角落 &delta; 退化为无长程尾代数标度场，避开梯度墙，要求 &chi;<sub>m</sub>&approx;0 脱耦与有能隙隐扇区激发（核心待解 <code>G01/G03</code>）。正则双场并入<strong>支线 B&prime;</strong>。</td>
+      <td><span class="badge b-open">OPEN BRIDGE</span></td>
+    </tr>
+    <tr>
+      <td><strong>A5</strong></td>
+      <td data-lang="en"><strong>Metastable Endothermic Cavities &amp; Dark Charge:</strong> Firewall wall restricts local transitions to near-degenerate rearrangements (&Delta;&rho;<sub>V</sub> &gt; 0). Stabilizing cavities via a Stueckelberg massive dark Abelian charge U(1)<sub>D</sub> avoids ordinary-EM Schwinger breakdown and &Delta;N<sub>eff</sub> tension (<code>G08/G23</code>).</td>
+      <td data-lang="zh"><strong>吸能亚稳相腔与暗规范荷：</strong>火墙界迫使局域相变为近简并重排；引入微质量暗阿贝尔荷 U(1)<sub>D</sub> 消除普通电磁施温格击穿与暗辐射超标（<code>G08/G23</code>）。</td>
+      <td><span class="badge b-open">HYPOTHESIS</span></td>
+    </tr>
+    <tr>
+      <td><strong>A6</strong></td>
+      <td data-lang="en"><strong>Thermodynamic &amp; Causal Iron Cage:</strong> Covariant conservation &nabla;<sub>&mu;</sub>T<sup>&mu;&nu;</sup><sub>total</sub> = 0, exact dual-null-cone coincidence c<sub>T</sub> &equiv; c<sub>EM</sub> &equiv; c, QNEC, Python's Lunch exponential barrier exp(&Delta;A/8&ell;<sub>P</sub><sup>2</sup>), Landauer bound P<sub>diss</sub> &ge; k<sub>B</sub>T S&#775;, metric redshift-acceleration interlock a<sub>i</sub> = &minus;c<sup>2</sup>&part;<sub>i</sub>z, and Bekenstein self-reference bound.</td>
+      <td data-lang="zh"><strong>热力学与因果铁笼：</strong>广义比安基守恒、双零光锥重合、QNEC、Python's Lunch 指数壁垒、Landauer 耗散下限、红移–加速度互锁律与贝肯斯坦自指不可完备性。</td>
+      <td><span class="badge b-ok">THEOREM</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">2. Three-Channel Microscopic Division (Circumventing Field-Theory No-Go Theorems)</h2>
+<h2 data-lang="zh">二、三路同源分工（规避场论禁戒定理）</h2>
+<ul>
+  <li data-lang="en"><strong>Bulk Spin-2 Graviton:</strong> Finite-cutoff holography (T T&#772; deformation) &amp; holographic QEC/MERA evade the flat-space Weinberg–Witten theorem.</li>
+  <li data-lang="zh"><strong>体引力子：</strong>有限截断全息（T T&#772; 形变）与全息量子纠错码突破同维平直前提，绕开 Weinberg–Witten 禁阻定理。</li>
+  <li data-lang="en"><strong>Chiral Matter &amp; Gauge Fields:</strong> String-net condensation + non-perturbative 4D Symmetric Mass Generation (SMG) cancelling the &Zopf;<sub>16</sub> Dai–Freed anomaly evade Nielsen–Ninomiya fermion doubling.</li>
+  <li data-lang="zh"><strong>规范场与手征费米子：</strong>弦网凝聚 + 四维非微扰对称质量生成（SMG）抵消 &Zopf;<sub>16</sub> 混合反常，绕开 Nielsen–Ninomiya 倍增定理。</li>
+  <li data-lang="en"><strong>2D Shell Defect Dictionary:</strong> Fracton–elasticity–curvature duality is strictly restricted to the 2D closed crystal shell &part;&Omega; &simeq; S<sup>2</sup> (never conflated with 4D bulk gravitons).</li>
+  <li data-lang="zh"><strong>二维外壳缺陷字典：</strong>分形子–弹性–曲率对偶严格限定在二维闭合晶壳表面，绝不充当四维体引力子。</li>
+</ul>
+
+<h2 data-lang="en">3. Morphology Phase Diagram &amp; Dual-Channel Anomalous Decoherence</h2>
+<h2 data-lang="zh">三、相腔形态相图与异常退相干双通道判决</h2>
+
+<p data-lang="en"><strong>Morphology Phase Diagram (replacing earlier icosahedral inevitability):</strong> Pure gauge-charged endothermic fluid cavities suffer Rayleigh l=2 quadrupole fission (&Lambda;<sub>l=2</sub> = &minus;2&Delta;&rho;<sub>V</sub>R<sub>*</sub><sup>3</sup> &lt; 0). However, mixed radial support permits spherical (liquid, zero multipoles) or toroidal (zero Euler disclinations) equilibria; I<sub>h</sub> icosahedral buckling (12 Euler disclinations, &gamma;<sub>FvK</sub> &gt; 154.8, exact vanishing of l=1..5 harmonics with S<sub>6</sub> &approx; 8.09607 creating a quadrupole-free gravitational DFS) is the optimal branch specifically for long-lived crystalline shells—subject to open curved-GR shell stability bounds (<code>R6</code>).</p>
+<p data-lang="zh"><strong>形态相图（取代早期二十面体必然论）：</strong>纯规范荷吸能流体球腔必发 Rayleigh l=2 四极裂变；但混合径向支撑允许球形或环面（零向错）平衡构型。正二十面体（12 向错、&gamma;<sub>FvK</sub> &gt; 154.8、l=1..5 球谐严格归零并构成引力四极 DFS）仅是长寿晶态外壳的最优分支，且受广义相对论弯曲弹性壳稳定性检验（<code>R6</code>）约束。</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th data-lang="en">Model / Regime</th>
+      <th data-lang="zh">模型与区间</th>
+      <th>Earth Surface</th>
+      <th>Lunar Surface</th>
+      <th>Orbital Free-Fall</th>
+      <th data-lang="en">Primary Discriminant</th>
+      <th data-lang="zh">核心判别特征</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Branch B&prime; · g<sup>2</sup> regime (&xi; &gt; 1.141 AU)</strong></td>
+      <td><code>1</code></td>
+      <td><code>0.0275</code></td>
+      <td><code>~10<sup>&minus;22</sup></code></td>
+      <td data-lang="en">60–120&times; spin echo; requires &tau;<sub>c</sub> &ge; 570 s (mHz band)</td>
+      <td data-lang="zh">60–120&times; 自旋回波压低；对应毫赫兹慢模窗口</td>
+    </tr>
+    <tr>
+      <td><strong>Branch B&prime; · R<sup>2</sup> tidal regime (&xi; &lt; 1.141 AU)</strong></td>
+      <td><code>1</code></td>
+      <td><code>0.0744</code></td>
+      <td><code>~10<sup>&minus;14</sup></code></td>
+      <td data-lang="en">LIGO O3b tightens smooth Gaussian UV cutoff to <strong>f<sub>UV</sub> &le; 1.5 Hz</strong></td>
+      <td data-lang="zh">全频段 LIGO O3b 锁定光滑截断 <strong>f<sub>UV</sub> &le; 1.5 Hz</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Main Branch (&omega; &rarr; &minus;3/2)</strong></td>
+      <td><code>0</code></td>
+      <td><code>0</code></td>
+      <td><code>0</code></td>
+      <td data-lang="en">Zero ambient AD; probed by optical clocks (&Delta;&delta;~3&times;10<sup>&minus;16</sup> &rarr; 1 rad/s)</td>
+      <td data-lang="zh">环境 AD 归零；由光钟网络近场频移判决</td>
+    </tr>
+    <tr>
+      <td><strong>Objective Collapse (CSL / Di&oacute;si–Penrose)</strong></td>
+      <td><code>1</code></td>
+      <td><code>1</code></td>
+      <td><code>1</code></td>
+      <td data-lang="en">No free-fall suppression; spin-echo ratio &equiv; 1; spontaneous heating</td>
+      <td data-lang="zh">无自由落体压低；自旋回波比恒为 1；伴自发加热</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">4. Next Minimal Physics Targets (Stopping Horizontal Expansion)</h2>
+<h2 data-lang="zh">四、下一步唯一核心攻坚（停止横向堆砌）</h2>
+<p data-lang="en">No further narrative monographs will be added until three hard calculations are completed: (1) <strong>1-loop EFT survival of &omega; = &minus;3/2 (&chi;<sub>m</sub> = 0)</strong>; (2) <strong>N &le; 20 qubit code-switching numerical test</strong>; and (3) <strong>joint LIGO O3b / optical-clock / BMV-MAQRO exclusion suite</strong>. See <a href="research-statement.html">Research Statement</a> and <a href="verification/verification_output_2026-11-26.txt">Verification Log</a>.</p>
+<p data-lang="zh">在完成三项硬核计算之前，不再扩写新总册：(1) <strong>&omega; = &minus;3/2 单圈有效场论生存检验</strong>；(2) <strong>N &le; 20 量子比特改码数值实算</strong>；(3) <strong>LIGO O3b / 光钟 / BMV-MAQRO 联合排除管线</strong>。详见 <a href="research-statement.html">研究说明</a> 与 <a href="verification/verification_output_2026-11-26.txt">实机复算日志</a>。</p>
+
+</main>
+<footer>
+  <p data-lang="en">Xiaoyi Li · Independent Theoretical Physics Research (Unaffiliated, Non-Commercial) · ORCID: <a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · Last aligned: 26 November 2026 (Unified Arbitration Baseline: 21 November 2026).</p>
+  <p data-lang="zh">李小毅 · 无机构独立基础物理研究（非商业）· ORCID：<a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · 最新对齐：2026年11月26日（现行统合基线：2026年11月21日）。</p>
+</footer>
+
+<script>
+(function(){
+  const root = document.documentElement;
+  const btns = document.querySelectorAll('.languages button[data-language]');
+  function setLang(lang) {
+    root.setAttribute('data-language', lang);
+    root.setAttribute('lang', lang);
+    btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.language === lang ? 'true' : 'false'));
+    try { localStorage.setItem('vmad_lang', lang); } catch(e) {}
+  }
+  const params = new URLSearchParams(window.location.search);
+  const qLang = params.get('lang');
+  let init = qLang === 'zh' || qLang === 'en' ? qLang : 'en';
+  if (!qLang) {
+    try {
+      const saved = localStorage.getItem('vmad_lang');
+      if (saved === 'zh' || saved === 'en') init = saved;
+    } catch(e) {}
+  }
+  setLang(init);
+  btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.language)));
+})();
+</script>
+
+
+</body>
+</html>

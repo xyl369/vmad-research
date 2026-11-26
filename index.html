@@ -1,50 +1,461 @@
 <!DOCTYPE html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VMAD | Emergent Spacetime No-Go Bounds &amp; Reproducible Verification — Xiaoyi Li</title>
+  <meta name="description" content="Independent theoretical physics research by Xiaoyi Li: emergent spacetime rigidity no-go bounds, Palatini omega=-3/2 scale-soft bifurcation, 1.141 AU anomalous decoherence crossover, and reproducible SymPy/SciPy verification." />
+  <style>
+:root {
+  --ink: #1e293b;
+  --muted: #475569;
+  --line: #dbe3ec;
+  --accent: #1d4e78;
+  --accent-soft: #eef4fa;
+  --warn-bg: #fff7ed;
+  --warn-border: #ea580c;
+  --ok-bg: #ecfdf5;
+  --ok-ink: #065f46;
+  --soft: #f8fafc;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font: 15.5px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+.top {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.identity {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-left: auto;
+  font-size: 13px;
+}
+.topnav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.topnav a:hover, .topnav a.active { color: var(--accent); font-weight: 600; }
+.languages {
+  display: flex;
+  gap: 6px;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+.languages button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--muted);
+  padding: 2px 6px;
+}
+.languages button[aria-pressed="true"] {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+}
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+h1 {
+  font-size: 30px;
+  line-height: 1.28;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+  color: #0f172a;
+}
+h2 {
+  font-size: 21px;
+  line-height: 1.35;
+  margin: 34px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  color: #0f172a;
+}
+h3 {
+  font-size: 16.5px;
+  line-height: 1.45;
+  margin: 22px 0 8px;
+  color: #0f172a;
+}
+p { margin: 0 0 14px; }
+ul, ol { margin: 8px 0 16px; padding-left: 22px; }
+li { margin-bottom: 8px; }
+.meta-line {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.question-box {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 18px 22px;
+  margin: 20px 0 26px;
+  border-radius: 0 6px 6px 0;
+}
+.question-box p:last-child { margin-bottom: 0; }
+.callout {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 18px 0;
+  font-size: 14.5px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 18px 0 24px;
+}
+.card {
+  border: 1px solid var(--line);
+  background: var(--soft);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+.card h3 { margin-top: 0; font-size: 15.5px; }
+.card p:last-child { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin: 16px 0 22px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  background: var(--soft);
+  font-weight: 600;
+  color: #0f172a;
+}
+.badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.b-ok { background: #dcfce7; color: #166534; }
+.b-no { background: #fee2e2; color: #991b1b; }
+.b-open { background: #fef3c7; color: #92400e; }
+.b-info { background: #e0f2fe; color: #075985; }
+figure {
+  margin: 22px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+  line-height: 1.55;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+pre {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+footer {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+html[data-language="en"] [data-lang="zh"] { display: none !important; }
+html[data-language="zh"] [data-lang="en"] { display: none !important; }
+@media print {
+  .top, .languages, .no-print { display: none !important; }
+  body { font-size: 9.8pt; line-height: 1.46; color: #000; }
+  .wrap { max-width: 100%; padding: 0; }
+  h1 { font-size: 16.5pt; margin-bottom: 6pt; }
+  h2 { font-size: 12.2pt; margin: 13pt 0 7pt; page-break-after: avoid; }
+  p { margin-bottom: 8pt; }
+  li { margin-bottom: 4pt; }
+  table { font-size: 8.8pt; line-height: 1.4; }
+  th, td { padding: 5pt 6pt; }
+  figure { margin: 10pt 0; padding: 8pt; }
+  figure img { max-height: 235pt; width: auto; margin: 0 auto; }
+  footer { padding: 8pt 0 0; font-size: 8.5pt; }
+  .card, .question-box, figure, tr { page-break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<header class="top"><a class="identity" href="index.html">Xiaoyi Li · VMAD</a><nav class="topnav"><a href="index.html" class="active"><span data-lang="en">Overview</span><span data-lang="zh">总览</span></a><a href="research-statement.html"><span data-lang="en">Research Statement</span><span data-lang="zh">研究说明</span></a><a href="unified-synthesis.html"><span data-lang="en">Unified Synthesis</span><span data-lang="zh">统合定本</span></a><a href="bibliography.html"><span data-lang="en">Physics Bibliography</span><span data-lang="zh">物理文献目录</span></a><a href="VMAD_Research_Statement_2026-11-26.pdf">PDF ↗</a><a href="https://github.com/xyl369/vmad-research" target="_blank" rel="noopener">GitHub ↗</a><a href="https://orcid.org/0009-0000-0482-2376" target="_blank" rel="noopener">ORCID ↗</a></nav><div class="languages"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></header>
+<main class="wrap">
 
-<html data-language="en" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Quantum Spacetime Emergence and Control | Xiaoyi Li · VMAD</title><meta content="VMAD: quantum spacetime emergence and control. Dated theoretical research framework, current progress, supporting checks and source catalogue by independent researcher Xiaoyi Li." name="description"/><link href="data:," rel="icon"/><style>
-:root{--ink:#202b36;--muted:#566574;--line:#dbe1e6;--accent:#255477;--soft:#f5f7f9}*{box-sizing:border-box}html{scroll-padding-top:25px}body{margin:0;background:#fff;color:var(--ink);font:16px/1.78 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif}a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.skip{position:absolute;top:-60px;left:20px;background:white;padding:8px}.skip:focus{top:8px}.top,.wrap,footer{max-width:1190px;margin:auto;padding-left:28px;padding-right:28px}.top{display:flex;align-items:center;gap:20px;padding-top:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}.identity{font-size:13px;font-weight:600;color:var(--ink);text-decoration:none}.topnav{display:flex;gap:18px;margin-left:auto;font-size:12px}.languages{display:flex;gap:7px;border-left:1px solid var(--line);padding-left:12px}button{font:inherit;cursor:pointer;color:var(--accent);background:none;border:0;padding:3px 6px}.languages button{font-size:12px;color:var(--muted)}button[aria-pressed="true"]{font-weight:700;text-decoration:underline;text-underline-offset:4px}.hero{max-width:970px;padding:35px 0 25px}.eyebrow{font-size:11px;letter-spacing:.5px;color:var(--muted);margin:0 0 8px}h1{font-size:34px;line-height:1.3;font-weight:600;letter-spacing:-.5px;margin:0 0 15px}h2{font-size:23px;line-height:1.4;margin:0 0 18px;font-weight:600}h3{font-size:18px;line-height:1.5;margin:25px 0 12px;font-weight:600}p{margin:0 0 16px}.author,.date,.small{font-size:13px;line-height:1.7;color:var(--muted)}.author{margin-bottom:6px}.date{margin-bottom:19px}.lead{font-size:18px;max-width:900px}.reader-guide{padding:18px 22px;background:var(--soft);border-left:2px solid var(--accent);font-size:14px;margin-top:20px}.reader-guide p:last-child{margin:0}.layout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:38px;border-top:1px solid var(--line)}aside{padding-top:26px}aside nav{position:sticky;top:20px;font-size:12px;line-height:1.6}aside a{display:block;color:var(--muted);text-decoration:none;margin:0 0 12px}article{max-width:850px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px}section section{border-bottom:0;padding:0}section .module{padding:0 0 5px}ul,ol{padding-left:24px;margin:12px 0 18px}li{margin:0 0 10px}.table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;min-width:600px;border-collapse:collapse;font-size:13px;line-height:1.65}td,th{vertical-align:top;text-align:left;border-bottom:1px solid var(--line);padding:10px 12px}th{font-weight:600;background:var(--soft)}td:first-child,th:first-child{padding-left:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:17px;background:var(--soft);border:1px solid var(--line);font:13px/1.65 ui-monospace,monospace}code{font-size:.9em}figure{margin:24px 0}figure img{display:block;width:100%;height:auto}figcaption{font-size:12px;line-height:1.6;color:var(--muted);margin-top:8px}.status-list{list-style:none;padding:0}.status-list li{padding:11px 0;border-bottom:1px solid var(--line)}.status-list strong{display:block;margin-bottom:3px}.downloads{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;margin:18px 0}footer{padding-top:22px;padding-bottom:30px;display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}.filters{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.filters input,.filters select{font:inherit;font-size:14px;border:1px solid var(--line);padding:9px 11px;background:#fff;color:var(--ink)}.filters input{flex:1;min-width:220px;max-width:100%}.filters select{max-width:100%;min-width:0}.record h3{overflow-wrap:anywhere}.record{padding:18px 0;border-bottom:1px solid var(--line)}.record h3{margin:0 0 6px;font-size:16px}.record p{margin:0 0 7px}.record .metadata{font-size:13px;color:var(--muted)}.record-links{font-size:13px;display:flex;gap:14px;flex-wrap:wrap}[hidden]{display:none!important}html[data-language=en] [data-lang=zh],html[data-language=zh] [data-lang=en]{display:none!important}@media(max-width:800px){.top,.wrap,footer{padding-left:21px;padding-right:21px}.top{flex-wrap:wrap;gap:12px}.topnav{order:3;width:100%;margin-left:0}.languages{margin-left:auto}.hero{padding-top:26px}h1{font-size:28px}h2{font-size:21px}.layout{display:block}aside{padding:18px 0 8px;border-bottom:1px solid var(--line)}aside nav{position:static;display:flex;flex-wrap:wrap;gap:5px 18px}aside a{margin-bottom:7px}.lead{font-size:17px}section{padding:24px 0}footer{display:block}footer>div+div{margin-top:10px}}@media print{body{font-size:10px;line-height:1.6}.top,aside,.filters{display:none}.layout{display:block;border:0}article{max-width:none}h1{font-size:25px}h2{font-size:17px}h3{font-size:13px}.hero,section{padding:15px 0}.table-wrap{overflow:visible}table{min-width:0;font-size:9px}pre{font-size:9px}figure{break-inside:avoid}.lead{font-size:12px}.reader-guide,.small,.author,.date,figcaption{font-size:10px}.record h3{font-size:12px}a{color:inherit}}
+<p class="eyebrow" data-lang="en">Independent Foundational Physics Programme · Updated 26 November 2026</p>
+<p class="eyebrow" data-lang="zh">独立基础物理研究计划 · 2026年11月26日全量对齐</p>
 
-.update-tag{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
-.chain{font-size:17px;line-height:1.9;padding:18px 20px;background:var(--soft);border:1px solid var(--line)}
-.review-list{padding-left:22px}.review-list li{margin:0 0 12px}.historical{border-left:2px solid var(--line);padding-left:18px}
-.book-guide{max-width:860px}.book-guide section{padding:23px 0}.book-guide h2{font-size:20px}
-.public-note{font-size:14px;line-height:1.8;background:var(--soft);padding:17px 20px;margin:20px 0}
-.book-language-nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-</style></head><body><a class="skip" href="#main">Skip to content</a><header class="top"><a class="identity" data-language-link="" href="index.html">Xiaoyi Li · VMAD Research</a><nav class="topnav"><a href="#programme"><span class="" data-lang="en">Research update</span><span class="" data-lang="zh">研究更新</span></a><a data-language-link="" href="theory-framework.html"><span class="" data-lang="en">Full theory · EN</span><span class="" data-lang="zh">完整理论册</span></a><a href="closure-theorems.html"><span data-lang="en">7 Theorems</span><span data-lang="zh">七大定理</span></a><a href="frontier-audit.html"><span data-lang="en">13-Point Audit</span><span data-lang="zh">十三项勘误</span></a><a href="ontology.html"><span data-lang="en">Ontology</span><span data-lang="zh">本体论总册</span></a><a href="panorama-overview.html"><span data-lang="en">Panorama</span><span data-lang="zh">全景总览</span></a><a data-language-link="" href="bibliography.html"><span class="" data-lang="en">Bibliography</span><span class="" data-lang="zh">文献目录</span></a><a href="https://orcid.org/0009-0000-0482-2376">ORCID ↗</a></nav><div class="languages"><button aria-pressed="true" data-language="en" type="button">EN</button><button aria-pressed="false" data-language="zh" type="button">中文</button></div></header><main class="wrap" id="main"><div class="hero"><p class="eyebrow"><span class="" data-lang="en">Personal research profile</span><span class="" data-lang="zh">个人研究主页</span></p><h1 class="" data-lang="en">Xiaoyi Li · VMAD</h1><h1 class="" data-lang="zh">李小毅 · VMAD</h1><p class="author" data-lang="en">Independent researcher · No institutional affiliation</p><p class="author" data-lang="zh">独立研究者 · 无机构隶属</p><p><a href="https://orcid.org/0009-0000-0482-2376">ORCID 0009-0000-0482-2376</a></p><h2 class="" data-lang="en">Quantum Spacetime Emergence and Control</h2><h2 class="" data-lang="zh">量子时空涌现与控制</h2><p class="lead" data-lang="en">VMAD investigates how effective spacetime, closed scalar–tensor phase dynamics, icosahedral topological shells, and Equivalence-Principle unitary anomalous decoherence emerge from one closed-universe quantum-algebraic dynamics.</p><p class="lead" data-lang="zh">VMAD研究有效时空、闭合标量–张量相变动力学、正二十面体拓扑晶壳与等效原理型幺正异常退相干，如何从同一套闭合宇宙量子代数动力学中严格涌现与受控检验。</p><p class="chain" data-lang="en">One specified quantum dynamics → operational spacetime geometry → finite-energy localized states and functional stability → physically admissible control → jointly predicted probe responses.</p><p class="chain" data-lang="zh">同一套明确量子动力学 → 操作性时空几何 → 有限能量局域态与功能稳定 → 物理允许的控制 → 多种探针的共同预测。</p><p class="" data-lang="en">Current stage (17 Nov 2026 aligned): five core monographs, closed Jordan-frame variational action S_VMAD with upgraded Mad-Dog Everettianism &amp; Quantum Mereology (A1*–A6*, IF-01–IF-22), seven symbolically verified theorems, 13 audited errata corrections (E1–E13), 1,400 catalogued sources (419 full-text evidence audits), mainstream experimental/astrophysical benchmarks (LIGO O3b, Holometer, Google 70Q MIPT, IceCube NGC 1068, KM3NeT 220 PeV, NAWCAD null test), six passing SymPy/SciPy verification suites, and explicit falsification bounds (R1–R6).</p><p class="" data-lang="zh">当前阶段（2026年11月17日闭环对齐）：五部核心总册、经极端埃弗雷特主义升级与闭合的 Jordan 作用量 S_VMAD（A1*–A6*，22组接口 IF-01–IF-22）、七大闭环定理、13项勘误（E1–E13）、1,400条文献记录（419篇核验档案）、真实物理实验/天体中微子基准（LIGO O3b、Holometer、Google 70Q MIPT、IceCube NGC 1068、KM3NeT 220 PeV、NAWCAD 零结果）、六套全项通过的 SymPy/SciPy 复算套件及六条证伪红线（R1–R6）。</p><div class="downloads"><a href="#closure-20261117"><span class="" data-lang="en">Latest closure update — 17 November 2026</span><span class="" data-lang="zh">最新闭环突破 — 2026年11月17日</span></a><a href="#programme"><span class="" data-lang="en">8 November update</span><span class="" data-lang="zh">11月8日进展</span></a><a data-language-link="" href="theory-framework.html"><span class="" data-lang="en">Complete theoretical framework</span><span class="" data-lang="zh">完整理论册</span></a><a data-language-link="" href="bibliography.html"><span class="" data-lang="en">Source catalogue</span><span class="" data-lang="zh">来源目录</span></a></div></div>
-<section id="closure-20261117">
-<span id="closure-20261113"></span>
-<p class="eyebrow" data-lang="en"><time datetime="2026-11-17">17 November 2026</time> &middot; Five-Monograph Variational Closure, Mad-Dog Everettian Upgrade &amp; Empirical Verification</p>
-<p class="eyebrow" data-lang="zh"><time datetime="2026-11-17">2026年11月17日</time> &middot; 五部核心总册闭环、极端埃弗雷特升级、1,400条文献与六套复算基准里程碑</p>
-<h2 data-lang="en">Closed Action S_VMAD, Seven Theorems (A1*–A6*), 22 Interfaces, Empirical Benchmarks &amp; 6 Verification Suites</h2>
-<h2 data-lang="zh">闭合作用量 S_VMAD、七大闭环定理（A1*–A6*）、22组接口、实测基准与六套 Python 复算套件</h2>
-<div class="downloads">
-<a href="research-statement.html#update-20261117"><span data-lang="en">Full 17 Nov Technical Dossier</span><span data-lang="zh">11月17日完整技术报告</span></a>
-<a href="theory-framework-zh.html"><span data-lang="en">Compendium (28 ch., P1–P5/Q1–Q6/G01–G24)</span><span data-lang="zh">完整理论册（28章 · 11-17同期对齐）</span></a>
-<a href="ontology.html"><span data-lang="en">Physical Ontology (9 parts, A1–A6 &amp; DOC-0948)</span><span data-lang="zh">自洽本体论总册（含极端埃弗雷特升级）</span></a>
-<a href="frontier-audit.html"><span data-lang="en">13-Point Audit (E1–E13, R1–R6)</span><span data-lang="zh">十三项勘误与独立研判</span></a>
-<a href="closure-theorems.html"><span data-lang="en">Variational Closure (S_VMAD &amp; Theorems 1–7)</span><span data-lang="zh">闭合作用量与七大定理</span></a>
+<h1 data-lang="en">VMAD: Emergent Spacetime No-Go Bounds, Scalar–Tensor Bifurcation &amp; Reproducible Symbolic Verification</h1>
+<h1 data-lang="zh">VMAD：涌现时空刚度铁笼、标量–张量前沿分叉与可复算符号验证</h1>
+
+<p class="meta-line" data-lang="en">Author: <strong>Xiaoyi Li</strong> (Unaffiliated Independent Researcher) · Scope: Non-commercial theoretical physics · <a href="VMAD_Research_Statement_2026-11-26.pdf">Download Research Statement (PDF)</a> · <a href="verification/verification_output_2026-11-26.txt">Live Verification Log (2026-11-26)</a></p>
+<p class="meta-line" data-lang="zh">作者：<strong>李小毅</strong>（无机构隶属独立研究者）· 性质：非商业基础理论物理 · <a href="VMAD_Research_Statement_2026-11-26.pdf">下载研究说明（PDF）</a> · <a href="verification/verification_output_2026-11-26.txt">最新实机复算日志（2026-11-26）</a></p>
+
+<div class="question-box">
+  <p data-lang="en"><strong>Single Core Research Question:</strong> In emergent-spacetime ("It from Qubit") frameworks where smooth geometry is an infrared entangled phase rather than a fundamental manifold, what are the exact physical <strong>no-go bounds</strong>—and the narrowest surviving theoretical escape hatches—governing whether a finite-energy local agent can perturb local gravitational stiffness or conformal scale without collapsing into a horizon or violating unitarity, causality, and precision astrophysical/laboratory constraints?</p>
+  <p data-lang="zh"><strong>唯一核心科学问题：</strong>在“平滑时空是底层量子纠缠红外涌现相（It from Qubit）”的前沿框架下，在严格服从正质量、相对论因果、全局幺正性与精密天体/实验室实测约束的前提下，一个有限能量的局域主体究竟存不存在合法的红外通道去局部改写时空张量刚度或共形标度？还是存在普适的局部不可控 No-Go 定理？</p>
 </div>
-<p data-lang="en"><strong>Variational, algebraic &amp; empirical closure.</strong> Unifying five baseline postulates (<code>P1–P5</code>), six closed axioms (<code>A1*–A6*</code>), six branching/Bell diagnostics (<code>Q1–Q6</code>), 24 proof obligations (<code>G01–G24</code>), and 22 theoretical interfaces (<code>IF-01–IF-22</code> across 1,400 catalogued sources and 419 verified evidence records), we resolved closed-universe zero-spectrum Wheeler–DeWitt and Stoica basis degeneracies in Mad-Dog Everettianism &amp; Quantum Mereology (<code>DOC-0948</code>, <code>DOC-1298</code>, <code>IF-21</code>) via causal poset von Neumann algebra nets and Type II<sub>1</sub>/II<sub>&infin;</sub> observer crossed products (<i>W</i><sub>max</sub> = <i>Mc</i><sup>2</sup>, <i>C</i><sub>rec</sub>(<i>T</i>) &gt; <i>C</i><sub>O</sub>). Under our screened Jordan-frame action <i>S</i><sub>VMAD</sub>, we verified: (2) 2&omega; + 3 &gt; 0 stability and intrinsic &eta; &rarr; 0<sup>+</sup> conformal barrier; (3) exact 4D Maxwell trace decoupling (corroborated by NAWCAD's $508k HEEMFG null result) and dual-null-cone locking (<i>c<sub>T</sub></i> &equiv; <i>c</i><sub>EM</sub> &equiv; <i>c</i>, constrained to &lt; 2.07&times;10<sup>&minus;37</sup> by KM3NeT 220 PeV); (4) Schwarzschild no-horizon bounds past the Sakharov 2.61&times;10<sup>&minus;50</sup> wall; (5) zero-parameter chain from <i>n</i> = 1 controllability to <i>I<sub>h</sub></i> buckling (&gamma; &gt; 154, <i>S</i><sub>6</sub> &approx; 8.09607, <i>F</i><sub>11</sub> = 89, <i>Q<sub>ij</sub></i> &equiv; 0 DFS); (6) Natário 5/7 shear scaling benchmarked against <code>WarpFactory</code> 3+1 ADM; and (7) Equivalence-Principle unitary anomalous decoherence matching IceCube NGC 1068 / KM3NeT free-fall neutrino coherence (&Gamma;<sub>AD</sub> &sim; 10<sup>&minus;83</sup>–10<sup>&minus;82</sup> vs excluded 10<sup>28</sup>–10<sup>37</sup> Planck foam), ground BMV (&sim; 0.716 at 1 s), and substrate (&delta;<i>z</i>)<sup>2</sup> scaling (10<sup>16</sup>&times; suppression on cold-welded East Antarctic cratons vs rift/abyssal regimes), bounded by LIGO O3b, Holometer CSD, Google 70Q MIPT (<i>p<sub>c</sub></i> &approx; 0.165), and <code>R1–R6</code>.</p>
-<p data-lang="zh"><strong>五部核心总册与跨尺度实测闭环。</strong> 统合 <code>P1–P5</code>、<code>A1*–A6*</code>、<code>Q1–Q6</code>、<code>G01–G24</code> 及第 1–8 轮 <code>1,400</code> 条编目文献（<code>419</code> 篇核验档案、<code>IF-01–IF-22</code>）：（1）以因果偏序算符代数网、Zanardi 可观测分解与观察者 Type II 交叉积模流完成对极端埃弗雷特主义与量子分体论（<code>DOC-0948</code>、<code>IF-21</code>）的闭合升级，锁定 <i>W</i><sub>max</sub> = <i>Mc</i><sup>2</sup> 与复杂度分支判据；（2）无鬼场条件 2&omega; + 3 &gt; 0 与 &eta; &rarr; 0<sup>+</sup> 共形离心势垒防裸奇点；（3）4D 麦克斯韦迹归零脱耦（获海军 NAWCAD 50.8 万美元 HEEMFG 零结果印证）与双零光锥合一（获 KM3NeT 220 PeV 事件卡死至 &lt; 2.07&times;10<sup>&minus;37</sup>）；（4）无视界能标截断与 Sakharov 2.61&times;10<sup>&minus;50</sup> 壁垒；（5）<code>n=1</code> 可控荷 &rarr; Rayleigh 失稳 &rarr; 欧拉 12 向错 &rarr; 正二十面体（<i>S</i><sub>6</sub> &approx; 8.09607、<i>F</i><sub>11</sub> = 89、<i>Q<sub>ij</sub></i> &equiv; 0 DFS）；（6）Natário 5/7 剪切律对接 <code>WarpFactory</code> 3+1 ADM；（7）等效原理型异常退相干完美解释 IceCube NGC 1068 / KM3NeT 220 PeV 自由落体零退相干（<code>10<sup>-83</sup>–10<sup>-82</sup></code> 对比被证伪的 <code>10<sup>28</sup>–10<sup>37</sup></code> 普朗克泡沫），并给出地面 BMV 基准（<code>0.716</code>）与冷焊克拉通 <code>10<sup>16</sup></code> 倍抑震优势，受 LIGO O3b、Holometer、Google 70Q MIPT 与 <code>R1–R6</code> 刚性约束。</p>
-<p class="small"><strong>Symbolic, Astrophysical &amp; Geophysical Verification Suite (All 6 Suites Passed):</strong> <a href="verification/verify_closure_theorems.py"><code>verify_closure_theorems.py</code></a> &middot; <a href="verification/check_Ih_Y6.py"><code>check_Ih_Y6.py</code></a> &middot; <a href="verification/checks_constants_rates.py"><code>checks_constants_rates.py</code></a> &middot; <a href="verification/verify_antarctic_node_model.py"><code>verify_antarctic_node_model.py</code></a> &middot; <a href="verification/verify_deepsea_physics_alignment.py"><code>verify_deepsea_physics_alignment.py</code></a> &middot; <a href="verification/verify_transmedium_hydro_bounds.py"><code>verify_transmedium_hydro_bounds.py</code></a> (Route B conditional) &middot; <a href="verification/verification_output_2026-11-17.txt"><code>verification_output_2026-11-17.txt</code></a></p>
-</section>
-<section id="programme">
-<p class="eyebrow" data-lang="en"><time datetime="2026-11-08">8 November 2026</time> · Research update</p>
-<p class="eyebrow" data-lang="zh"><time datetime="2026-11-08">2026年11月8日</time> · 研究进展</p>
-<h2 data-lang="en">First test: an independent geometry readout</h2>
-<h2 data-lang="zh">首项检验：独立的几何读数</h2>
-<p data-lang="en"><strong>Established baselines.</strong> AI-assisted calculations checked quantum information diagnostics in finite Ising systems and conventional gravitational response in a separate Schrödinger–Poisson model. The link from microscopic dynamics to a controllable geometry remains open.</p>
-<p data-lang="zh"><strong>已有基准。</strong> AI 辅助计算分别核验了有限 Ising 系统中的量子信息诊断，以及独立的 Schrödinger–Poisson 模型中的常规引力响应。从微观动力学到可控几何的连接仍待建立。</p>
-<p data-lang="en"><strong>Next calculation.</strong> Select one published microscopic model and specify its state family, geometry map and a physically allowed drive. Predict the same independent probe readout, such as a propagation time, by two routes: directly from microscopic dynamics and through the effective dynamics of the reconstructed geometry.</p>
-<p data-lang="zh"><strong>下一项计算。</strong> 选定一个已发表的微观模型，明确态族、几何映射和物理允许的驱动。分别用微观动力学与重建几何的有效动力学，预测同一个独立探针读数，例如传播时间。</p>
-<p data-lang="en"><strong>Failure criterion.</strong> Fix the parameters before testing a state or drive condition held out from fitting. Account for ordinary effects of the drive and set the uncertainty in advance. A discrepancy beyond that bound rules out the tested map in that regime. A response too small to resolve is inconclusive. A claim of a phase transition requires a separate diagnostic.</p>
-<p data-lang="zh"><strong>失败判据。</strong> 固定参数后，用未参与拟合的态或驱动条件检验。计入驱动本身的常规物理效应，并预先设定误差范围。如果两路预测的差异超出该范围，就判定受检映射在这一条件下失效。若误差大到无法分辨响应，则暂不作判定。若主张发生相变，还需要独立的相变判据。</p>
-</section>
-<section id="progress"><h2 class="" data-lang="en">Research preparation and progress</h2><h2 class="" data-lang="zh">研究准备与进度</h2><p class="" data-lang="en">The 25 October synthesis has 27 chapters, 42 reference entries and 24 explicit gap tasks. It connects microscopic dynamics, geometry, localized states, protected information, control ports, source accounting and observations. Distributed nodes and ocean, Antarctic and Solar-System settings are retained as conditional downstream studies.</p><p class="" data-lang="zh">10月25日综合稿共27章、42项文献入口和24项缺口任务，把微观动力学、几何、局域态、信息保护、控制端口、源核算与观测相接；分布式节点、深海、南极及太阳系环境作为下游条件研究保留。</p><p class="" data-lang="en">Existing supporting checks cover nine eight-qubit Ising cases and 1,143 bipartitions, plus a separate conventional Schrödinger–Poisson state and static response. They are bounded known-model checks, not the missing microscopic-to-metric bridge. Personal reproduction and derivation review remain required.</p><p class="" data-lang="zh">已有辅助核验包括九组八量子位Ising、1,143个二分割，以及分开的常规Schrödinger–Poisson态和静态响应；它们属于已知模型限定检查，尚未补足微观至度规桥梁。本人复现与推导审阅仍需完成。</p>
-<p data-lang="en">The six-month deliverable is a model-specific condition, response bound, counterexample or obstruction, with documented assumptions, controls and reproducible checks.</p>
-<p data-lang="zh">六个月内计划交付一项限定模型的成立条件、响应界、反例或阻碍，记录假设、对照与可复现核验。</p>
-<p class="small"><a data-language-link="" href="research-statement.html#update-20261025"><span data-lang="en">Detailed research statement and numerical baselines</span><span data-lang="zh">详细研究说明与数值基准</span></a></p>
-<p class="" data-lang="en">Gemini 3.1 Pro supported the initial theoretical exploration. Advanced Antigravity access would support primary-source verification, derivation audits, competing-model comparisons and counterexample searches. Scientific conclusions remain subject to review.</p><p class="" data-lang="zh">最初理论探索使用Gemini 3.1 Pro。更高阶Antigravity访问将用于原始来源核查、推导审计、竞争模型比较和反例搜索；科学结论仍需审阅。</p></section>
-<section id="sources"><h2 class="" data-lang="en">Literature and provenance</h2><h2 class="" data-lang="zh">文献与来源</h2><p class="" data-lang="en"><strong>1,400 source records · 1,241 research-document records · 1,371 public records · 419 full-text evidence audits · 22 theoretical interfaces (IF-01–IF-22).</strong> The 17 November 2026 catalogue exposes 1,371 public records across 15 topical directions and excludes 29 internal-programme records, supported by 222 primary LaTeX source files and real empirical baselines (LIGO O3b, Holometer, Google 70Q MIPT, IceCube/KM3NeT, NAWCAD null result). These are collected sources and versions, not authored papers or a count of unique peer-reviewed works.</p><p class="" data-lang="zh"><strong>1,400条来源记录 · 1,241条研究文献 · 1,371条公开目录 · 419篇正文核验档案 · 22组理论接口（IF-01–IF-22）。</strong> 2026年11月17日目录公开展示15个主题方向的1,371条记录（排除29条内部纲领与草稿材料），并辅以222份一手LaTeX源码及LIGO O3b、Holometer、Google 70Q MIPT、IceCube/KM3NeT、NAWCAD 零结果等实测基准；它们是含版本与体裁的收集来源，并非本人发表论文数或独立同行评议作品数。</p><p><a data-language-link="" href="bibliography.html"><span class="" data-lang="en">Browse 1,371 public bibliography records</span><span class="" data-lang="zh">查阅1,371条公开书目</span></a> · <a data-language-link="" href="research-statement.html#abstract"><span class="" data-lang="en">Original submitted abstract — 15 October 2026</span><span class="" data-lang="zh">2026年10月15日原始提交摘要</span></a></p></section></main><footer><div>Xiaoyi Li · <span class="" data-lang="en">Independent researcher; no institutional affiliation.</span><span class="" data-lang="zh">无机构独立研究者。</span><br/><span class="" data-lang="en">Research update &amp; catalogue snapshot: 17 November 2026 (1,371 public / 1,400 total).</span><span class="" data-lang="zh">研究更新与书目快照：2026年11月17日（公开 1,371 / 总计 1,400）。</span></div><div><a data-language-link="" href="research-statement.html"><span class="" data-lang="en">Research statement</span><span class="" data-lang="zh">研究说明</span></a> · <a href="https://orcid.org/0009-0000-0482-2376">ORCID</a></div></footer><script>
-function setLanguage(language){if(language!=='en'&&language!=='zh')language='en';document.documentElement.dataset.language=language;document.documentElement.lang=language==='zh'?'zh-CN':'en';document.querySelectorAll('button[data-language]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.language===language)));document.querySelectorAll('a[data-language-link]').forEach(a=>{const u=new URL(a.href);u.searchParams.set('lang',language);a.href=u.href});}
-let initial=new URLSearchParams(window.location.search).get('lang')||'en';setLanguage(initial);document.querySelectorAll('button[data-language]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.language)));
-</script></body></html>
+
+<h2 data-lang="en">1. Three Core Pillars (Aligned to the 21 Nov 2026 Unified Arbitration)</h2>
+<h2 data-lang="zh">一、三根核心支柱（严格对齐 2026-11-21 统合仲裁定本）</h2>
+
+<div class="grid-3">
+  <div class="card">
+    <h3 data-lang="en">Pillar I · Three Rigidity No-Go Walls</h3>
+    <h3 data-lang="zh">支柱一 · 三道已证刚度铁笼</h3>
+    <p data-lang="en">UV entanglement density (&eta;<sub>0</sub> = 1/4&ell;<sub>P</sub><sup>2</sup>) locks tensor stiffness K<sub>0</sub> = c<sup>4</sup>/8&pi;G<sub>0</sub> &approx; 4.82&times;10<sup>42</sup> N. Three verified inequalities rule out brute-force local geometry modification: the <strong>Firewall Bound</strong> (~7.5&times;10<sup>80</sup> J per 100 m<sup>2</sup>), the Einstein-frame <strong>Dirichlet Gradient Wall</strong> (&delta;<sup>2</sup> &le; 2/(2&omega;+3)&middot;(r<sub>s</sub>/R)), and <strong>No-Horizon / Surface Weight Bounds</strong> (&Lambda;<sub>phase</sub> &le; 8.5 keV–0.43 MeV for non-collapsing supported cavities), alongside observer Type II<sub>1</sub> negentropy (W<sub>max</sub> = Mc<sup>2</sup>) and dual-null-cone locking (c<sub>T</sub> &equiv; c<sub>EM</sub> &equiv; c).</p>
+    <p data-lang="zh">紫外纠缠面密度（&eta;<sub>0</sub> = 1/4&ell;<sub>P</sub><sup>2</sup>）锁死了宏观张量刚度 K<sub>0</sub> &approx; 4.82&times;10<sup>42</sup> N。三道经代码核验的硬不等式直接算死蛮力改写时空：<strong>火墙界</strong>（百平米需 ~7.5&times;10<sup>80</sup> J）、Einstein 标架<strong>狄利克雷梯度界</strong>（&delta;<sup>2</sup> &le; 2/(2&omega;+3)&middot;(r<sub>s</sub>/R)）与<strong>无视界/表面重量界</strong>（&le; 8.5 keV–0.43 MeV），并受观察者 Type II<sub>1</sub> 静能负熵上限（W<sub>max</sub> = Mc<sup>2</sup>）与双零光锥重合（c<sub>T</sub> &equiv; c<sub>EM</sub> &equiv; c）刚性约束。</p>
+  </div>
+  <div class="card">
+    <h3 data-lang="en">Pillar II · The Surviving Frontier Bifurcation</h3>
+    <h3 data-lang="zh">支柱二 · 唯一残存的前沿物理分叉</h3>
+    <p data-lang="en">With tensor shape UV-locked, the problem collapses onto two mutually testable branches: <strong>(A) Main Branch ("Shape-Stiff, Scale-Soft", &omega; &rarr; &minus;3/2)</strong>: Jacobson entanglement equilibrium fixes traceless geometry, leaving conformal scale &delta;(x) algebraic (zero long-range 5th force, bypassing the gradient wall) — its survival hinges on a sharp open EFT question: does 1-loop Standard Model renormalization preserve &chi;<sub>m</sub> = 0? <strong>(B) Dual Branch B&prime; (2&omega;+3 &gt; 0)</strong>: propagating near-critical stiffness fluctuations yield an exact <strong>1.141 AU tidal-vs-gravity crossover</strong>, a 3-point Earth : Moon : Free-fall ratio (<code>1 : 0.0275 : 10<sup>&minus;22</sup></code> or <code>1 : 0.0744 : 10<sup>&minus;14</sup></code> vs <code>0:0:0</code> in Main Branch vs <code>1:1:1</code> in CSL/DP), 60–120&times; Hahn spin-echo suppression, and strict LIGO O3b cutoff <code>f<sub>UV</sub> &le; 1.5 Hz</code>.</p>
+    <p data-lang="zh">在形状刚度被死锁后，整座问题收敛为互斥可裁决的双分支：<strong>主线（形刚标软，&omega; &rarr; &minus;3/2）</strong>：Jacobson 纠缠平衡仅锁定无迹（形状）部分，&delta;(x) 退化为无长程尾巴的代数标度场，绕开梯度墙——生死完全取决于有效场论单圈下 &chi;<sub>m</sub> = 0 能否幸存；<strong>支线 B&prime;（正则传播，2&omega;+3 &gt; 0）</strong>：导出精确的 <strong>1.141 AU 潮汐交叉尺度</strong>、三点空间判决比（地:月:失重 = <code>1 : 0.0275 : 10<sup>&minus;22</sup></code> 或 <code>1 : 0.0744 : 10<sup>&minus;14</sup></code> 对比主线 <code>0:0:0</code> 与 CSL/DP <code>1:1:1</code>）、60–120 倍自旋回波压低及全频段 LIGO O3b 截断 <code>f<sub>UV</sub> &le; 1.5 Hz</code>。</p>
+  </div>
+  <div class="card">
+    <h3 data-lang="en">Pillar III · Adversarial Self-Falsification Workflow</h3>
+    <h3 data-lang="zh">支柱三 · 对抗红队自证伪科研工作流</h3>
+    <p data-lang="en">Instead of using AI to confirm speculative hypotheses, this programme enforces an explicit <strong>multi-stage adversarial red-team &amp; symbolic auditing loop</strong>. Between 11 Nov and 26 Nov 2026, automated symbolic/numerical audits overturned four of our own earlier claims (soft-shell shear energy saving, mandatory icosahedral uniqueness, naive Lorentzian stiffness noise, and premature environmental models) and downgraded <code>G01–G24</code> closure from 11 green to an honest <strong>5 closed / 11 in progress / 8 open</strong>.</p>
+    <p data-lang="zh">本项目拒绝用 AI 为猜想圆谎，而是建立了严格的<strong>多阶段对抗红队与符号验算自查闭环</strong>。在 2026 年 11 月 11–26 日间，定量排雷审计亲手推翻或降级了我们早期 4 项核心猜想（软壳剪切省能、二十面体必然唯一性、朴素洛伦兹软模噪声以及过早的外围环境模型），并将 <code>G01–G24</code> 诚实回收为 <strong>5 项已闭环 / 11 项实质进展 / 8 项开放</strong>。</p>
+  </div>
+</div>
+
+<h2 data-lang="en">2. Adversarial Self-Falsification Ledger (11 Nov &rarr; 26 Nov 2026)</h2>
+<h2 data-lang="zh">二、对抗红队自证伪演变账本（2026-11-11 &rarr; 11-26）</h2>
+
+<p data-lang="en">A transparent record of early claims explicitly overturned or tightened through symbolic and empirical cross-checks—preserving epistemic discipline over narrative polish.</p>
+<p data-lang="zh">完整公开近期被符号推导与实测约束亲手推翻或收紧的早期命题，以严格物理边界纪律取代事后打补丁。</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th data-lang="en">Earlier Baseline Claim (11–17 Nov)</th>
+      <th data-lang="zh">早期基线命题（11月11–17日）</th>
+      <th data-lang="en">Red-Team Quantitative Obstruction</th>
+      <th data-lang="zh">红队定量证伪硬据</th>
+      <th data-lang="en">Current Status</th>
+      <th data-lang="zh">现行仲裁状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-lang="en">Theorem 6: Nat&aacute;rio thin-shell 5/7 shear energy reduction via &eta;<sub>shell</sub>/&eta;<sub>0</sub> = 10<sup>&minus;30</sup></td>
+      <td data-lang="zh">定理六：通过 &eta;<sub>shell</sub>/&eta;<sub>0</sub> = 10<sup>&minus;30</sup> 实现 Nat&aacute;rio 薄壳 5/7 剪切省能</td>
+      <td data-lang="en">Einstein-frame Dirichlet gradient energy requires E<sub>grad</sub> &ge; 7.2&times;10<sup>47</sup> J (exterior floor) to 2.2&times;10<sup>49</sup> J (1 m wall), exceeding a 10 m black hole by &gt;1,190&times;–35,700&times;.</td>
+      <td data-lang="zh">漏算 Einstein 标架狄利克雷梯度能：外场极小值即达 7.2&times;10<sup>47</sup> J（1 m 薄壳达 2.2&times;10<sup>49</sup> J），超同尺度黑洞能千倍以上，瞬间自坍缩。</td>
+      <td><span class="badge b-no" data-lang="en">EXCLUDED (Main Line)</span><span class="badge b-no" data-lang="zh">主线排除</span></td>
+    </tr>
+    <tr>
+      <td data-lang="en">Theorem 5: Zero-parameter inevitability of I<sub>h</sub> icosahedral shell &amp; F<sub>11</sub>=89 topological key</td>
+      <td data-lang="zh">定理五：零参数必然推导正二十面体晶壳与 F<sub>11</sub>=89 拓扑核</td>
+      <td data-lang="en">Rayleigh l=2 instability and I<sub>h</sub> vanishing (l=1..5, S<sub>6</sub>&approx;8.09607) remain exact theorems, but mixed radial support breaks shell inevitability; F<sub>11</sub>=89 lacks a microscopic binding proof.</td>
+      <td data-lang="zh">Rayleigh 失稳与 I<sub>h</sub> 群 l=1..5 消零仍为严格定理，但混合径向支撑破除“必然晶壳”链；F<sub>11</sub>=89 缺微观束缚推导，降为装饰层。</td>
+      <td><span class="badge b-open" data-lang="en">SPLIT &amp; DOWNGRADED</span><span class="badge b-open" data-lang="zh">拆链降级</span></td>
+    </tr>
+    <tr>
+      <td data-lang="en">Theorem 7: Single-channel ambient AD (0.716 BMV, 0.027 Moon/Earth, f<sub>UV</sub> &le; 5 Hz)</td>
+      <td data-lang="zh">定理七：单一环境 AD 通道（0.716 BMV、月地比 0.027、f<sub>UV</sub> &le; 5 Hz）</td>
+      <td data-lang="en">Main Branch (&omega; &rarr; &minus;3/2) gives zero ambient AD (probe shifts to optical clocks at &Delta;&delta;~3&times;10<sup>&minus;16</sup>). In Branch B&prime;, tidal leak shifts Moon/Earth to 0.0744 below &xi;<sub>crit</sub>=1.141 AU; full-band 10–3000 Hz LIGO O3b rules out both Lorentzian tails (&gt;10<sup>4</sup>&times;) and f<sub>UV</sub>=5 Hz (10–35 Hz), tightening survival to <strong>f<sub>UV</sub> &le; 1.5 Hz</strong>.</td>
+      <td data-lang="zh">主线（&omega; &rarr; &minus;3/2）环境 AD 归零（最敏感仪器改为光钟）；支线 B&prime; 在 &xi; &lt; 1.141 AU 下月地比修正为 0.0744；全频段 LIGO O3b 同时否决朴素洛伦兹尾（超 10<sup>4</sup> 倍）与 5 Hz 高斯截断（10–35 Hz 越线），收紧至 <strong>f<sub>UV</sub> &le; 1.5 Hz</strong>。</td>
+      <td><span class="badge b-info" data-lang="en">REWRITTEN (Dual-Channel)</span><span class="badge b-info" data-lang="zh">改写为双通道</span></td>
+    </tr>
+    <tr>
+      <td data-lang="en">Surface QCD phase cavities, buoyancy=free-fall &amp; 3 legacy scenario scripts</td>
+      <td data-lang="zh">地表 QCD 相腔、浮力等价自由落体及 3 套旧参数场景脚本</td>
+      <td data-lang="en">Weight bound caps bedrock cavities at &le;0.43 MeV (QCD 145 MeV R=10 m weighs 4.3&times;10<sup>20</sup> kg); hydrostatic buoyancy carries proper acceleration g<sub>&oplus;</sub>; legacy scripts removed from active claims.</td>
+      <td data-lang="zh">重量界卡死基岩承载 &le;0.43 MeV（QCD 10 m 腔重 4.3&times;10<sup>20</sup> kg 压穿地壳）；浮力非自由落体；旧参数脚本已从有效主线彻底撤下。</td>
+      <td><span class="badge b-no" data-lang="en">RETRACTED &amp; REMOVED</span><span class="badge b-no" data-lang="zh">撤回并下架</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="verification" data-lang="en">3. Quantitative Evidence &amp; Reproducible Verification Code</h2>
+<h2 id="verification-zh" data-lang="zh">三、定量实证图谱与可复算验证代码</h2>
+
+<figure>
+  <img src="assets/ligo_o3b_vmad_bounds.png" alt="LIGO O3b Strain Sensitivity vs VMAD Vacuum-Stiffness Fluctuation Spectra" />
+  <figcaption data-lang="en"><strong>Figure 1 (Generated by <code>verification/plot_ligo_o3b_bounds.py</code>):</strong> Full-band (10–3000 Hz) comparison between LIGO H1/L1 O3b benchmark ASD curves, Advanced LIGO design sensitivity, and BMV-calibrated (&sigma;<sub>&epsilon;</sub> = 1.52&times;10<sup>&minus;17</sup>, &tau;<sub>c</sub> = 1 s) vacuum-stiffness fluctuation spectra. LIGO O3b decisively rules out naive Lorentzian/Ornstein–Uhlenbeck 1/f tails by &gt;1.6&times;10<sup>4</sup>&times; at 100 Hz and even excludes a 5 Hz Gaussian cutoff in the 10–35 Hz band, forcing Branch B&prime; to satisfy <strong>f<sub>UV</sub> &le; 1.5 Hz</strong>—while the Main Branch (&omega; &rarr; &minus;3/2) produces identically zero ambient strain noise (S<sub>h</sub> &equiv; 0).</figcaption>
+  <figcaption data-lang="zh"><strong>图 1（由 <code>verification/plot_ligo_o3b_bounds.py</code> 实机生成）：</strong>LIGO H1/L1 O3b 基准振幅谱密度（ASD）与 BMV 标定真空刚度涨落谱（&sigma;<sub>&epsilon;</sub> = 1.52&times;10<sup>&minus;17</sup>, &tau;<sub>c</sub> = 1 s）的全频段对比。LIGO O3b 在 100 Hz 以超 1.6&times;10<sup>4</sup> 倍的差距否决朴素洛伦兹 1/f 拖尾，并在 10–35 Hz 频段进一步否决 5 Hz 高斯截断，将支线 B&prime; 收紧至 <strong>f<sub>UV</sub> &le; 1.5 Hz</strong>；主线（&omega; &rarr; &minus;3/2）则不传播引力应变噪声（S<sub>h</sub> &equiv; 0）。</figcaption>
+</figure>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th data-lang="en">Verification Script</th>
+      <th data-lang="zh">验证脚本</th>
+      <th data-lang="en">Verified Mathematical / Physical Scope</th>
+      <th data-lang="zh">核验数学物理内容</th>
+      <th data-lang="en">Status (26 Nov)</th>
+      <th data-lang="zh">实测状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="verification/verify_nogo_bounds.py"><code>verify_nogo_bounds.py</code></a></td>
+      <td data-lang="en">Firewall bound, Dirichlet gradient wall (&amp; explicit soft-shell falsification), surface weight ceilings, SymPy Palatini &omega;=&minus;3/2 kinetic vanishing, 1.141 AU tidal crossover, Hahn spin-echo (60–120&times;), heating suppression (2.53&times;10<sup>&minus;12</sup>), optical-clock phase shift, full-band LIGO O3b cutoff.</td>
+      <td data-lang="zh">火墙界、狄利克雷梯度墙与软壳证伪、三档重量界、SymPy Palatini &omega;=&minus;3/2 动能消零、1.141 AU 潮汐交叉、自旋回波 60–120&times;、加热压低 2.53&times;10<sup>&minus;12</sup>、光钟灵敏度及全频段 LIGO O3b 截断。</td>
+      <td><span class="badge b-ok">PASS (ALL ASSERTIONS)</span></td>
+    </tr>
+    <tr>
+      <td><a href="verification/verify_closure_theorems.py"><code>verify_closure_theorems.py</code></a></td>
+      <td data-lang="en">SymPy Jordan&harr;Einstein conformal equivalence, ADM Euler projection identity, C<sup>2</sup> 5/7 geometric shear integral (explicitly annotated as excluded in canonical fields by Dirichlet wall), Schwarzschild no-horizon bound, Rayleigh l=2 fission instability, I<sub>h</sub> l=1..5 vanishing (S<sub>6</sub>=8.09607), Verlinde F<sub>11</sub>=89 arithmetic.</td>
+      <td data-lang="zh">SymPy Jordan&harr;Einstein 共形等价、ADM 投影恒等式、5/7 几何剪切积分（已加注主线被梯度墙排除）、无视界上界、Rayleigh l=2 失稳、I<sub>h</sub> 群 l=1..5 消零与 Verlinde 维数算术。</td>
+      <td><span class="badge b-ok">PASS (ALL ASSERTIONS)</span></td>
+    </tr>
+    <tr>
+      <td><a href="verification/check_Ih_Y6.py"><code>check_Ih_Y6.py</code></a> &amp; <a href="verification/checks_constants_rates.py"><code>checks_constants_rates.py</code></a></td>
+      <td data-lang="en">Icosahedral Y<sub>6</sub><sup>I<sub>h</sub></sup> vertex invariance, fundamental constants, DSW horizon decoherence (~10<sup>&minus;151</sup> s<sup>&minus;1</sup>), Sakharov (l<sub>P</sub>/a)<sup>2</sup> &approx; 2.61&times;10<sup>&minus;50</sup> suppression, dS Gibbons–Hawking / TCC bounds.</td>
+      <td data-lang="zh">正二十面体 Y<sub>6</sub> 顶点不变性、基本常数、DSW 背景退相干（~10<sup>&minus;151</sup> s<sup>&minus;1</sup>）、Sakharov 2.61&times;10<sup>&minus;50</sup> 晶格壁垒与 TCC 界。</td>
+      <td><span class="badge b-ok">PASS</span></td>
+    </tr>
+    <tr>
+      <td><a href="verification/plot_ligo_o3b_bounds.py"><code>plot_ligo_o3b_bounds.py</code></a></td>
+      <td data-lang="en">Reproduces Figure 1 directly from the 2,500-point LIGO H1/L1 O3b &amp; aLIGO benchmark ASD curves in <code>verification/data/</code>.</td>
+      <td data-lang="zh">直接从 <code>verification/data/</code> 中的 2,500 点 LIGO H1/L1 O3b 与 aLIGO 基准 ASD 曲线重绘生成图 1。</td>
+      <td><span class="badge b-ok">GENERATED</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p data-lang="en">Full stdout capture: <a href="verification/verification_output_2026-11-26.txt"><code>verification/verification_output_2026-11-26.txt</code></a>. All scripts run cleanly on standard Python 3 (<code>numpy</code>, <code>scipy</code>, <code>sympy</code>, <code>matplotlib</code>).</p>
+<p data-lang="zh">完整运行输出日志：<a href="verification/verification_output_2026-11-26.txt"><code>verification/verification_output_2026-11-26.txt</code></a>。所有脚本均基于标准 Python 3（<code>numpy</code>、<code>scipy</code>、<code>sympy</code>、<code>matplotlib</code>）一键复现。</p>
+
+<h2 data-lang="en">4. Focused Six-Month Computational Deliverables</h2>
+<h2 data-lang="zh">四、未来六个月三项极致聚焦的计算交付物</h2>
+
+<ol>
+  <li>
+    <strong data-lang="en">1-Loop EFT Survival Test of the Palatini &omega; &rarr; &minus;3/2 Scale Mode (<code>G01/G03</code>):</strong>
+    <strong data-lang="zh">Palatini &omega; &rarr; &minus;3/2 标度模的有效场论单圈生存检验（<code>G01/G03</code>）：</strong>
+    <span data-lang="en">Integrate out the non-propagating auxiliary field &delta; and compute Standard Model 1-loop radiative corrections to test whether &chi;<sub>m</sub> = 0 decoupling survives or triggers fatal contact-interaction / atomic-physics / ghost obstructions. Either outcome yields a rigorous, publishable result (a narrow surviving IR window or a strong universal no-go theorem).</span>
+    <span data-lang="zh">将非传播辅助场 &delta; 积分掉并计入标准模型单圈辐射修正，严格检验 &chi;<sub>m</sub> = 0 脱耦究竟存在受保护红外窗口，还是直接撞死在接触力/原子物理/鬼场障碍上——无论正负皆交付可复现完整证明。</span>
+  </li>
+  <li>
+    <strong data-lang="en">Finite-Qubit Code-Switching Toy Model (N &le; 20, <code>G01/G02</code>):</strong>
+    <strong data-lang="zh">有限量子比特改码玩具模型实算（N &le; 20，<code>G01/G02</code>）：</strong>
+    <span data-lang="en">Extend our mutual-information geometry reconstruction baseline using <code>Stim</code> / exact diagonalization to test numerically whether a local quantum error-correcting code switch can rescale reconstructed correlation lengths while holding angular/shape geometry invariant.</span>
+    <span data-lang="zh">基于已有互信息几何重建框架与 <code>Stim</code>，在真实量子态中数值检验局域纠错码切换能否在不破坏空间角度/形状的前提下仅平移局域关联长度标度。</span>
+  </li>
+  <li>
+    <strong data-lang="en">Joint Empirical Exclusion Suite (LIGO O3b + Optical Clocks + BMV/MAQRO + IceCube/KM3NeT, <code>G16</code>, <code>R1–R4</code>):</strong>
+    <strong data-lang="zh">多实验联合排除代码库（LIGO O3b + 光钟 + BMV/MAQRO + IceCube/KM3NeT，<code>G16</code>, <code>R1–R4</code>）：</strong>
+    <span data-lang="en">Deliver open-source parameter exclusion maps and matched-filter templates separating the Main Branch (&delta; optical-clock transients), Branch B&prime; (f<sub>UV</sub> &le; 1.5 Hz three-point AD + 60–120&times; spin echo), and objective-collapse models (CSL/DP).</span>
+    <span data-lang="zh">交付开源参数排除图谱与匹配滤波模板，清晰区分主线（近场光钟瞬变）、支线 B&prime;（f<sub>UV</sub> &le; 1.5 Hz 三点退相干+自旋回波）与客观坍缩模型（CSL/DP）。</span>
+  </li>
+</ol>
+
+<h2 data-lang="en">5. Documentation &amp; Transparent Historical Archive</h2>
+<h2 data-lang="zh">五、现行核心文档与透明历史归档</h2>
+
+<ul>
+  <li><a href="research-statement.html"><strong data-lang="en">Research Statement &amp; 6-Month Plan (26 Nov 2026)</strong><strong data-lang="zh">研究说明与六个月计划定本（2026-11-26）</strong></a> — <a href="VMAD_Research_Statement_2026-11-26.pdf">PDF</a></li>
+  <li><a href="unified-synthesis.html"><strong data-lang="en">Unified Arbitration Synthesis — Route A Foundational Physics Edition (21 Nov 2026)</strong><strong data-lang="zh">整体理论统合定本 · 路线 A 基础物理纯净版（2026-11-21）</strong></a></li>
+  <li><a href="bibliography.html"><strong data-lang="en">Foundational Physics Working Reference Index (1,247 records, Groups 01–11 &amp; 13)</strong><strong data-lang="zh">基础物理参考书目索引（1,247 条，第 01–11 与 13 专业组）</strong></a></li>
+  <li>
+    <span data-lang="en"><strong>Superseded Historical Baselines (17 Nov 2026, preserved with revision banners for audit transparency):</strong> </span>
+    <span data-lang="zh"><strong>已替代历史基线（2026-11-17，已加修订横幅留存以保持时间线透明）：</strong></span>
+    <a href="closure-theorems.html">closure-theorems</a> ·
+    <a href="frontier-audit.html">frontier-audit</a> ·
+    <a href="ontology.html">ontology</a> ·
+    <a href="panorama-overview.html">panorama-overview</a> ·
+    <a href="theory-framework.html">theory-framework (EN)</a> ·
+    <a href="theory-framework-zh.html">theory-framework (ZH)</a>
+  </li>
+</ul>
+
+</main>
+<footer>
+  <p data-lang="en">Xiaoyi Li · Independent Theoretical Physics Research (Unaffiliated, Non-Commercial) · ORCID: <a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · Last aligned: 26 November 2026 (Unified Arbitration Baseline: 21 November 2026).</p>
+  <p data-lang="zh">李小毅 · 无机构独立基础物理研究（非商业）· ORCID：<a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · 最新对齐：2026年11月26日（现行统合基线：2026年11月21日）。</p>
+</footer>
+
+<script>
+(function(){
+  const root = document.documentElement;
+  const btns = document.querySelectorAll('.languages button[data-language]');
+  function setLang(lang) {
+    root.setAttribute('data-language', lang);
+    root.setAttribute('lang', lang);
+    btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.language === lang ? 'true' : 'false'));
+    try { localStorage.setItem('vmad_lang', lang); } catch(e) {}
+  }
+  const params = new URLSearchParams(window.location.search);
+  const qLang = params.get('lang');
+  let init = qLang === 'zh' || qLang === 'en' ? qLang : 'en';
+  if (!qLang) {
+    try {
+      const saved = localStorage.getItem('vmad_lang');
+      if (saved === 'zh' || saved === 'en') init = saved;
+    } catch(e) {}
+  }
+  setLang(init);
+  btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.language)));
+})();
+</script>
+
+
+</body>
+</html>
