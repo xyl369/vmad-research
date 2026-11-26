@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these verification suites or cite the VMAD audited research dossier, please cite it using the metadata below."
+type: software
+title: "VMAD Consistency Suite: Rigidity No-Go Bounds, Solar-System Node Trade-Off Projection, Conformal Closure & LIGO O3b Spectral Exclusion"
+abstract: "Executable Python/SymPy/SciPy numerical and symbolic consistency suites, LIGO O3b full-band spectral exclusion plot, Solar-System 4D physical information-node trade-off projection, and audited theoretical dossier for the VMAD (Vacuum Metastability & Anomalous Decoherence) foundational physics programme."
+version: "2026.11.26"
+date-released: "2026-11-26"
+authors:
+  - family-names: "Li"
+    given-names: "Xiaoyi"
+    orcid: "https://orcid.org/0009-0000-0482-2376"
+repository-code: "https://github.com/xyl369/vmad-research"
+url: "https://xyl369.github.io/vmad-research/"
+license: "MIT"
+keywords:
+  - "emergent spacetime"
+  - "scalar-tensor gravity"
+  - "gravitational decoherence"
+  - "information thermodynamics"
+  - "symbolic verification"
