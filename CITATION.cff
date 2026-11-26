@@ -5,6 +5,17 @@ title: "VMAD Consistency Suite: Rigidity No-Go Bounds, Solar-System Node Trade-O
 abstract: "Executable Python/SymPy/SciPy numerical and symbolic consistency suites, LIGO O3b full-band spectral exclusion plot, Solar-System 4D physical information-node trade-off projection, and audited theoretical dossier for the VMAD (Vacuum Metastability & Anomalous Decoherence) foundational physics programme."
 version: "2026.11.26"
 date-released: "2026-11-26"
+doi: "10.5281/zenodo.24553243"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24553243"
+    description: "Zenodo archive for Software Release v2026.11.26"
+  - type: doi
+    value: "10.5281/zenodo.24553242"
+    description: "Zenodo Concept DOI (all versions) for the VMAD Consistency Suite"
+  - type: doi
+    value: "10.5281/zenodo.24553100"
+    description: "Companion Working Paper DOI (VMAD_Research_Statement_2026-11-26.pdf)"
 authors:
   - family-names: "Li"
     given-names: "Xiaoyi"

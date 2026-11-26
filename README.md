@@ -1,9 +1,15 @@
 # VMAD Research Portal & Reproducible Consistency Suite
 
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24553243.svg)](https://doi.org/10.5281/zenodo.24553243)
+[![Working Paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24553100.svg)](https://doi.org/10.5281/zenodo.24553100)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0000--0482--2376-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0000-0482-2376)
+
 **Author:** Xiaoyi Li (Unaffiliated Independent Theoretical Physics Researcher · Non-Commercial)  
 **ORCID:** [0009-0000-0482-2376](https://orcid.org/0009-0000-0482-2376)  
+**Zenodo Software DOI (`v2026.11.26`):** [`10.5281/zenodo.24553243`](https://doi.org/10.5281/zenodo.24553243) *(All versions: [`10.5281/zenodo.24553242`](https://doi.org/10.5281/zenodo.24553242))*  
+**Zenodo Working Paper DOI (`2026.11.26`):** [`10.5281/zenodo.24553100`](https://doi.org/10.5281/zenodo.24553100) *(All versions: [`10.5281/zenodo.24553099`](https://doi.org/10.5281/zenodo.24553099))*  
 **Live Portal:** [xyl369.github.io/vmad-research](https://xyl369.github.io/vmad-research/)  
-**Audited Release:** `v2026.11.26` (26 November 2026 · Primary-Literature Audited Edition)
+**Audited Release:** [`v2026.11.26`](https://github.com/xyl369/vmad-research/releases/tag/v2026.11.26) (26 November 2026 · Primary-Literature Audited Edition)
 
 ---
 
