@@ -4,7 +4,7 @@ LIGO O3b / aLIGO Benchmark Strain Sensitivity vs. VMAD Stiffness-Noise Spectral 
 Demonstrates quantitatively why LIGO O3b rules out naive Lorentzian/Ornstein-Uhlenbeck
 vacuum-stiffness fluctuations calibrated to ground BMV decoherence, forcing either:
   (1) Main Branch (Palatini omega -> -3/2): non-propagating algebraic scale mode (S_h === 0), or
-  (2) Branch B' (propagating soft mode): smooth UV spectral cutoff (f_UV <= 5 Hz).
+  (2) Branch B' (propagating soft mode): smooth UV spectral cutoff tightened to f_UV <= 1.5 Hz (5.0 Hz excluded in 10-35 Hz).
 """
 from pathlib import Path
 import numpy as np
@@ -31,7 +31,7 @@ tau_c = 1.0
 # 1. Ruled-out naive Ornstein-Uhlenbeck / Lorentzian spectrum
 asd_ou = sigma_eps * np.sqrt(4.0 * tau_c / (1.0 + (2.0 * np.pi * f * tau_c)**2))
 
-# 2. Surviving Branch B' smooth Gaussian UV cutoff spectra (f_UV = 5 Hz and f_UV = 2 Hz)
+# 2. Branch B' smooth Gaussian UV cutoff spectra (f_UV = 5.0 Hz [excluded in 10-35 Hz] vs f_UV = 1.5 Hz [surviving])
 def gauss_asd(freq, f_uv, sig=sigma_eps):
     tau_g = 1.0 / (2.0 * np.pi * f_uv)
     # Using exact one-sided PSD = 2 * sqrt(2*pi) * sig^2 * tau_g * exp(-(f/f_uv)^2 / 2)
@@ -90,4 +90,4 @@ ax.legend(loc="lower left", frameon=True, facecolor="white", framealpha=0.92, fo
 fig.tight_layout()
 out_path = out_dir / "ligo_o3b_vmad_bounds.png"
 fig.savefig(out_path, dpi=200)
-print(f"VERIFIED: Generated {out_path} ({out_path.stat().st_size} bytes)")
+print(f"VERIFIED: Generated assets/{out_path.name} ({out_path.stat().st_size} bytes)")

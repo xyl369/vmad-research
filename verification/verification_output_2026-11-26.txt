@@ -1,5 +1,5 @@
 ================================================================================
-VMAD REPRODUCIBLE NUMERICAL & SYMBOLIC VERIFICATION LOG — 2026-11-26
+VMAD REPRODUCIBLE NUMERICAL & SYMBOLIC CONSISTENCY LOG — 2026-11-26 (AUDITED)
 Repository: https://github.com/xyl369/vmad-research
 ================================================================================
 
@@ -11,8 +11,8 @@ K_0        = 4.815454e+42 N
 E_firewall (A=100 m^2) = 7.488e+80 J
 
 === [2] Dirichlet Gradient Wall (Falsifying Canonical Soft-Shell Metric Reduction) ===
-1-ton, R=10 m object (omega>=40000): r_s/R = 1.485e-25, delta_max = 1.927e-15
-Non-black-hole ceiling (r_s/R < 1, omega>=40000): delta_max < 4.9999e-03
+1-ton, R=10 m object (omega>=40000): r_s/R = 1.485e-25, delta_max = 1.363e-15
+Non-black-hole ceiling (r_s/R < 1, omega>=40000): delta_max < 3.5355e-03
 Retracted soft-shell (eta/eta0=1e-30, R=10m):
   Exterior harmonic floor (2w+3=1): E_grad >= 7.219e+47 J (1193x E_BH; r_s/R = 1193)
   Exterior harmonic floor (2w+3=3): E_grad >= 2.166e+48 J (3579x E_BH)
@@ -26,12 +26,12 @@ Retracted soft-shell (eta/eta0=1e-30, R=10m):
 
 === [4] Palatini omega -> -3/2 Algebraic Scale Corner (SymPy Exact Check) ===
 VERIFIED: At omega = -3/2, Einstein-frame kinetic prefactor -2*(2*omega+3) === 0 (non-propagating algebraic scale mode).
-OPEN TARGET (G01/G03): 1-loop SM radiative survival of chi_m = 0 decoupling without Palatini surface singularities.
+OPEN TARGET (G01/G03): 1-loop SM radiative survival of steep normal-phase pinning (d^2 U_E/d delta^2 >> |T_SM|) vs Flanagan/BSM singularities.
 
-=== [5] Branch B' 1.1422 AU Tidal Crossover, 3-Point Ratio & Spin-Echo/Heating Signatures ===
+=== [5] Branch B' 1.1414 AU Earth Tidal Crossover, 3-Point Ratio & Spin-Echo/Heating Signatures ===
 xi_crit = R_earth * sqrt(R_earth / r_s_earth) = 1.7074e+11 m = 1.1414 AU
-Moon / Earth AD ratio (xi > 1.1422 AU, g^2 regime) = 0.0275
-Moon / Earth AD ratio (xi < 1.1422 AU, R^2 tidal regime) = 0.0744
+Moon / Earth AD ratio (xi > 1.4660 AU, g^2 regime) = 0.0275
+Moon / Earth AD ratio (xi < 1.1414 AU, R^2 tidal regime) = 0.0744
 Hahn spin-echo suppression at T/tau_c = 0.1: 60.0x
 Hahn spin-echo suppression at T/tau_c = 0.05: 120.0x
 100 kHz levitated oscillator heating suppression (tau_c=1 s): 2.533e-12
@@ -49,34 +49,41 @@ At 100 Hz: LIGO O3b ceiling ~ 3.0e-24 Hz^-1/2
 ALL NO-GO BOUNDS, PALATINI LIMIT, AD CROSSOVER & LIGO SPECTRAL ASSERTIONS PASSED.
 
 >>> [2/6] verification/verify_planetary_node_bounds.py
-=== [1] Thermodynamic & Radiation Ceilings (Landauer / Stefan-Boltzmann / Convective) ===
-30 K blackbody flux = 0.0459 W/m^2  => 100 MW requires 2177.2 km^2
-18.10 K PSR flux (eps=0.9) = 5.47 mW/m^2 => 10 mW passive plate = 1.83 m^2
-Veto of 100 MW lunar PSR active node: needs 4.50 GW power & 11.13 km^2 rim radiators
-Deep-ocean convective cooling (dT <= 1 K): 1 MW requires 238.1 kg/s cold water throughput
-Antarctic 100 MW basal melt = 9.45 million tonnes/yr => ICESat-2 subsidence veto -> stealth cap <= 1-10 kW
+=== [1] Thermodynamic, Conduction & Radiometric Observability Ceilings ===
+30 K blackbody flux = 0.04593 W/m^2 -> 100 MW requires 2177.2 km^2 (vs 0.2177 km^2 at 300 K)
+18.1 K passive plate (eps=0.9) flux = 5.47 mW/m^2 -> 10 mW requires 1.83 m^2
+Lunar PSR 100 MW heat pump (30->300 K, 20% Carnot): P_elec = 4.50 GW, 300 K rim radiator = 11.13 km^2
+LRO Diviner 240 m pixel dT=+1 K ceiling: 112.6 W (at 20 K), 868.0 W (at 40 K)
+LRO Diviner 240 m pixel (40 K) + 10 kW steady leak -> 48.69 K (+8.69 K)
+Seawater convective flow (1 MW, dT=1 K) = 238.1 kg/s; 10.9 km pressure = 109.6 MPa
+Antarctic cold-based zero-melt cap (dT=10 K): 3.20 kW (R=10 m) to 32.04 kW (R=100 m)
+Antarctic 100 MW basal melt = 9.45 Mt/yr -> subsidence 2.28-36.4 cm/yr (R=12-3 km)
 
-=== [2] EM Opacity, Cosmic-Ray Attenuation & Deep-Time Thermal/Arrhenius Physics ===
-Seawater tau_e = 1.77e-10 s; 3.3 GHz skin depth = 4.38 mm; 76 Hz ELF 4 km power atten = 4.34e-121
-Schroter 50 m basalt roof: GCR atten = 1.93e-41, thermal skin = 0.759 m (50 m damping = 2.53e-29), q_max = 0.36 W/m^2
-Arrhenius atomic diffusion ratio (18 K / 250 K, Ea=0.35 eV) = 1.15e-91 (~10^-91 freezing!)
-Lunar PSR Diviner 240 m pixel (T0=40 K) with 10 kW thermal leak: T = 48.69 K (dT = +8.69 K)
+=== [2] Shielding, Arrhenius Retention & Quantum Channel Asymmetries ===
+Seawater tau_e = 1.77e-10 s; 3.3 GHz approx skin = 4.38 mm; 76 Hz 4 km atten = 4.34e-121
+PLOB 480 nm 4 km ocean = 4.70e-70 vs 1550 nm Earth-Moon vacuum = 2.51e-06 ebits/mode
+50 m basalt (15,000 g/cm^2): primary GCR hadronic exp(-X/160) = 1.93e-41 [total dose floor set by secondary muons & KREEP]
+50 m basalt thermal skin = 0.759 m -> diurnal damping = 2.53e-29
+Arrhenius diffusion ratio (18 K vs 250 K, Ea=0.35 eV) = 1.15e-91
 
 === [3] Relativistic Light-Time Causality Stratification ===
-Earth-Moon one-way = 1.282 s (RTT = 2.564 s); Earth angular dia from Moon = 1.8993 deg
-Aristarchus <-> Lunar South Pole arc = 3447.8 km (11.50 ms)
-Earth-Jupiter (Europa/Callisto) one-way = 34.9-51.6 min
+Earth-Moon one-way = 1.282 s (RTT = 2.564 s); Earth angular dia = 1.8993 deg
+Aristarchus <-> Lunar South Pole arc = 3447.8 km (11.50 ms); Earth-Jupiter = 34.9-51.6 min
 
-=== [4] Cross-Body Anomalous Decoherence Spatial Gradient (Branch B' g^2 & R^2 Regimes) ===
-  Earth Surface (Abyssal / Antarctica)  : g^2 ratio = 1.0000e+00,  R^2 ratio = 1.0000e+00
-  Moon (PSR / Aristarchus)              : g^2 ratio = 2.7458e-02,  R^2 ratio = 7.4368e-02
-  Europa (Subsurface Ocean)             : g^2 ratio = 1.7981e-02,  R^2 ratio = 6.0018e-02
-  Enceladus (Low-g Ice Shell)           : g^2 ratio = 1.3277e-04,  R^2 ratio = 1.5658e-03
+=== [4] Per-Body Branch B' Tidal Crossovers & Parameter-Free AD Ratios ===
+Causal correlation limit at tau_c=1 s: c*tau_c = 0.00200 AU (<< all body crossovers -> universal R^2 regime)
+  Earth Surface : xi_crit = 1.1414 AU | g^2 ratio (xi>2.11 AU) = 1.0000e+00 | R^2 ratio (xi<1.14 AU) = 1.0000e+00
+  Moon          : xi_crit = 1.4660 AU | g^2 ratio (xi>2.11 AU) = 2.7458e-02 | R^2 ratio (xi<1.14 AU) = 7.4368e-02
+  Europa        : xi_crit = 1.5438 AU | g^2 ratio (xi>2.11 AU) = 1.7981e-02 | R^2 ratio (xi<1.14 AU) = 6.0018e-02
+  Enceladus     : xi_crit = 2.1124 AU | g^2 ratio (xi>2.11 AU) = 1.3277e-04 | R^2 ratio (xi<1.14 AU) = 1.5658e-03
 
-=== [5] Generating Publication-Grade Solar-System Node Pareto Phase-Space Figure ===
-VERIFIED: Generated /Users/xiaoyi/.gemini/antigravity/brain/d553fb60-9542-468d-973e-dcb55bb2c56d/scratch/vmad-research-work/assets/solar_system_node_pareto.png (311608 bytes)
+=== [5] Compact Macro Relic Non-Gravitational Acceleration (Jacobs-Starkman-Lynn Window) ===
+10^17 g nuclear-density compact relic: R = 6.20 cm, solar radiation a_rad(1 AU) = 5.489e-22 m/s^2
 
-ALL PLANETARY NODE THERMODYNAMIC, SHIELDING, CAUSAL & DECOHERENCE ASSERTIONS PASSED.
+=== [6] Generating Audited 4D-Encoded 2D Trade-Off Projection Figure ===
+VERIFIED: Generated assets/solar_system_node_pareto.png (361420 bytes)
+
+ALL AUDITED PLANETARY NODE CONSISTENCY ASSERTIONS PASSED.
 
 >>> [3/6] verification/verify_closure_theorems.py
 === [1] 基本常数与真空纠缠刚度 ===
@@ -148,6 +155,6 @@ S_dS ~ pi c^2/(G hbar H^2)...  2.2331924001710845e+122
 TCC T<= 1997.2772796637832 Gyr
 
 >>> [6/6] verification/plot_ligo_o3b_bounds.py
-VERIFIED: Generated /Users/xiaoyi/.gemini/antigravity/brain/d553fb60-9542-468d-973e-dcb55bb2c56d/scratch/vmad-research-work/assets/ligo_o3b_vmad_bounds.png (271016 bytes)
+VERIFIED: Generated assets/ligo_o3b_vmad_bounds.png (271016 bytes)
 
-ALL 5 VERIFICATION SUITES + 2 PUBLICATION FIGURES COMPLETED WITH EXIT CODE 0.
+ALL 5 CONSISTENCY SUITES + 2 PUBLICATION FIGURES COMPLETED WITH EXIT CODE 0.

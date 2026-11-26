@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academic Logic Evolution, Retractions &amp; Literature Map | Xiaoyi Li · VMAD</title>
+  <meta name="description" content="Complete chronological evolution of VMAD (15 Oct – 26 Nov 2026): dated GitHub commit snapshots, red-team self-falsification shifts, full G01–G24 proof-obligation ledger, and 1,247-record foundational physics literature architecture." />
+  <style>
+:root {
+  --ink: #1e293b;
+  --muted: #475569;
+  --line: #dbe3ec;
+  --accent: #1d4e78;
+  --accent-soft: #eef4fa;
+  --soft: #f8fafc;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font: 15.2px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+.top {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.identity { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.topnav { display: flex; flex-wrap: wrap; gap: 14px; margin-left: auto; font-size: 13px; }
+.topnav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.topnav a:hover, .topnav a.active { color: var(--accent); font-weight: 600; }
+.languages { display: flex; gap: 6px; border-left: 1px solid var(--line); padding-left: 12px; }
+.languages button { border: 0; background: none; cursor: pointer; font: inherit; font-size: 12.5px; color: var(--muted); padding: 2px 6px; }
+.languages button[aria-pressed="true"] { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 26px 24px 64px; }
+.eyebrow { font-size: 11.8px; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+h1 { font-size: 29px; line-height: 1.28; margin: 0 0 12px; letter-spacing: -0.4px; color: #0f172a; }
+h2 { font-size: 20.5px; line-height: 1.35; margin: 32px 0 13px; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: #0f172a; }
+h3 { font-size: 16px; line-height: 1.45; margin: 20px 0 8px; color: #0f172a; }
+p { margin: 0 0 13px; }
+ul, ol { margin: 8px 0 15px; padding-left: 22px; }
+li { margin-bottom: 7px; }
+.meta-line { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
+.question-box {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 17px 21px;
+  margin: 18px 0 24px;
+  border-radius: 0 6px 6px 0;
+}
+.question-box p:last-child { margin-bottom: 0; }
+.callout { background: var(--soft); border: 1px solid var(--line); padding: 15px 19px; border-radius: 6px; margin: 16px 0; font-size: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0 22px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 16px 0 22px; }
+.card { border: 1px solid var(--line); background: var(--soft); border-radius: 6px; padding: 14px 16px; }
+.card h3 { margin-top: 0; font-size: 15px; }
+.card p:last-child { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin: 15px 0 22px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.56; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { background: var(--soft); font-weight: 600; color: #0f172a; }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+.b-ok { background: #dcfce7; color: #166534; }
+.b-no { background: #fee2e2; color: #991b1b; }
+.b-open { background: #fef3c7; color: #92400e; }
+.b-info { background: #e0f2fe; color: #075985; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.87em; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+footer { max-width: 1020px; margin: 0 auto; padding: 18px 24px 36px; border-top: 1px solid var(--line); font-size: 12.8px; color: var(--muted); }
+html[data-language="en"] [data-lang="zh"] { display: none !important; }
+html[data-language="zh"] [data-lang="en"] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="top"><a class="identity" href="index.html">Xiaoyi Li · VMAD</a><nav class="topnav"><a href="index.html"><span data-lang="en">Overview</span><span data-lang="zh">总览</span></a><a href="research-statement.html"><span data-lang="en">Research Statement</span><span data-lang="zh">研究说明</span></a><a href="unified-synthesis.html"><span data-lang="en">Full Theory</span><span data-lang="zh">完整理论</span></a><a href="evolution-and-audit.html" class="active"><span data-lang="en">Evolution &amp; Audit</span><span data-lang="zh">演进与审计</span></a><a href="bibliography.html"><span data-lang="en">Bibliography (1,247)</span><span data-lang="zh">文献目录 (1,247)</span></a><a href="VMAD_Research_Statement_2026-11-26.pdf">PDF ↗</a><a href="https://github.com/xyl369/vmad-research" target="_blank" rel="noopener">GitHub ↗</a><a href="https://orcid.org/0009-0000-0482-2376" target="_blank" rel="noopener">ORCID ↗</a></nav><div class="languages"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></header>
+
+<main class="wrap">
+
+<p class="eyebrow" data-lang="en">Audit Trail &amp; Epistemic Transparency · 15 October – 26 November 2026</p>
+<p class="eyebrow" data-lang="zh">学术逻辑演进、红队自证伪与文献架构档案 · 2026年10月15日 — 11月26日</p>
+
+<h1 data-lang="en">Academic Logic Evolution, Red-Team Retraction Ledger &amp; Literature Architecture</h1>
+<h1 data-lang="zh">VMAD 学术逻辑演进、红队自证伪账本与 1,247 条文献架构总览</h1>
+
+<div class="question-box">
+  <p data-lang="en"><strong>Why this page exists:</strong> Scientific credibility for an unaffiliated independent programme depends on showing <em>how</em> hypotheses evolved under mathematical and empirical pressure—not hiding earlier mistakes. Below is the complete, timestamped evolution from the initial 15 October 2026 submission to the 26 November 2026 primary-literature-audited edition, with direct links to immutable GitHub commit snapshots, every retracted early claim, all 24 proof obligations (<code>G01–G24</code>), and direct group links into the <a href="bibliography.html">1,247-record foundational physics bibliography</a>.</p>
+  <p data-lang="zh"><strong>设立本页的目的：</strong>无机构独立理论研究最硬的可信度证据，不是掩盖早期失误，而是透明展示<strong>每一条假说如何在数学反例与一手文献实测压力下演进、收束或被亲手推翻</strong>。本页集中呈现从 2026 年 10 月 15 日首轮提交到 11 月 26 日终审精校版的完整逻辑演进链、GitHub 带时间戳的历史快照直链、全部 <code>G01–G24</code> 缺口诚实定级，以及 <a href="bibliography.html">1,247 条基础物理参考书目</a> 的 12 分组直达地图。</p>
+</div>
+
+<h2 data-lang="en">1. Chronological Evolution &amp; Immutable GitHub Snapshots (15 Oct – 26 Nov 2026)</h2>
+<h2 data-lang="zh">一、分期演进时间线与 GitHub 不可篡改历史快照（10 月 15 日 — 11 月 26 日）</h2>
+
+<p data-lang="en">To keep the live web portal strictly aligned with the current audited physics baseline (and free of superseded early drafts), legacy HTML drafts have been retired from the active portal directory while remaining permanently inspectable via their dated GitHub commit trees below.</p>
+<p data-lang="zh">为确保现行公开网页严格对齐最新基础物理终审定本、避免作废旧稿造成混淆，早期 HTML 历史稿已从现行网页目录中撤下，但全部带时间戳的原始快照均永久留存于下方 GitHub 历史提交中供随时溯源核查。</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th data-lang="en">Milestone &amp; Logic Stage</th>
+      <th data-lang="zh">阶段与核心进展</th>
+      <th data-lang="en">Key Additions &amp; Self-Corrections</th>
+      <th data-lang="zh">关键推进与红队纠偏</th>
+      <th>GitHub Snapshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>2026-10-15</strong></td>
+      <td data-lang="en"><strong>Stage 1 · Initial Submission Baseline</strong></td>
+      <td data-lang="zh"><strong>第一阶段 · 首轮提交基线</strong></td>
+      <td data-lang="en">Submitted initial Google Antigravity research interest form; published initial framework, 6-month question, and early 872-source reference index.</td>
+      <td data-lang="zh">提交首轮 Google Antigravity 科研申请表单；公开初版研究框架、六个月核心命题与早期 872 条参考书目。</td>
+      <td><a href="https://github.com/xyl369/vmad-research/tree/6a1df58" target="_blank" rel="noopener"><code>6a1df58</code> ↗</a></td>
+    </tr>
+    <tr>
+      <td><strong>2026-10-25</strong></td>
+      <td data-lang="en"><strong>Stage 2 · 24 Proof Obligations &amp; Toy Baselines</strong></td>
+      <td data-lang="zh"><strong>第二阶段 · 24 项缺口与玩具基准</strong></td>
+      <td data-lang="en">Structured the 24 proof obligations (<code>G01–G24</code>), 20 physical backgrounds, 6 quantum-branch checks (<code>Q1–Q6</code>), and local 8-qubit Ising / Schr&ouml;dinger–Poisson baselines.</td>
+      <td data-lang="zh">确立 24 项技术缺口清册（<code>G01–G24</code>）、20 项物理背景映射、<code>Q1–Q6</code> 交叉占位与 8 量子位 Ising / 薛定谔–泊松基准。</td>
+      <td><a href="https://github.com/xyl369/vmad-research/tree/ac43b70" target="_blank" rel="noopener"><code>ac43b70</code> ↗</a></td>
+    </tr>
+    <tr>
+      <td><strong>2026-11-08</strong></td>
+      <td data-lang="en"><strong>Stage 3 · Pre-Registered Failure Criterion</strong></td>
+      <td data-lang="zh"><strong>第三阶段 · 预注册独立盲测失败判据</strong></td>
+      <td data-lang="en">Locked an independent held-out geometry-readout failure criterion before running downstream tests, preventing circular fitting.</td>
+      <td data-lang="zh">在下游测试前预注册独立几何读出盲测失败判据，从制度上杜绝循环拟合。</td>
+      <td><a href="https://github.com/xyl369/vmad-research/tree/8e0865a" target="_blank" rel="noopener"><code>8e0865a</code> ↗</a></td>
+    </tr>
+    <tr>
+      <td><strong>2026-11-13</strong></td>
+      <td data-lang="en"><strong>Stage 4 · Variational Closure &amp; First SymPy Suite</strong></td>
+      <td data-lang="zh"><strong>第四阶段 · 闭合作用量与首批 SymPy 验证</strong></td>
+      <td data-lang="en">Constructed Jordan-frame action S<sub>VMAD</sub>, logged 13 technical errata (<code>E1–E13</code>), demoted weak DSW horizon decoherence (~10<sup>&minus;151</sup> s<sup>&minus;1</sup>), and launched automated SymPy/SciPy verification.</td>
+      <td data-lang="zh">补全 Jordan 闭合作用量 S<sub>VMAD</sub>，清查 13 处技术偏差（<code>E1–E13</code>），将微弱的 DSW 退相干降格为底噪，上线首套 SymPy/SciPy 自动复算代码。</td>
+      <td><a href="https://github.com/xyl369/vmad-research/tree/d24e69e" target="_blank" rel="noopener"><code>d24e69e</code> ↗</a></td>
+    </tr>
+    <tr>
+      <td><strong>2026-11-17</strong></td>
+      <td data-lang="en"><strong>Stage 5 · Five-Monograph Snapshot &amp; Real Noise Baselines</strong></td>
+      <td data-lang="zh"><strong>第五阶段 · 五册总览与实测噪音对账</strong></td>
+      <td data-lang="en">Integrated CLPW Type II crossed products, expanded bibliography to 1,371/1,400 records, and imported LIGO O3b, IceCube, KM3NeT, and NAWCAD empirical baselines. <em>(Superseded by 21 Nov red-team arbitration.)</em></td>
+      <td data-lang="zh">接入 CLPW Type II 交叉积、扩展文献库至 1,371/1,400 条并引入 LIGO O3b、IceCube、KM3NeT 等实测基准。<em>（后续被 11-21 红队仲裁全面升级替代。）</em></td>
+      <td><a href="https://github.com/xyl369/vmad-research/tree/a7da895" target="_blank" rel="noopener"><code>a7da895</code> ↗</a></td>
+    </tr>
+    <tr>
+      <td><strong>2026-11-21 &rarr; 11-26</strong></td>
+      <td data-lang="en"><strong>Stage 6 (Current) · Adversarial Red-Team Arbitration &amp; Primary-Literature Audit</strong></td>
+      <td data-lang="zh"><strong>第六阶段（现行）· 红队大仲裁与一手文献终审精校</strong></td>
+      <td data-lang="en"><strong>Major self-falsification pivot:</strong> Killed canonical 5/7 soft-shell energy saving via Dirichlet gradient wall (&delta;<sup>2</sup>&le;[1/(2&omega;+3)]r<sub>s</sub>/R; &ge;7.22&times;10<sup>47</sup> J) &amp; surface weight wall (&le;0.431 MeV); pivoted to steep-pinned Palatini &omega;&rarr;&minus;3/2 vs Branch B&prime;; tightened full-band LIGO O3b to <strong>f<sub>UV</sub>&le;1.5 Hz</strong>; replaced icosahedral uniqueness with 4-phase Morphology Diagram; built 4D Solar-System node trade-off &amp; observability suite; honestly downgraded <code>G01–G24</code> to <strong>5 closed / 11 progress / 8 open</strong>; purified public bibliography to <strong>1,247</strong> foundational physics records.</td>
+      <td data-lang="zh"><strong>关键红队大转向：</strong>用狄利克雷梯度墙（&delta;<sup>2</sup>&le;[1/(2&omega;+3)]r<sub>s</sub>/R，&ge;7.22&times;10<sup>47</sup> J）与表面承重界（&le;0.431 MeV）亲手推翻正则 5/7 软壳省能；转向陡曲率钉扎 Palatini &omega;&rarr;&minus;3/2 与支线 B&prime; 双分叉；LIGO O3b 全频段锁死至 <strong>f<sub>UV</sub>&le;1.5 Hz</strong>；二十面体必然论改为四图形态相图；建立太阳系四维权衡与观测上限套件；<code>G01–G24</code> 诚实回调为 <strong>5 闭合 / 11 进展 / 8 开放</strong>；公开书目净化为 <strong>1,247 条</strong>纯基础物理记录。</td>
+      <td><a href="https://github.com/xyl369/vmad-research/commits/main" target="_blank" rel="noopener"><code>main</code> (Latest) ↗</a><br><a href="https://github.com/xyl369/vmad-research/tree/9c821d0" target="_blank" rel="noopener"><code>9c821d0</code> ↗</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">2. Six Core Shifts in Academic Logic (Before vs. After Red-Team Audit)</h2>
+<h2 data-lang="zh">二、六大核心学术逻辑转向对照（早期设想 &rarr; 红队证伪原因 &rarr; 现行终审立场）</h2>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th data-lang="en">Earlier Draft Position (Oct – 17 Nov)</th>
+      <th data-lang="zh">早期版本立场（10 月 – 11 月 17 日）</th>
+      <th data-lang="en">Overturning Counterexample / Primary Data</th>
+      <th data-lang="zh">推翻它的数学反例 / 一手文献数据</th>
+      <th data-lang="en">Audited 26 Nov Position</th>
+      <th data-lang="zh">2026-11-26 终审精校立场</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Spacetime Control &amp; EFT</strong></td>
+      <td data-lang="en">Suppressing &eta;/&eta;<sub>0</sub>=10<sup>&minus;30</sup> inside a thin shell softens Nat&aacute;rio 5/7 shear energy; tree-level &chi;<sub>m</sub>=0 decoupling in &omega;&rarr;&minus;3/2.</td>
+      <td data-lang="zh">在薄壳内压低 &eta;/&eta;<sub>0</sub>=10<sup>&minus;30</sup> 以软化 Nat&aacute;rio 5/7 剪切能；树图强令 &omega;&rarr;&minus;3/2 下 &chi;<sub>m</sub>=0。</td>
+      <td data-lang="en">Dirichlet exterior gradient energy costs &ge;<code>7.22&times;10<sup>47</sup> J</code> (1,193&times;E<sub>BH</sub>) &rarr; immediate black-hole collapse; universal matter coupling S<sub>m</sub>[e<sup>2&delta;</sup>g&#771;] identically sources &part;U<sub>E</sub>/&part;&delta;=e<sup>4&delta;</sup>T<sub>SM</sub> (Flanagan 2004; Barausse–Sotiriou–Miller 2008).</td>
+      <td data-lang="zh">外区狄利克雷梯度能至少耗费 <code>7.22&times;10<sup>47</sup> J</code>（1,193 倍黑洞能）直接塌成黑洞；普适物质耦合恒产生 T<sub>SM</sub> 源项，树图强令 &chi;<sub>m</sub>=0 变分不自洽。</td>
+      <td data-lang="en"><strong>Canonical soft-shell EXCLUDED.</strong> Pivoted to <strong>steep normal-phase pinning</strong> (&part;<sup>2</sup>U<sub>E</sub>/&part;&delta;<sup>2</sup>&gg;|T<sub>SM</sub>|) in Palatini &omega;&rarr;&minus;3/2; 1-loop SM stability test is Months 1–2 decisive target (window or universal No-Go).</td>
+      <td data-lang="zh"><strong>正则软壳省能已排除。</strong>转向 Palatini &omega;&rarr;&minus;3/2 的<strong>正常相陡曲率钉扎</strong>（&part;<sup>2</sup>U<sub>E</sub>/&part;&delta;<sup>2</sup>&gg;|T<sub>SM</sub>|），第 1–2 月专攻其标准模型单圈存活（出窗口或出普适 No-Go）。</td>
+    </tr>
+    <tr>
+      <td><strong>2. Morphology &amp; I<sub>h</sub> Symmetry</strong></td>
+      <td data-lang="en">External controllability uniquely forces an I<sub>h</sub> icosahedral crystal shell; 12 Fibonacci anyons (F<sub>11</sub>=89) serve as hardware key.</td>
+      <td data-lang="zh">外部可控性唯一必然逼出 I<sub>h</sub> 正二十面体晶壳；12 顶点任意子（F<sub>11</sub>=89）作硬件密钥。</td>
+      <td data-lang="en">Mixed radial support (neutral internal pressure + sub-threshold charge) evades Rayleigh l=2 fission; no microscopic derivation binds anyons to Euler disclinations; curved-GR nonlinear shell bounds open (<code>R6</code>).</td>
+      <td data-lang="zh">混合径向支撑反例可绕过 Rayleigh l=2 裂变，打破唯一必然性；尚无“向错必束缚任意子”的微观推导；弯曲时空非线性壳稳定性仍开放（<code>R6</code>）。</td>
+      <td data-lang="en"><strong>4-Phase Morphology Diagram</strong> (Sphere / Prolate / Torus / I<sub>h</sub> crystal shell); exact I<sub>h</sub> vanishing (l=1..5, S<sub>6</sub>=8.09607) retained for <strong>dynamical l=2 quadrupole immunity</strong>; F<sub>11</sub>=89 downgraded to conditional decoration.</td>
+      <td data-lang="zh">改写为<strong>四图形态相图</strong>（球/长椭球/环面/I<sub>h</sub> 晶壳）；保留 I<sub>h</sub> 严格消零（l=1..5）的<strong>动态 l=2 四极引力免疫</strong>定理；F<sub>11</sub>=89 降为条件装饰。</td>
+    </tr>
+    <tr>
+      <td><strong>3. Anomalous Decoherence &amp; LIGO</strong></td>
+      <td data-lang="en">DSW horizon radiation &rarr; naive Lorentzian/Higgs 1 s slow mode; fixed 0.027 Moon:Earth; 10<sup>30</sup>&times; qubit lockup; f<sub>UV</sub>&le;5 Hz Gaussian cutoff.</td>
+      <td data-lang="zh">早期用 DSW 视界辐射 &rarr; 后用洛伦兹/Higgs 1 s 慢模、固定月地比 0.027、10<sup>30</sup>&times; 锁死量子计算与 5 Hz 高斯截断。</td>
+      <td data-lang="en">DSW is ~10<sup>&minus;151</sup> s<sup>&minus;1</sup>; qubit lockup confused 10<sup>&minus;14</sup> kg mass-interferometry with ion/SC qubits; causal &tau;<sub>c</sub>=1 s (&xi;&le;0.002 AU) sits in R<sup>2</sup> tidal regime; full-band 10–3000 Hz LIGO L1 ASD excludes 5 Hz Gaussian in 10–35 Hz by 490&times;.</td>
+      <td data-lang="zh">DSW 仅 ~10<sup>&minus;151</sup> s<sup>&minus;1</sup>；误把大质量干涉参数当成量子比特；1 s 因果界全落入 R<sup>2</sup> 潮汐区；LIGO L1 全频段 10–35 Hz 将 5 Hz 高斯截断否决达 490 倍。</td>
+      <td data-lang="en"><strong>Dual-Channel AD:</strong> Main Branch zero ambient AD (probed by <strong>optical lattice clocks</strong>: ~1 rad/s at &Delta;&delta;=3&times;10<sup>&minus;16</sup>); Branch B&prime; per-body <code>1.141–2.112 AU</code> crossovers (<code>0.0744</code> R<sup>2</sup> Moon:Earth), 60–120&times; spin echo, conditional <strong>f<sub>UV</sub>&le;1.5 Hz</strong>.</td>
+      <td data-lang="zh"><strong>双通道 AD：</strong>主线环境归零，改由<strong>光晶格钟</strong>探测（&Delta;&delta;=3&times;10<sup>&minus;16</sup> 约 1 rad/s）；支线 B&prime; 分列各天体 <code>1.141–2.112 AU</code> 交叉（月地 R<sup>2</sup> 比 <code>0.0744</code>），条件锁紧至 <strong>f<sub>UV</sub>&le;1.5 Hz</strong>。</td>
+    </tr>
+    <tr>
+      <td><strong>4. Planetary Nodes &amp; Geophysics</strong></td>
+      <td data-lang="en">Nuclear-density relics on seabed / Wilkes Land / SPA; ANITA upward showers; 100 MW Antarctic melt pipe; 28.5 kyr static ocean conduction; buoyancy=free-fall; <sup>232</sup>Th WEP drift; unqualified 10<sup>&minus;41</sup> total GCR.</td>
+      <td data-lang="zh">海底/威尔克斯/SPA 放核密度遗迹、ANITA 上行簇射、南极百兆瓦热管、静态海底导热、浮力降退相干、<sup>232</sup>Th 破 WEP、未限定的总 GCR 10<sup>&minus;41</sup>。</td>
+      <td data-lang="en">Surface weight wall (&le;0.431 MeV); Auger <em>PRL</em> 134, 121003 (2025: strong disagreement); GRAIL impact uplift; MICROSCOPE <em>PRL</em> 2022; ICESat-2 subsidence; secondary high-energy muons &amp; KREEP bedrock radioactivity.</td>
+      <td data-lang="zh">地表承重上限 &le;0.431 MeV；Auger <em>PRL</em> 2025 强烈冲突；GRAIL 撞击成因；MICROSCOPE <em>PRL</em> 2022；ICESat-2 沉降否决；次级高能 &mu; 子与 KREEP 岩石本底辐射。</td>
+      <td data-lang="en"><strong>4D Pareto Trade-Off &amp; Observability Envelopes</strong> (no anomalous-artifact claim): Antarctic <code>3.2–32 kW</code> zero-melt / <code>1–10 MW</code> ICESat-2 veto; Lunar PSR <code>18–20 K</code> Si zero-CTE &amp; <code>113–868 W</code> Diviner 1 K ceiling; hadronic cascade separated from muon/KREEP floor.</td>
+      <td data-lang="zh"><strong>四维帕累托权衡与观测上限</strong>（不宣称异常人工设施）：南极冷底零融冰 <code>3.2–32 kW</code> / ICESat-2 <code>1–10 MW</code>；月极 <code>18–20 K</code> 硅零膨胀 + Diviner <code>113–868 W</code> 升温 1 K 红线；严格区分强子级联与次级 &mu;/KREEP 底板。</td>
+    </tr>
+    <tr>
+      <td><strong>5. Compact Relics &amp; R5 Probes</strong></td>
+      <td data-lang="en">Labeled as PBH asteroid-mass window (10<sup>17</sup>–10<sup>22</sup> g), claiming &lt;1 &mu;m drift over 10 Gyr and optical microlensing down to 10<sup>12</sup> g.</td>
+      <td data-lang="zh">称作小行星质量原初黑洞窗口、10 Gyr 漂移 &lt;1 &mu;m，并用光学微引力透镜覆盖至 10<sup>12</sup> g。</td>
+      <td data-lang="en">Non-evaporating (r<sub>s</sub>&ll;R<sub>*</sub>) relics follow nuclear-density macro DM bounds (Jacobs–Starkman–Lynn <em>MNRAS</em> 2015); wave-optics diffraction cuts off optical microlensing below ~10<sup>20</sup> g; Gyr N-body stability &amp; halo capture remain open.</td>
+      <td data-lang="zh">非蒸发致密腔对应核密度宏观暗物质窗口（<em>MNRAS</em> 2015）；光学微引力透镜在 ~10<sup>20</sup> g 以下受波光学衍射截断；Gyr 三体稳定性与银晕俘获开放。</td>
+      <td data-lang="en">Free-fall orbits framed strictly as a <strong>necessary (not sufficient)</strong> habitat inside the unconstrained <strong>55 g–10<sup>17</sup> g macro DM window</strong>; realistic <code>R5</code> probes: ancient mica paleo-detectors, seismic transits, pulsar timing &amp; L4/L5 gradiometry.</td>
+      <td data-lang="zh">明确自由落体轨道为<strong>必要非充分条件</strong>，落入 <strong>55 g–10<sup>17</sup> g 宏观暗物质窗口</strong>；<code>R5</code> 改用古云母径迹、地震/月震穿通、脉冲星计时与 L4/L5 引力梯度仪。</td>
+    </tr>
+    <tr>
+      <td><strong>6. Epistemic Grading &amp; Scope</strong></td>
+      <td data-lang="en">Earlier <code>9–11</code> gaps marked closed; mixed speculative downstream chapters alongside core physics in active web pages.</td>
+      <td data-lang="zh">早期 <code>9–11</code> 项缺口标绿灯；早期网页主区同时混放核心物理与大跨度延伸章节。</td>
+      <td data-lang="en">Adversarial self-audit flagged conditional gaps, prototype code stubs, and fringe-optics risk for independent theoretical physics review.</td>
+      <td data-lang="zh">红队自审指出多项绿灯属条件性、部分原型为代码骨架，且下游延伸叙事极易触发主流评审边缘误判。</td>
+      <td data-lang="en"><strong>5 closed / 11 progress / 8 open</strong>; strict epistemic badges; 5 clean passing SymPy/SciPy consistency suites; active portal strictly foundational physics with <strong>1,247</strong> curated references + immutable GitHub history.</td>
+      <td data-lang="zh">诚实收敛为 <strong>5 闭合 / 11 进展 / 8 开放</strong>；严格区分解析界/框架公设/量级估计；5 套全通过一致性脚本；现行主站纯基础物理 + <strong>1,247 条</strong>书目 + GitHub 不可篡改历史快照。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">3. Complete Proof-Obligation Ledger (<code>G01–G24</code>: 5 Closed · 11 Active · 8 Open)</h2>
+<h2 data-lang="zh">三、全部二十四项证明义务诚实台账（<code>G01–G24</code>：5 闭合 · 11 推进中 · 8 开放/条件）</h2>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>ID</th><th>Proof Obligation</th><th>Status</th><th>Audited 26 Nov 2026 Ground Truth</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>G01</code></td><td>Microscopic discrete system &amp; &Pi;<sub>1</sub> UV origin</td><td><span class="badge b-info">PROGRESS</span></td><td>1D closed state + causal poset algebra established; unique discrete family generating steep-pinned &omega;&rarr;&minus;3/2 open (Months 1–4 target).</td></tr>
+    <tr><td><code>G02</code></td><td>Operational probe in pre-geometric limit</td><td><span class="badge b-open">OPEN</span></td><td>Manifold-free operational distance/angle probe without prior metric remains open (tested at N&le;20 in Months 3–4).</td></tr>
+    <tr><td><code>G03</code></td><td>Effective gravity dictionary &amp; 1-loop EFT survival</td><td><span class="badge b-info">PROGRESS</span></td><td>Induced gravity &amp; Jordan&harr;Einstein closed; <strong>decisive 1-loop SM survival of steep pinning &part;<sup>2</sup>U<sub>E</sub>/&part;&delta;<sup>2</sup>&gg;|T<sub>SM</sub>|</strong> is Months 1–2 calculation.</td></tr>
+    <tr><td><code>G04</code></td><td>Finite-T interface nucleation &amp; growth</td><td><span class="badge b-info">PROGRESS</span></td><td>Static endothermic attractor &amp; thin-wall bounds proven; non-equilibrium real-time nucleation remains open.</td></tr>
+    <tr><td><code>G05</code></td><td>Full angular perturbation stability in curved GR</td><td><span class="badge b-info">PROGRESS</span></td><td>Pure-fluid l=2 fission solved by crystalline shell in flat space; full GR nonlinear elastic-shell stability open (<code>R6</code>).</td></tr>
+    <tr><td><code>G06</code></td><td>3D anisotropic I<sub>h</sub> ridge nonlinear gradients</td><td><span class="badge b-info">PROGRESS</span></td><td>Macroscopic FvK &gamma;&gt;154.8 buckling &amp; S<sub>6</sub>=8.09607 verified; 30-edge nonlinear FEM solution pending.</td></tr>
+    <tr><td><code>G07</code></td><td>Uniqueness of icosahedral cavity morphology</td><td><span class="badge b-open">CONDITIONAL</span></td><td><strong>Downgraded:</strong> strict uniqueness broken by mixed radial support; survives conditionally in pure single-charge crystalline regime.</td></tr>
+    <tr><td><code>G08</code></td><td>Coexistence of topological shield &amp; external port</td><td><span class="badge b-open">OPEN</span></td><td>Passive thermal/radiation bounds clear, but impedance/bandwidth tension between protection &amp; active control port is unsolved.</td></tr>
+    <tr><td><code>G09</code></td><td>Finite-energy / finite-time reachable manifold</td><td><span class="badge b-open">OPEN</span></td><td>Upper-bounded by W<sub>max</sub>=Mc<sup>2</sup> and Dirichlet wall; exact non-canonical reachable set remains open.</td></tr>
+    <tr><td><code>G10</code></td><td>Closed-loop quantum feedback bandwidth</td><td><span class="badge b-open">OPEN</span></td><td>Strong non-equilibrium many-body measurement-backaction servo limit lacks closed analytic form.</td></tr>
+    <tr><td><code>G11</code></td><td>Complete stress-energy &amp; recoil ledger</td><td><span class="badge b-info">PROGRESS</span></td><td>Covariant &nabla;<sub>&mu;</sub>T<sup>&mu;&nu;</sup>=0 &amp; positive mass enforced; detailed scaffold stress tensor for active scale ports pending.</td></tr>
+    <tr><td><code>G12</code></td><td>Thermal rejection &amp; Landauer cooling ceilings</td><td><span class="badge b-ok">CLOSED</span></td><td>30 K / 300 K / 18.1 K radiative walls, 238.1 kg/s/MW ocean convection, Antarctic zero-melt (3.2–32 kW) &amp; Diviner ceilings verified.</td></tr>
+    <tr><td><code>G13</code></td><td>Nat&aacute;rio divergence-free shear vs rigidity wall</td><td><span class="badge b-open">EXCLUDED / COND.</span></td><td><strong>Main line excluded</strong> by Dirichlet gradient wall (&ge;7.22&times;10<sup>47</sup> J); 5/7 projection integral retained purely as exact arithmetic.</td></tr>
+    <tr><td><code>G14</code></td><td>Cross-media fluid–thermodynamic–metric coupling</td><td><span class="badge b-open">OPEN</span></td><td>Moving curved-boundary multi-physics fluid coupling equations remain unclosed.</td></tr>
+    <tr><td><code>G15</code></td><td>Causal no-signaling across distributed nodes</td><td><span class="badge b-ok">CLOSED</span></td><td>Exact c<sub>T</sub>&equiv;c<sub>EM</sub>&equiv;c, sub-exponential linear isometry, Tsirelson |S|&le;2&radic;2, and Earth–Moon 2.564 s RTT lock causality.</td></tr>
+    <tr><td><code>G16</code></td><td>Dual-channel AD experimental exclusion formulas</td><td><span class="badge b-info">PROGRESS</span></td><td>Per-body 1.141–2.112 AU crossovers, 60–120&times; spin echo, full-band LIGO O3b f<sub>UV</sub>&le;1.5 Hz &amp; optical-clock formulas done; joint package in Months 5–6.</td></tr>
+    <tr><td><code>G17</code></td><td>Solar-System 7-site physical trade-off bounds</td><td><span class="badge b-info">PROGRESS</span></td><td>4D Pareto trade-off &amp; satellite/geophysical observability ceilings verified in code; empirical contour package in Months 5–6.</td></tr>
+    <tr><td><code>G18</code></td><td>Deep-time solid-state &amp; cryogenic preservation</td><td><span class="badge b-info">PROGRESS</span></td><td>18 K Arrhenius (1.15&times;10<sup>&minus;91</sup>) &amp; KREEP/muon floor quantified; periodic QEC forced by Bravyi–Terhal / Bravyi–Haah bounds.</td></tr>
+    <tr><td><code>G19</code></td><td>Cosmological relic &amp; screening unification</td><td><span class="badge b-info">PROGRESS</span></td><td>Non-evaporating 55 g–10<sup>17</sup> g macro DM window &amp; Branch B&prime; dual-field WHK bypass defined; Main-Branch dark-energy bridge open.</td></tr>
+    <tr><td><code>G20</code></td><td>Conformal centrifugal singularity barrier</td><td><span class="badge b-ok">CLOSED</span></td><td>U<sub>E</sub>=(&eta;<sub>0</sub>/&eta;)<sup>2</sup>V<sub>eff</sub>&rarr;+&infin; as &eta;&rarr;0<sup>+</sup> plus no-horizon truncation strictly forbid naked singularities (SymPy verified).</td></tr>
+    <tr><td><code>G21</code></td><td>Pocket-space decoding complexity barrier</td><td><span class="badge b-ok">CLOSED</span></td><td>Python's Lunch exponential reconstruction bound exp(&Delta;A/8&ell;<sub>P</sub><sup>2</sup>) analytically closed.</td></tr>
+    <tr><td><code>G22</code></td><td>Global unitarity vs macroscopic records</td><td><span class="badge b-ok">CLOSED</span></td><td>Page–Wootters + CLPW Type II<sub>1</sub> crossed product + Araki relative entropy + complexity branching criterion closed.</td></tr>
+    <tr><td><code>G23</code></td><td>SM gauge/chiral fermions &amp; dark U(1)<sub>D</sub> embedding</td><td><span class="badge b-info">PROGRESS</span></td><td>String-net + 4D &Zopf;<sub>16</sub> SMG anomaly cancellation &amp; Stueckelberg U(1)<sub>D</sub> outlined; 3-generation Yukawa &amp; UV embedding open.</td></tr>
+    <tr><td><code>G24</code></td><td>Multi-band null-hypothesis &amp; data hygiene</td><td><span class="badge b-open">OPEN / ONGOING</span></td><td>Historical false-positive claims retracted; open Python matched-filter &amp; exclusion pipeline scheduled for Months 5–6.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">4. Curated Foundational Physics Literature Architecture (1,247 Sources &rarr; Direct Filter Links)</h2>
+<h2 data-lang="zh">四、1,247 条基础物理参考书目架构（点击直达对应分组文献）</h2>
+
+<p data-lang="en">Every major constraint above is anchored to published peer-reviewed papers or arXiv preprints indexed in <a href="bibliography.html"><code>bibliography.html</code></a> (collected reference sources across 12 foundational physics directions, <em>not</em> publications authored by Xiaoyi Li). Click any group below to inspect its exact DOI / arXiv records:</p>
+<p data-lang="zh">上述所有物理边界与自证伪结论均锚定于 <a href="bibliography.html"><code>bibliography.html</code></a> 中收录的 12 个基础物理方向共 <strong>1,247 条</strong>公开文献（系系统整理的参考来源，非本人发表论文）。点击下方任意分组可直接筛选查阅对应 DOI / arXiv 条目：</p>
+
+<div class="grid-3">
+  <div class="card"><h3><a href="bibliography.html?group=01">Group 01 · 106 records ↗</a></h3><p data-lang="en"><strong>Microscopic Quantum Models &amp; Dynamics</strong> — BFSS/IKKT matrix models, causal sets, GFT condensates, string-nets, 4D &Zopf;<sub>16</sub> SMG.</p><p data-lang="zh"><strong>微观量子模型与动力学</strong> — 矩阵模型、因果集、群场凝聚态、弦网与四维对称质量生成。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=02">Group 02 · 204 records ↗</a></h3><p data-lang="en"><strong>Quantum Information &amp; Geometry Reconstruction</strong> — Ryu–Takayanagi, finite-cutoff T T&#772;, holographic QEC, CLPW Type II<sub>1</sub> crossed products, QRF.</p><p data-lang="zh"><strong>量子信息与几何重建</strong> — RT 公式、有限截断全息、全息纠错、CLPW 交叉积代数与量子参考系。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=03">Group 03 · 60 records ↗</a></h3><p data-lang="en"><strong>Continuum Limits, Phase Transitions &amp; Math</strong> — MIPT, renormalization, emergence of locality &amp; spectral uniqueness.</p><p data-lang="zh"><strong>连续极限、相变与数学基础</strong> — 测量诱导相变、重整化与局域性谱唯一性。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=04">Group 04 · 65 records ↗</a></h3><p data-lang="en"><strong>Spin-2 Consistency &amp; Effective Gravity</strong> — Weinberg–Witten, Sakharov induced gravity, Palatini f(R) / &omega;=&minus;3/2, WHK screening no-go.</p><p data-lang="zh"><strong>自旋二一致性与有效引力</strong> — Weinberg–Witten、诱导引力、Palatini &omega;=&minus;3/2 与屏蔽禁令。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=05">Group 05 · 154 records ↗</a></h3><p data-lang="en"><strong>Quantum Fields, Vacuum &amp; Stress-Energy</strong> — False vacuum decay, QNEC, quantum inequalities, dynamic dark energy (DESI), TCC.</p><p data-lang="zh"><strong>量子场真空与应力能约束</strong> — 假真空衰变、QNEC、量子能条件、动态暗能量与 TCC。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=06">Group 06 · 135 records ↗</a></h3><p data-lang="en"><strong>Localized Solutions, Topology &amp; Stability</strong> — Charged solitons, Rayleigh fission, FvK spherical crystal buckling, GR elastic shells &amp; Love numbers.</p><p data-lang="zh"><strong>局域解、拓扑与稳定性</strong> — 带荷孤立子、Rayleigh 裂变、球面晶壳屈曲与广义相对论弹性壳。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=07">Group 07 · 41 records ↗</a></h3><p data-lang="en"><strong>Measurement, Metrology &amp; Inference</strong> — Quantum metrology, optical-clock networks, matched filtering &amp; statistical bounds.</p><p data-lang="zh"><strong>测量计量与统计反演</strong> — 量子计量、光钟比对网、匹配滤波与统计排除界。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=08">Group 08 · 187 records ↗</a></h3><p data-lang="en"><strong>Laboratory Tests &amp; Quantum Control</strong> — BMV/MAQRO, levitated optomechanics, CSL/DP X-ray bounds, QEC (Bravyi–Terhal / Bravyi–Haah).</p><p data-lang="zh"><strong>实验室检验与量子控制</strong> — BMV/MAQRO、悬浮光力学、客观坍缩边界与量子纠错码。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=09">Group 09 · 91 records ↗</a></h3><p data-lang="en"><strong>Astronomical, Particle &amp; Gravity Constraints</strong> — LIGO O3b, GW170817, IceCube <em>Nat. Phys.</em> 2024, Auger <em>PRL</em> 2025, KM3NeT, MICROSCOPE, macro DM.</p><p data-lang="zh"><strong>天文、粒子与引力约束</strong> — LIGO O3b、IceCube、Auger 2025、KM3NeT、MICROSCOPE 与宏观暗物质。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=10">Group 10 · 81 records ↗</a></h3><p data-lang="en"><strong>Environmental Backgrounds &amp; Platforms</strong> — Lunar PSR Diviner &amp; LGWA 2025, GRAIL, East Antarctic craton / ICESat-2, abyssal vents, Europa/Enceladus.</p><p data-lang="zh"><strong>自然环境背景与探测平台</strong> — 月球 PSR/LGWA、GRAIL、东南极冰盖/ICESat-2、深海热液与冰卫星。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=11">Group 11 · 57 records ↗</a></h3><p data-lang="en"><strong>Analogue Gravity &amp; Effective Media</strong> — Fracton–elasticity duality, acoustic/optical analogues, metamaterial stress boundaries.</p><p data-lang="zh"><strong>类比引力与有效介质</strong> — 分形子–弹性对偶、声光类比引力与有效介质边界。</p></div>
+  <div class="card"><h3><a href="bibliography.html?group=13">Group 13 · 66 records ↗</a></h3><p data-lang="en"><strong>Information Thermodynamics &amp; Long-Lived Storage</strong> — Landauer, Bekenstein, Lloyd <em>Nature</em> 2000, Sandberg–&Cacute;irkovi&cacute;, Dvali–Osmanov, Wright <em>ApJ</em> 2014.</p><p data-lang="zh"><strong>信息热力学与长寿存储</strong> — Landauer、Bekenstein、Lloyd 2000、极寒计算与天体量热观测极限。</p></div>
+</div>
+
+<h2 data-lang="en">5. Reproducible Verification Code &amp; Active Documents</h2>
+<h2 data-lang="zh">五、可复算验证代码与现行核心文档</h2>
+<ul>
+  <li><a href="VMAD_Research_Statement_2026-11-26.pdf"><strong>Submission-Ready 4-Page Statement (PDF)</strong></a> &middot; <a href="research-statement.html">HTML Version</a></li>
+  <li><a href="unified-synthesis.html"><strong>Full Theory &amp; 20 Physical Backgrounds Specification</strong></a></li>
+  <li><a href="verification/verification_output_2026-11-26.txt"><strong>Live 5-Suite Consistency Execution Log (EXIT 0)</strong></a> &middot; <a href="https://github.com/xyl369/vmad-research/tree/main/verification" target="_blank" rel="noopener">Browse <code>verification/</code> on GitHub ↗</a></li>
+  <li><a href="bibliography.html"><strong>Searchable Foundational Physics Bibliography (1,247 Records)</strong></a></li>
+</ul>
+
+</main>
+<footer>
+  <p data-lang="en">Xiaoyi Li · Independent Theoretical Physics Research (Unaffiliated, Non-Commercial) · ORCID: <a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · Aligned 26 November 2026.</p>
+  <p data-lang="zh">李小毅 · 无机构独立基础物理研究（非商业）· ORCID：<a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · 2026年11月26日全量对齐。</p>
+</footer>
+
+<script>
+(function(){
+  const root = document.documentElement;
+  const btns = document.querySelectorAll('.languages button[data-language]');
+  function setLang(lang) {
+    root.setAttribute('data-language', lang);
+    root.setAttribute('lang', lang);
+    btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.language === lang ? 'true' : 'false'));
+    try { localStorage.setItem('vmad_lang', lang); } catch(e) {}
+  }
+  const params = new URLSearchParams(window.location.search);
+  const qLang = params.get('lang');
+  let init = qLang === 'zh' || qLang === 'en' ? qLang : 'en';
+  if (!qLang) {
+    try {
+      const saved = localStorage.getItem('vmad_lang');
+      if (saved === 'zh' || saved === 'en') init = saved;
+    } catch(e) {}
+  }
+  setLang(init);
+  btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.language)));
+})();
+</script>
+</body>
+</html>

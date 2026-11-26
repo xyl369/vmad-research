@@ -2,7 +2,7 @@
 """
 VMAD Unified Arbitration (2026-11-21 / Public Alignment 2026-11-26)
 Symbolic & Numerical Verification of Rigidity No-Go Bounds, Palatini Scale Limit,
-1.1422 AU Anomalous Decoherence Crossover, and LIGO O3b Spectral Exclusion.
+1.1414 AU Anomalous Decoherence Crossover, and LIGO O3b Spectral Exclusion.
 
 Every assertion below is directly verifiable without free fitting parameters.
 """
@@ -42,18 +42,20 @@ print(f"E_firewall (A=100 m^2) = {E_firewall:.3e} J")
 assert 7.0e80 < E_firewall < 8.0e80
 
 print("\n=== [2] Dirichlet Gradient Wall (Falsifying Canonical Soft-Shell Metric Reduction) ===")
-# Einstein-frame canonical kinetic energy for ln(eta/eta0):
-# E_grad(r >= R) >= c^4 * (2*omega_min + 3) / (4 * G0) * R * delta^2 <= M c^2
-# => delta^2 <= 2 / (2*omega_min + 3) * (r_s / R)
+# Einstein-frame canonical kinetic energy for delta = -1/2 * ln(eta/eta0):
+# L_kin = -(c^4 / (16*pi*G0)) * 2*(2*omega + 3) * (nabla delta)^2 = -(c^4*(2*omega+3)/(8*pi*G0))*(nabla delta)^2
+# Exterior harmonic minimizer delta(r) = delta_surf * R/r yields:
+# E_grad(r >= R) >= c^4 * (2*omega_min + 3) / (2 * G0) * R * delta^2 <= M c^2 = c^4 * r_s / (2 * G0)
+# => delta^2 <= 1 / (2*omega_min + 3) * (r_s / R)
 omega_cassini = 40000.0
 M_ton = 1000.0
 R_10 = 10.0
 rs_ton = 2.0 * G0 * M_ton / c**2
-delta_max_ton = np.sqrt(2.0 / (2.0 * omega_cassini + 3.0) * (rs_ton / R_10))
-delta_max_nonbh = np.sqrt(2.0 / (2.0 * omega_cassini + 3.0))
+delta_max_ton = np.sqrt(1.0 / (2.0 * omega_cassini + 3.0) * (rs_ton / R_10))
+delta_max_nonbh = np.sqrt(1.0 / (2.0 * omega_cassini + 3.0))
 print(f"1-ton, R=10 m object (omega>=40000): r_s/R = {rs_ton/R_10:.3e}, delta_max = {delta_max_ton:.3e}")
 print(f"Non-black-hole ceiling (r_s/R < 1, omega>=40000): delta_max < {delta_max_nonbh:.4e}")
-assert delta_max_nonbh < 5.1e-3
+assert delta_max_nonbh < 3.6e-3
 
 # Explicit self-falsification check of the retracted Nov-11 soft-shell hypothesis:
 # Suppressing eta_shell / eta0 = 1e-30 across R = 10 m:
@@ -108,20 +110,20 @@ grad_sq, U_E, T_trace = sp.symbols("grad_sq U_E T", real=True)
 # Einstein-frame scalar kinetic coefficient: -(2*omega + 3)/2 * (nabla ln(eta))^2 = -2*(2*omega + 3)*(nabla delta)^2
 kin_coeff = -2 * (2 * om + 3)
 assert sp.simplify(kin_coeff.subs(om, sp.Rational(-3, 2))) == 0
-# Variation of -U_E(delta) + S_m[e^{2*delta} g_tilde] yields algebraic constraint dU_E/ddelta = e^{4*delta} T
-# Open obligation G01/G03: stability of chi_m = 0 under SM 1-loop radiative corrections.
+# Variation of -U_E(delta) + S_m[e^{2*delta} g_tilde] identically yields dU_E/ddelta = e^{4*delta} T_SM + O(n_topo).
+# Open obligation G01/G03: 1-loop SM radiative survival of steep normal-phase pinning (d^2 U_E/d delta^2 >> |T_SM|).
 print("VERIFIED: At omega = -3/2, Einstein-frame kinetic prefactor -2*(2*omega+3) === 0 (non-propagating algebraic scale mode).")
-print("OPEN TARGET (G01/G03): 1-loop SM radiative survival of chi_m = 0 decoupling without Palatini surface singularities.")
+print("OPEN TARGET (G01/G03): 1-loop SM radiative survival of steep normal-phase pinning (d^2 U_E/d delta^2 >> |T_SM|) vs Flanagan/BSM singularities.")
 
-print("\n=== [5] Branch B' 1.1422 AU Tidal Crossover, 3-Point Ratio & Spin-Echo/Heating Signatures ===")
+print("\n=== [5] Branch B' 1.1414 AU Earth Tidal Crossover, 3-Point Ratio & Spin-Echo/Heating Signatures ===")
 xi_crit = R_earth * np.sqrt(R_earth / rs_earth)
 xi_crit_AU = xi_crit / AU
 ratio_g2 = (g_moon / g_earth)**2
 ratio_R2 = (R_moon / R_earth)**2
 print(f"xi_crit = R_earth * sqrt(R_earth / r_s_earth) = {xi_crit:.4e} m = {xi_crit_AU:.4f} AU")
-print(f"Moon / Earth AD ratio (xi > 1.1422 AU, g^2 regime) = {ratio_g2:.4f}")
-print(f"Moon / Earth AD ratio (xi < 1.1422 AU, R^2 tidal regime) = {ratio_R2:.4f}")
-assert abs(xi_crit_AU - 1.1422) < 0.002
+print(f"Moon / Earth AD ratio (xi > 1.4660 AU, g^2 regime) = {ratio_g2:.4f}")
+print(f"Moon / Earth AD ratio (xi < 1.1414 AU, R^2 tidal regime) = {ratio_R2:.4f}")
+assert abs(xi_crit_AU - 1.1414) < 0.001
 assert abs(ratio_g2 - 0.0274) < 0.001
 assert abs(ratio_R2 - 0.0744) < 0.001
 
