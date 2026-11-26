@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unified Synthesis (Route A, 21 Nov 2026) | Xiaoyi Li · VMAD</title>
-  <meta name="description" content="Route A foundational physics edition of the VMAD 21 Nov 2026 Unified Arbitration: A1-A6 axioms, rigidity no-go walls, shape-stiff scale-soft bifurcation, morphology phase diagram, and dual-channel anomalous decoherence." />
+  <title>Full Academic Specification (20 Backgrounds &amp; 7 Nodes) | Xiaoyi Li · VMAD</title>
+  <meta name="description" content="Complete academicized VMAD specification: 20 physical backgrounds, A1-A6 axioms, Theorems 1-7 arbitration, vacuum metastability &amp; anomalous decoherence functions, and 7 Solar-System optimal node proofs." />
   <style>
 :root {
   --ink: #1e293b;
@@ -12,10 +12,6 @@
   --line: #dbe3ec;
   --accent: #1d4e78;
   --accent-soft: #eef4fa;
-  --warn-bg: #fff7ed;
-  --warn-border: #ea580c;
-  --ok-bg: #ecfdf5;
-  --ok-ink: #065f46;
   --soft: #f8fafc;
 }
 * { box-sizing: border-box; }
@@ -24,366 +20,223 @@ body {
   margin: 0;
   background: #ffffff;
   color: var(--ink);
-  font: 15.5px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  font: 15.2px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
 }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 .top {
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 15px 24px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
   border-bottom: 1px solid var(--line);
 }
-.identity {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: none;
-  letter-spacing: -0.2px;
-}
-.topnav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-left: auto;
-  font-size: 13px;
-}
+.identity { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.topnav { display: flex; flex-wrap: wrap; gap: 15px; margin-left: auto; font-size: 13px; }
 .topnav a { text-decoration: none; color: var(--muted); font-weight: 500; }
 .topnav a:hover, .topnav a.active { color: var(--accent); font-weight: 600; }
-.languages {
-  display: flex;
-  gap: 6px;
-  border-left: 1px solid var(--line);
-  padding-left: 12px;
-}
-.languages button {
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font: inherit;
-  font-size: 12.5px;
-  color: var(--muted);
-  padding: 2px 6px;
-}
-.languages button[aria-pressed="true"] {
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.wrap {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 28px 24px 64px;
-}
-.eyebrow {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-  color: var(--muted);
-  margin: 0 0 8px;
-  font-weight: 600;
-}
-h1 {
-  font-size: 30px;
-  line-height: 1.28;
-  margin: 0 0 12px;
-  letter-spacing: -0.4px;
-  color: #0f172a;
-}
-h2 {
-  font-size: 21px;
-  line-height: 1.35;
-  margin: 34px 0 14px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--line);
-  color: #0f172a;
-}
-h3 {
-  font-size: 16.5px;
-  line-height: 1.45;
-  margin: 22px 0 8px;
-  color: #0f172a;
-}
-p { margin: 0 0 14px; }
-ul, ol { margin: 8px 0 16px; padding-left: 22px; }
-li { margin-bottom: 8px; }
-.meta-line {
-  font-size: 13.5px;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
+.languages { display: flex; gap: 6px; border-left: 1px solid var(--line); padding-left: 12px; }
+.languages button { border: 0; background: none; cursor: pointer; font: inherit; font-size: 12.5px; color: var(--muted); padding: 2px 6px; }
+.languages button[aria-pressed="true"] { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 26px 24px 64px; }
+.eyebrow { font-size: 11.8px; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+h1 { font-size: 29px; line-height: 1.28; margin: 0 0 12px; letter-spacing: -0.4px; color: #0f172a; }
+h2 { font-size: 20.5px; line-height: 1.35; margin: 32px 0 13px; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: #0f172a; }
+h3 { font-size: 16px; line-height: 1.45; margin: 20px 0 8px; color: #0f172a; }
+p { margin: 0 0 13px; }
+ul, ol { margin: 8px 0 15px; padding-left: 22px; }
+li { margin-bottom: 7px; }
+.meta-line { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
 .question-box {
   background: var(--accent-soft);
   border-left: 4px solid var(--accent);
-  padding: 18px 22px;
-  margin: 20px 0 26px;
+  padding: 17px 21px;
+  margin: 18px 0 24px;
   border-radius: 0 6px 6px 0;
 }
 .question-box p:last-child { margin-bottom: 0; }
-.callout {
-  background: var(--soft);
-  border: 1px solid var(--line);
-  padding: 16px 20px;
-  border-radius: 6px;
-  margin: 18px 0;
-  font-size: 14.5px;
-}
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin: 18px 0 24px;
-}
-.card {
-  border: 1px solid var(--line);
-  background: var(--soft);
-  border-radius: 6px;
-  padding: 16px 18px;
-}
-.card h3 { margin-top: 0; font-size: 15.5px; }
+.callout { background: var(--soft); border: 1px solid var(--line); padding: 15px 19px; border-radius: 6px; margin: 16px 0; font-size: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0 22px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin: 16px 0 22px; }
+.card { border: 1px solid var(--line); background: var(--soft); border-radius: 6px; padding: 15px 17px; }
+.card h3 { margin-top: 0; font-size: 15.2px; }
 .card p:last-child { margin-bottom: 0; }
-.table-wrap { overflow-x: auto; margin: 16px 0 22px; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-  line-height: 1.6;
-}
-th, td {
-  text-align: left;
-  vertical-align: top;
-  padding: 9px 11px;
-  border-bottom: 1px solid var(--line);
-}
-th {
-  background: var(--soft);
-  font-weight: 600;
-  color: #0f172a;
-}
-.badge {
-  display: inline-block;
-  font-size: 11.5px;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
+.table-wrap { overflow-x: auto; margin: 15px 0 22px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.56; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { background: var(--soft); font-weight: 600; color: #0f172a; }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
 .b-ok { background: #dcfce7; color: #166534; }
 .b-no { background: #fee2e2; color: #991b1b; }
 .b-open { background: #fef3c7; color: #92400e; }
 .b-info { background: #e0f2fe; color: #075985; }
-figure {
-  margin: 22px 0;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #ffffff;
-}
-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-figcaption {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 10px;
-  line-height: 1.55;
-}
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.88em;
-  background: #f1f5f9;
-  padding: 1px 5px;
-  border-radius: 3px;
-}
-pre {
-  background: #f8fafc;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 14px 16px;
-  overflow-x: auto;
-  font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-footer {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 20px 24px 40px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--muted);
-}
+figure { margin: 20px 0; padding: 13px; border: 1px solid var(--line); border-radius: 6px; background: #ffffff; }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { font-size: 12.8px; color: var(--muted); margin-top: 9px; line-height: 1.55; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.87em; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+footer { max-width: 1020px; margin: 0 auto; padding: 18px 24px 36px; border-top: 1px solid var(--line); font-size: 12.8px; color: var(--muted); }
 html[data-language="en"] [data-lang="zh"] { display: none !important; }
 html[data-language="zh"] [data-lang="en"] { display: none !important; }
+@page { size: letter; margin: 10mm 11mm; }
 @media print {
   .top, .languages, .no-print { display: none !important; }
-  body { font-size: 9.8pt; line-height: 1.46; color: #000; }
+  body { font-size: 8.6pt; line-height: 1.36; color: #000; }
   .wrap { max-width: 100%; padding: 0; }
-  h1 { font-size: 16.5pt; margin-bottom: 6pt; }
-  h2 { font-size: 12.2pt; margin: 13pt 0 7pt; page-break-after: avoid; }
-  p { margin-bottom: 8pt; }
-  li { margin-bottom: 4pt; }
-  table { font-size: 8.8pt; line-height: 1.4; }
-  th, td { padding: 5pt 6pt; }
-  figure { margin: 10pt 0; padding: 8pt; }
-  figure img { max-height: 235pt; width: auto; margin: 0 auto; }
-  footer { padding: 8pt 0 0; font-size: 8.5pt; }
+  h1 { font-size: 14.6pt; margin-bottom: 4pt; }
+  h2 { font-size: 10.8pt; margin: 9pt 0 4.5pt; page-break-after: avoid; }
+  h3 { font-size: 9.4pt; margin: 6pt 0 3pt; }
+  p { margin-bottom: 4.8pt; }
+  ul, ol { margin: 4pt 0 7pt; }
+  li { margin-bottom: 2.4pt; }
+  .question-box { padding: 8pt 11pt; margin: 7pt 0 9pt; }
+  table { font-size: 7.75pt; line-height: 1.3; }
+  th, td { padding: 3.1pt 4.5pt; }
+  figure { margin: 6pt 0; padding: 5pt; }
+  figure img { max-height: 185pt; width: auto; margin: 0 auto; }
+  figcaption { font-size: 7.8pt; margin-top: 4pt; }
+  footer { padding: 6pt 0 0; font-size: 7.6pt; }
   .card, .question-box, figure, tr { page-break-inside: avoid; }
   a { color: #000; text-decoration: none; }
 }
 </style>
 </head>
 <body>
-<header class="top"><a class="identity" href="index.html">Xiaoyi Li · VMAD</a><nav class="topnav"><a href="index.html"><span data-lang="en">Overview</span><span data-lang="zh">总览</span></a><a href="research-statement.html"><span data-lang="en">Research Statement</span><span data-lang="zh">研究说明</span></a><a href="unified-synthesis.html" class="active"><span data-lang="en">Unified Synthesis</span><span data-lang="zh">统合定本</span></a><a href="bibliography.html"><span data-lang="en">Physics Bibliography</span><span data-lang="zh">物理文献目录</span></a><a href="VMAD_Research_Statement_2026-11-26.pdf">PDF ↗</a><a href="https://github.com/xyl369/vmad-research" target="_blank" rel="noopener">GitHub ↗</a><a href="https://orcid.org/0009-0000-0482-2376" target="_blank" rel="noopener">ORCID ↗</a></nav><div class="languages"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></header>
+<header class="top"><a class="identity" href="index.html">Xiaoyi Li · VMAD</a><nav class="topnav"><a href="index.html"><span data-lang="en">Overview</span><span data-lang="zh">总览</span></a><a href="research-statement.html"><span data-lang="en">Research Statement</span><span data-lang="zh">研究说明与节点证明</span></a><a href="unified-synthesis.html" class="active"><span data-lang="en">Full Theory & 20 Backgrounds</span><span data-lang="zh">完整理论与背景审计</span></a><a href="bibliography.html"><span data-lang="en">Physics Bibliography</span><span data-lang="zh">物理文献目录</span></a><a href="VMAD_Research_Statement_2026-11-26.pdf">PDF ↗</a><a href="https://github.com/xyl369/vmad-research" target="_blank" rel="noopener">GitHub ↗</a><a href="https://orcid.org/0009-0000-0482-2376" target="_blank" rel="noopener">ORCID ↗</a></nav><div class="languages"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button></div></header>
 <main class="wrap">
 
-<p class="eyebrow" data-lang="en">Route A Foundational Physics Edition · Aligned to 21 Nov 2026 Arbitration</p>
-<p class="eyebrow" data-lang="zh">路线 A 基础物理纯净版 · 对齐 2026-11-21 整体理论统合定本</p>
+<p class="eyebrow" data-lang="en">Complete Academicized Theoretical Specification · Aligned to 21 Nov 2026 Unified Arbitration</p>
+<p class="eyebrow" data-lang="zh">完整前沿学术化理论规范 · 严格对齐 2026-11-21 整体理论统合定本</p>
 
-<h1 data-lang="en">VMAD Unified Theoretical Arbitration (21 November 2026)</h1>
-<h1 data-lang="zh">VMAD 整体理论统合仲裁定本（2026-11-21 · 公开物理版）</h1>
+<h1 data-lang="en">VMAD Full Academic Specification: 20 Physical Backgrounds, Axioms A1–A6, Decoherence Functions &amp; 7 Solar-System Node Proofs</h1>
+<h1 data-lang="zh">VMAD 完整学术规范：20 项物理背景审计、A1–A6 公设、退相干功能与七大太阳系节点证明</h1>
 
 <div class="callout">
-  <p data-lang="en"><strong>Epistemic Discipline:</strong> Every proposition below carries an explicit tag—<span class="badge b-ok">THEOREM</span> (derived from established GR, operator-algebra, continuum-mechanics, or thermodynamics results and verified by code), <span class="badge b-open">HYPOTHESIS / OPEN</span> (requiring stated assumptions or unresolved microscopic derivations), or <span class="badge b-no">EXCLUDED</span> (quantitatively ruled out by VMAD's own axioms and/or experiments). Conditional downstream engineering/scenario exercises from local notebooks are intentionally separated from this foundational physics dossier.</p>
-  <p data-lang="zh"><strong>认识论分级纪律：</strong>全文所有命题严格标注 <span class="badge b-ok">定理</span>（已由既有数学物理定理导出并经代码核验）、<span class="badge b-open">推演/开放</span>（显式标明前提与待攻克缺口）或 <span class="badge b-no">排除</span>（已被自身公设或实测证伪）。条件性下游工程/场景推演与本基础物理公开定本保持严格隔离。</p>
+  <p data-lang="en"><strong>Epistemic Discipline:</strong> Every proposition below is strictly tagged <span class="badge b-ok">THEOREM</span> (derived from established GR, operator-algebra, thermodynamics, or continuum mechanics and verified by code), <span class="badge b-open">OPEN / CONDITIONAL</span> (tied to explicit proof obligations <code>G01–G24</code>), or <span class="badge b-no">EXCLUDED</span> (quantitatively overturned by VMAD's own axioms or experimental bounds). Planetary node proofs establish <em>physical Pareto feasibility envelopes and falsifiable observational ceilings</em> (aligned with Lloyd, Landauer, Sandberg–&Cacute;irkovi&cacute;, Dvali, and Wright), without asserting unverified artifact detections.</p>
+  <p data-lang="zh"><strong>认识论分级纪律：</strong>全文命题严格标注 <span class="badge b-ok">定理</span>、<span class="badge b-open">开放/条件</span> 与 <span class="badge b-no">排除</span>。太阳系节点证明严格确立<strong>物理约束帕累托可行包络与可证伪观测上限</strong>（对标 Lloyd、Landauer、Sandberg–&Cacute;irkovi&cacute;、Dvali 与 Wright 顶刊框架），不预设未证实人工遗迹存在。</p>
 </div>
 
-<h2 data-lang="en">1. Unified Axiom Set (<code>A1–A6</code>)</h2>
-<h2 data-lang="zh">一、统合版六大公设（<code>A1–A6</code>）</h2>
+<h2 data-lang="en">1. Unified Axiom Set (<code>A1–A6</code>) &amp; Rigidity No-Go Triad</h2>
+<h2 data-lang="zh">一、统合版六大公设（<code>A1–A6</code>）与刚度三界定理</h2>
 
 <div class="table-wrap">
 <table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th data-lang="en">Core Physical Formulation</th>
-      <th data-lang="zh">核心物理表述</th>
-      <th data-lang="en">Status</th>
-      <th data-lang="zh">状态</th>
-    </tr>
-  </thead>
+  <thead><tr><th>ID</th><th>Physical Formulation &amp; Verified Control Equation</th><th>Status</th></tr></thead>
   <tbody>
-    <tr>
-      <td><strong>A1</strong></td>
-      <td data-lang="en"><strong>Pre-Geometric Algebraic Substrate:</strong> Local von Neumann algebras over a causal poset; closed-universe WDW constraint H<sub>total</sub>|&Psi;<sub>U</sub>&rang; = 0; gravitating observer Type II<sub>1</sub> crossed product with Araki relative entropy fixes lifetime extractable work W<sub>max</sub> = M<sub>obs</sub>c<sup>2</sup>.</td>
-      <td data-lang="zh"><strong>前几何代数底板：</strong>因果偏序集上的局域冯·诺依曼算子代数网；闭合宇宙 WDW 零能约束；观察者 Type II<sub>1</sub> 交叉积与荒木相对熵锁定一生最大可提取功 W<sub>max</sub> = M<sub>obs</sub>c<sup>2</sup>。</td>
-      <td><span class="badge b-ok">THEOREM</span></td>
-    </tr>
-    <tr>
-      <td><strong>A2</strong></td>
-      <td data-lang="en"><strong>Relational Time &amp; Complexity Branching:</strong> Page–Wootters conditional clock + Type III<sub>1</sub> &rtimes; &Ropf; &rarr; Type II modular flow; sub-exponential non-isometric codes stay linear to O(e<sup>&minus;S<sub>BH</sub>/2</sup>) (no Gisin–Polchinski signaling); Everett branching occurs when recovery complexity exceeds observer capacity C<sub>rec</sub>(T) &gt; C<sub>O</sub>.</td>
-      <td data-lang="zh"><strong>关系时间与复杂度分支：</strong>Page–Wootters 条件时钟与交叉积模流同构；亚指数非等距编码保持线性杜绝超光速；不可逆分支判据 C<sub>rec</sub>(T) &gt; C<sub>O</sub>。</td>
-      <td><span class="badge b-ok">THEOREM</span> + <span class="badge b-open">CONJ.</span></td>
-    </tr>
-    <tr>
-      <td><strong>A3</strong></td>
-      <td data-lang="en"><strong>Emergent Geometry &amp; UV Tensor Rigidity:</strong> Sakharov induced gravity locks macro tensor stiffness K<sub>0</sub> = c<sup>4</sup>/(8&pi;G<sub>0</sub>) &approx; 4.82&times;10<sup>42</sup> N via UV entanglement density &eta;<sub>0</sub> = 1/(4&ell;<sub>P</sub><sup>2</sup>); scale-invariant renormalization protects WEP and zero &alpha;<sub>EM</sub> drift.</td>
-      <td data-lang="zh"><strong>涌现几何与紫外张量刚度：</strong>Sakharov 诱导引力由紫外纠缠密度 &eta;<sub>0</sub> 锁死宏观刚度 K<sub>0</sub> &approx; 4.82&times;10<sup>42</sup> N；标度不变重整化保护弱等效原理与 &alpha;<sub>EM</sub> 零漂移。</td>
-      <td><span class="badge b-ok">THEOREM</span></td>
-    </tr>
-    <tr>
-      <td><strong>A4</strong></td>
-      <td data-lang="en"><strong>Scale-Soft Corner (Main Branch, &omega; &rarr; &minus;3/2):</strong> Jacobson entanglement equilibrium fixes traceless Einstein equations. At 2&omega;+3 &rarr; 0, &delta; &equiv; &minus;(1/2)ln(&eta;/&eta;<sub>0</sub>) becomes a non-propagating algebraic scale field (g<sup>matter</sup><sub>&mu;&nu;</sub> = e<sup>2&delta;</sup>g&#771;<sub>&mu;&nu;</sub>, &part;U<sub>E</sub>/&part;&delta; = e<sup>4&delta;</sup>T) with zero 5th-force tail; requires &chi;<sub>m</sub> &approx; 0 decoupling from ordinary matter and a gapped hidden-sector source &delta; = &chi;<sub>t</sub>n<sub>topo</sub> (<code>G01/G03</code>). Canonical 2&omega;+3 &gt; 0 dual-field propagation is retained as <strong>Branch B&prime;</strong>.</td>
-      <td data-lang="zh"><strong>标度软方向（主线，&omega; &rarr; &minus;3/2）：</strong>Jacobson 纠缠平衡仅锁定无迹部分，在 Palatini 角落 &delta; 退化为无长程尾代数标度场，避开梯度墙，要求 &chi;<sub>m</sub>&approx;0 脱耦与有能隙隐扇区激发（核心待解 <code>G01/G03</code>）。正则双场并入<strong>支线 B&prime;</strong>。</td>
-      <td><span class="badge b-open">OPEN BRIDGE</span></td>
-    </tr>
-    <tr>
-      <td><strong>A5</strong></td>
-      <td data-lang="en"><strong>Metastable Endothermic Cavities &amp; Dark Charge:</strong> Firewall wall restricts local transitions to near-degenerate rearrangements (&Delta;&rho;<sub>V</sub> &gt; 0). Stabilizing cavities via a Stueckelberg massive dark Abelian charge U(1)<sub>D</sub> avoids ordinary-EM Schwinger breakdown and &Delta;N<sub>eff</sub> tension (<code>G08/G23</code>).</td>
-      <td data-lang="zh"><strong>吸能亚稳相腔与暗规范荷：</strong>火墙界迫使局域相变为近简并重排；引入微质量暗阿贝尔荷 U(1)<sub>D</sub> 消除普通电磁施温格击穿与暗辐射超标（<code>G08/G23</code>）。</td>
-      <td><span class="badge b-open">HYPOTHESIS</span></td>
-    </tr>
-    <tr>
-      <td><strong>A6</strong></td>
-      <td data-lang="en"><strong>Thermodynamic &amp; Causal Iron Cage:</strong> Covariant conservation &nabla;<sub>&mu;</sub>T<sup>&mu;&nu;</sup><sub>total</sub> = 0, exact dual-null-cone coincidence c<sub>T</sub> &equiv; c<sub>EM</sub> &equiv; c, QNEC, Python's Lunch exponential barrier exp(&Delta;A/8&ell;<sub>P</sub><sup>2</sup>), Landauer bound P<sub>diss</sub> &ge; k<sub>B</sub>T S&#775;, metric redshift-acceleration interlock a<sub>i</sub> = &minus;c<sup>2</sup>&part;<sub>i</sub>z, and Bekenstein self-reference bound.</td>
-      <td data-lang="zh"><strong>热力学与因果铁笼：</strong>广义比安基守恒、双零光锥重合、QNEC、Python's Lunch 指数壁垒、Landauer 耗散下限、红移–加速度互锁律与贝肯斯坦自指不可完备性。</td>
-      <td><span class="badge b-ok">THEOREM</span></td>
-    </tr>
+    <tr><td><strong>A1</strong></td><td><strong>Pre-Geometric Algebraic Substrate:</strong> Local von Neumann algebras over causal poset; H<sub>total</sub>|&Psi;<sub>U</sub>&rang;=0; observer <code>Type II<sub>1</sub></code> crossed product + Araki relative entropy locks lifetime work <code>W<sub>max</sub> = M<sub>obs</sub>c<sup>2</sup></code> (~3.5&times;10<sup>69</sup> bits/kg at T<sub>GH</sub>).</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>A2</strong></td><td><strong>Relational Time &amp; Complexity Branching:</strong> Page–Wootters clock isomorphic to Type III<sub>1</sub>&rtimes;&Ropf;&rarr;Type II modular flow; sub-exponential non-isometric codes stay linear to O(e<sup>&minus;S<sub>BH</sub>/2</sup>); branching when C<sub>rec</sub>(T)&gt;C<sub>O</sub>.</td><td><span class="badge b-ok">THEOREM</span> + <span class="badge b-open">CONJ.</span></td></tr>
+    <tr><td><strong>A3</strong></td><td><strong>Emergent UV Tensor Stiffness:</strong> Sakharov induced gravity binds &eta;<sub>0</sub>=1/(4&ell;<sub>P</sub><sup>2</sup>)=9.570&times;10<sup>68</sup> m<sup>&minus;2</sup> to stiffness K<sub>0</sub>=c<sup>4</sup>/(8&pi;G<sub>0</sub>)=4.815&times;10<sup>42</sup> N; scale-invariant renormalization preserves WEP &amp; &Delta;&alpha;<sub>EM</sub>&equiv;0.</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>A4</strong></td><td><strong>Shape-Stiff, Scale-Soft Bifurcation:</strong> Main Branch (Palatini &omega;&rarr;&minus;3/2) zeroes scalar kinetic prefactor &minus;2(2&omega;+3)&equiv;0, giving algebraic conformal scale &part;U<sub>E</sub>/&part;&delta;=e<sup>4&delta;</sup>T (zero 5th force; open 1-loop SM survival of &chi;<sub>m</sub>=0 in <code>G01/G03</code>). Branch B&prime; (2&omega;+3&gt;0) retains propagating dual fields for testable global AD.</td><td><span class="badge b-open">OPEN BRIDGE</span></td></tr>
+    <tr><td><strong>A5</strong></td><td><strong>Endothermic Phase Cavities &amp; Dark Charge:</strong> Firewall wall forces near-degenerate &Delta;&rho;<sub>V</sub>&gt;0 transitions; Stueckelberg massive dark Abelian U(1)<sub>D</sub> (R<sub>*</sub>&ll;&lambda;<sub>D</sub>&ll;1 AU) stabilizes cavities (E&Prime;&gt;0) without Schwinger breakdown or &Delta;N<sub>eff</sub> tension.</td><td><span class="badge b-open">HYPOTHESIS</span></td></tr>
+    <tr><td><strong>A6</strong></td><td><strong>Thermodynamic &amp; Causal Iron Cage:</strong> &nabla;<sub>&mu;</sub>T<sup>&mu;&nu;</sup><sub>total</sub>=0, c<sub>T</sub>&equiv;c<sub>EM</sub>&equiv;c, QNEC, Python's Lunch exp(&Delta;A/8&ell;<sub>P</sub><sup>2</sup>), Landauer P<sub>diss</sub>&ge;k<sub>B</sub>T S&#775;, a<sub>i</sub>=&minus;c<sup>2</sup>&part;<sub>i</sub>z, Bekenstein self-reference limit.</td><td><span class="badge b-ok">THEOREM</span></td></tr>
   </tbody>
 </table>
 </div>
 
-<h2 data-lang="en">2. Three-Channel Microscopic Division (Circumventing Field-Theory No-Go Theorems)</h2>
-<h2 data-lang="zh">二、三路同源分工（规避场论禁戒定理）</h2>
 <ul>
-  <li data-lang="en"><strong>Bulk Spin-2 Graviton:</strong> Finite-cutoff holography (T T&#772; deformation) &amp; holographic QEC/MERA evade the flat-space Weinberg–Witten theorem.</li>
-  <li data-lang="zh"><strong>体引力子：</strong>有限截断全息（T T&#772; 形变）与全息量子纠错码突破同维平直前提，绕开 Weinberg–Witten 禁阻定理。</li>
-  <li data-lang="en"><strong>Chiral Matter &amp; Gauge Fields:</strong> String-net condensation + non-perturbative 4D Symmetric Mass Generation (SMG) cancelling the &Zopf;<sub>16</sub> Dai–Freed anomaly evade Nielsen–Ninomiya fermion doubling.</li>
-  <li data-lang="zh"><strong>规范场与手征费米子：</strong>弦网凝聚 + 四维非微扰对称质量生成（SMG）抵消 &Zopf;<sub>16</sub> 混合反常，绕开 Nielsen–Ninomiya 倍增定理。</li>
-  <li data-lang="en"><strong>2D Shell Defect Dictionary:</strong> Fracton–elasticity–curvature duality is strictly restricted to the 2D closed crystal shell &part;&Omega; &simeq; S<sup>2</sup> (never conflated with 4D bulk gravitons).</li>
-  <li data-lang="zh"><strong>二维外壳缺陷字典：</strong>分形子–弹性–曲率对偶严格限定在二维闭合晶壳表面，绝不充当四维体引力子。</li>
+  <li><strong>Rigidity I (Firewall):</strong> E<sub>firewall</sub>(100 m<sup>2</sup>) = <code>7.488&times;10<sup>80</sup> J</code> &rarr; proves vacuum metastability is a finite-energy theorem.</li>
+  <li><strong>Rigidity II (Dirichlet Gradient Wall):</strong> &delta;<sup>2</sup> &le; [2/(2&omega;<sub>min</sub>+3)](r<sub>s</sub>/R); kills canonical soft-shell 10<sup>&minus;30</sup> reduction (E<sub>grad</sub> &ge; <code>7.22&times;10<sup>47</sup> J</code> exterior to <code>2.17&times;10<sup>49</sup> J</code> 1 m shell).</li>
+  <li><strong>Rigidity III (No-Horizon &amp; Weight):</strong> R<sub>*</sub> &lt; &radic;[3c<sup>4</sup>/(32&pi;G<sub>0</sub>&Delta;&rho;<sub>V</sub>)] eliminates Planck-density cavities; surface weight caps &Lambda;<sub>phase</sub> at &le;<code>8.48 keV</code> (air), <code>45.56 keV</code> (water), <code>0.431 MeV</code> (granite), forcing QCD/EW relics to L4/L5 free-fall orbits.</li>
 </ul>
 
-<h2 data-lang="en">3. Morphology Phase Diagram &amp; Dual-Channel Anomalous Decoherence</h2>
-<h2 data-lang="zh">三、相腔形态相图与异常退相干双通道判决</h2>
+<h2 data-lang="en">2. Complete Arbitration of Theorems 1–7 &amp; Multi-Body AD Gradient</h2>
+<h2 data-lang="zh">二、原七大定理 2026-11-21 终裁表与多天体异常退相干梯度</h2>
 
-<p data-lang="en"><strong>Morphology Phase Diagram (replacing earlier icosahedral inevitability):</strong> Pure gauge-charged endothermic fluid cavities suffer Rayleigh l=2 quadrupole fission (&Lambda;<sub>l=2</sub> = &minus;2&Delta;&rho;<sub>V</sub>R<sub>*</sub><sup>3</sup> &lt; 0). However, mixed radial support permits spherical (liquid, zero multipoles) or toroidal (zero Euler disclinations) equilibria; I<sub>h</sub> icosahedral buckling (12 Euler disclinations, &gamma;<sub>FvK</sub> &gt; 154.8, exact vanishing of l=1..5 harmonics with S<sub>6</sub> &approx; 8.09607 creating a quadrupole-free gravitational DFS) is the optimal branch specifically for long-lived crystalline shells—subject to open curved-GR shell stability bounds (<code>R6</code>).</p>
-<p data-lang="zh"><strong>形态相图（取代早期二十面体必然论）：</strong>纯规范荷吸能流体球腔必发 Rayleigh l=2 四极裂变；但混合径向支撑允许球形或环面（零向错）平衡构型。正二十面体（12 向错、&gamma;<sub>FvK</sub> &gt; 154.8、l=1..5 球谐严格归零并构成引力四极 DFS）仅是长寿晶态外壳的最优分支，且受广义相对论弯曲弹性壳稳定性检验（<code>R6</code>）约束。</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Theorem</th><th>Current 2026-11-21 / 11-26 Arbitration</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Thm 1</strong></td><td>Closed-universe 1D state + observer Type II<sub>1</sub> crossed product + Araki relative entropy locking W<sub>max</sub>=Mc<sup>2</sup>.</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>Thm 2</strong></td><td>Conformal centrifugal singularity barrier U<sub>E</sub>&prop;&Delta;&rho;<sub>V</sub>/&eta;<sup>2</sup>&rarr;+&infin; (&delta;&rarr;&infin; unreachable) + exact 4D Maxwell trace decoupling T<sup>&mu;</sup><sub>&mu;</sub><sup>(EM)</sup>&equiv;0.</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>Thm 3</strong></td><td>All-spacetime dual-null-cone coincidence c<sub>T</sub>&equiv;c<sub>EM</sub>&equiv;c (GW170817, KM3NeT 220 PeV) + &Delta;&alpha;<sub>EM</sub>&equiv;0 (Dark Ages 21 cm test).</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>Thm 4</strong></td><td>Dirichlet gradient bound + Schwarzschild no-horizon truncation + tightened surface weight bounds (&le;8.48 keV / 45.56 keV / 0.431 MeV).</td><td><span class="badge b-ok">THEOREM</span></td></tr>
+    <tr><td><strong>Thm 5</strong></td><td>Split: Rayleigh l=2 fission &amp; I<sub>h</sub> vanishing (l=1..5, S<sub>6</sub>=8.09607, quadrupole-free DFS) are <span class="badge b-ok">THEOREM</span>; shell inevitability replaced by 4-phase Morphology Diagram; F<sub>11</sub>=89 downgraded to conditional decoration.</td><td><span class="badge b-info">SPLIT</span></td></tr>
+    <tr><td><strong>Thm 6</strong></td><td>Canonical soft-shell 5/7 shear energy saving <strong>EXCLUDED</strong> on main line (Dirichlet gradient wall); geometric 5/7 projection integral remains exact arithmetic only.</td><td><span class="badge b-no">EXCLUDED</span></td></tr>
+    <tr><td><strong>Thm 7</strong></td><td>Rewritten as Dual-Channel AD: Main Branch (&omega;&rarr;&minus;3/2) zero ambient AD (optical clock probe &Delta;&delta;=3&times;10<sup>&minus;16</sup>&rarr;1 rad/s); Branch B&prime; exact 1.1414 AU crossover, 5-body g<sup>2</sup>/R<sup>2</sup> gradient, 60–120&times; spin echo, 2.53&times;10<sup>&minus;12</sup> heating suppression, full-band LIGO O3b <strong>f<sub>UV</sub>&le;1.5 Hz</strong>.</td><td><span class="badge b-info">DUAL-CHANNEL</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 data-lang="en">3. Complete Seven-Site Solar-System Optimal Node Audit</h2>
+<h2 data-lang="zh">三、太阳系七类物理信息节点完整学术审计矩阵</h2>
 
 <div class="table-wrap">
 <table>
   <thead>
     <tr>
-      <th data-lang="en">Model / Regime</th>
-      <th data-lang="zh">模型与区间</th>
-      <th>Earth Surface</th>
-      <th>Lunar Surface</th>
-      <th>Orbital Free-Fall</th>
-      <th data-lang="en">Primary Discriminant</th>
-      <th data-lang="zh">核心判别特征</th>
+      <th>Solar-System Site</th>
+      <th data-lang="en">Mathematical-Physical Role &amp; Verified Quantitative Proofs</th>
+      <th data-lang="zh">数学物理定位与实算硬证明</th>
+      <th data-lang="en">Academic Verdict &amp; Falsification Ceiling</th>
+      <th data-lang="zh">学术裁决与可观测证伪红线</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Branch B&prime; · g<sup>2</sup> regime (&xi; &gt; 1.141 AU)</strong></td>
-      <td><code>1</code></td>
-      <td><code>0.0275</code></td>
-      <td><code>~10<sup>&minus;22</sup></code></td>
-      <td data-lang="en">60–120&times; spin echo; requires &tau;<sub>c</sub> &ge; 570 s (mHz band)</td>
-      <td data-lang="zh">60–120&times; 自旋回波压低；对应毫赫兹慢模窗口</td>
+      <td><strong>1. Earth Abyssal Basalt &amp; Hydrothermal Basins</strong><br><em>(4,000–10,900 m)</em></td>
+      <td data-lang="en"><strong>Low-Latency High-Power Heat Sink &amp; EM-Shielded Anchor.</strong> Convective cooling requires <code>238.1 kg/s/MW</code> (&Delta;T&le;1 K), masking 100 MW inside 100–1,000 MW hydrothermal vents (&Delta;T<sub>surf</sub>&lt;10<sup>&minus;6</sup> K). Seawater (&sigma;=4 S/m) enforces EM cage (&tau;<sub>e</sub>=1.77&times;10<sup>&minus;10</sup> s, ELF 4 km atten <code>4.34&times;10<sup>&minus;121</sup></code>, optical PLOB <code>4.7&times;10<sup>&minus;70</sup></code>); basalt anchors recoil; 10.9 km gives 109.6 MPa confinement; hosts KM3NeT 220 PeV LIV benchmark.</td>
+      <td data-lang="zh"><strong>低延迟高功率热沉与电磁屏蔽锚点。</strong>海水对流每 MW 仅需 <code>238.1 kg/s</code>，百兆瓦隐匿于热液喷口集群；海水电荷弛豫 <code>1.77&times;10<sup>&minus;10</sup> s</code>、ELF 衰减 <code>4.34&times;10<sup>&minus;121</sup></code>；玄武岩基岩锚定反冲；配套 KM3NeT 220 PeV 基准。</td>
+      <td data-lang="en"><span class="badge b-ok">HIGH (Thermal/EM)</span><br><em>Retracted:</em> seabed QCD relics, 275 K hydrate QC, static 28.5 kyr conduction, buoyancy=free-fall.<br><em>Test:</em> benthic non-hydrothermal plumes, altimetry &delta;~10<sup>&minus;16</sup>.</td>
+      <td data-lang="zh"><span class="badge b-ok">高（热力学/屏蔽）</span><br><em>已撤回：</em>海底核密度遗迹、水合物室温计算、静态导热、浮力降退相干。<br><em>红线：</em>无热液化学示踪热羽流、海面测高。</td>
     </tr>
     <tr>
-      <td><strong>Branch B&prime; · R<sup>2</sup> tidal regime (&xi; &lt; 1.141 AU)</strong></td>
-      <td><code>1</code></td>
-      <td><code>0.0744</code></td>
-      <td><code>~10<sup>&minus;14</sup></code></td>
-      <td data-lang="en">LIGO O3b tightens smooth Gaussian UV cutoff to <strong>f<sub>UV</sub> &le; 1.5 Hz</strong></td>
-      <td data-lang="zh">全频段 LIGO O3b 锁定光滑截断 <strong>f<sub>UV</sub> &le; 1.5 Hz</strong></td>
+      <td><strong>2. East Antarctic Gamburtsev Subglacial Craton</strong><br><em>(~4 km Ice Sheet)</em></td>
+      <td data-lang="en"><strong>Ultra-Quiet Kilowatt-Class Passive Cold Archive.</strong> Ancient craton (&delta;z~10<sup>&minus;11</sup> m) suppresses seismic noise vs active rifts (Thwaites excluded). Basal melt veto: 100 MW melts <code>9.45 Mt/yr</code> of ice (triggering ICESat-2 subsidence), locking stealth power strictly to <strong>&le;1–10 kW</strong> (below ~50 mW/m<sup>2</sup> geothermal variance). Cold ice offers ~1 km RF attenuation length; hosts IceCube (&Gamma;&lt;10<sup>&minus;43</sup> GeV) &amp; IGETS gravimeters.</td>
+      <td data-lang="zh"><strong>低震噪千瓦级被动冷档案。</strong>古老克拉通位移本底 ~10<sup>&minus;11</sup> m；百兆瓦年融冰 <code>945 万吨</code>必造 ICESat-2 塌陷漏斗，强迫隐身功耗锁死 <strong>&le;1–10 kW</strong>；配套 IceCube 与极地超导重力站。</td>
+      <td data-lang="en"><span class="badge b-ok">HIGH (Melt Veto)</span><br><em>Retracted:</em> ANITA upward pulses (Auger 2025 &gt;5&sigma; excluded), Wilkes nuclear relic, 100 MW melt pipe.<br><em>Test:</em> ICESat-2 subsidence, freeze-on anomalies (N2 only).</td>
+      <td data-lang="zh"><span class="badge b-ok">高（融冰红线）</span><br><em>已撤回：</em>ANITA 穿地、威尔克斯核遗迹、百兆瓦热管。<br><em>红线：</em>ICESat-2 冰面塌陷、IceCube/PUEO。</td>
     </tr>
     <tr>
-      <td><strong>Main Branch (&omega; &rarr; &minus;3/2)</strong></td>
-      <td><code>0</code></td>
-      <td><code>0</code></td>
-      <td><code>0</code></td>
-      <td data-lang="en">Zero ambient AD; probed by optical clocks (&Delta;&delta;~3&times;10<sup>&minus;16</sup> &rarr; 1 rad/s)</td>
-      <td data-lang="zh">环境 AD 归零；由光钟网络近场频移判决</td>
+      <td><strong>3. Lunar South Pole PSR (18.1 K) &amp; Far-Side SPA</strong><br><em>(15–45 m Bedrock)</em></td>
+      <td data-lang="en"><strong>Deep-Time Seed Vault, Metrology Crucible &amp; Dark-Ages Observatory.</strong> Pumping 100 MW (30 K&rarr;300 K) demands <code>4.50 GW</code> + <code>11.13 km<sup>2</sup></code> rim radiators (<strong>Active-Power Veto</strong>), locking PSR to <strong>~10 mW passive seed</strong> (1.83 m<sup>2</sup> plate at 5.47 mW/m<sup>2</sup>). 18 K freezes Arrhenius atomic diffusion by <code>1.15&times;10<sup>&minus;91</sup></code> vs 250 K. 15–45 m burial cuts GCR to 10<sup>&minus;11</sup>–10<sup>&minus;22</sup>; 18.10 K Si zero-expansion + 10<sup>&minus;10</sup> m/s<sup>2</sup>/&radic;Hz quietness + Branch B&prime; Moon/Earth AD ratio <code>0.0275</code> (g<sup>2</sup>) / <code>0.0744</code> (R<sup>2</sup>) + LGWA l=2 orthogonality + Far-side 21 cm &Delta;&alpha;<sub>EM</sub>&equiv;0 test.</td>
+      <td data-lang="zh"><strong>亿年被动火种库与太阳系计量圣殿。</strong>月极泵热百兆瓦需 <code>4.50 GW</code> 供电与 <code>11.13 km<sup>2</sup></code> 散热翼（<strong>处死高功率月基节点</strong>），锁死为 <strong>~10 mW 被动冷核</strong>；18 K 把原子扩散压低 <code>1.15&times;10<sup>&minus;91</sup></code> 倍；具备 18.10 K 硅零膨胀、月地退相干比 <code>0.0275/0.0744</code> 与 21 cm &Delta;&alpha;&equiv;0 检验台。</td>
+      <td data-lang="en"><span class="badge b-ok">HIGH (Optimum)</span><br><em>Retracted:</em> SPA nuclear-density relic (GRAIL), 50 GW mantle heating.<br><em>Sharp Test:</em> <strong>10 kW leak &rarr; 48.69 K (+8.69 K)</strong> in 240 m LRO Diviner pixel (N1 vs N2 test!).</td>
+      <td data-lang="zh"><span class="badge b-ok">高（内太阳系极值）</span><br><em>已撤回：</em>SPA 核密度遗迹、50 GW 地幔加热。<br><em>一剑封喉红线：</em><strong>10 kW 热漏即在 Diviner 240 m 像元产生 48.69 K（+8.69 K）热点</strong>！</td>
     </tr>
     <tr>
-      <td><strong>Objective Collapse (CSL / Di&oacute;si–Penrose)</strong></td>
-      <td><code>1</code></td>
-      <td><code>1</code></td>
-      <td><code>1</code></td>
-      <td data-lang="en">No free-fall suppression; spin-echo ratio &equiv; 1; spontaneous heating</td>
-      <td data-lang="zh">无自由落体压低；自旋回波比恒为 1；伴自发加热</td>
+      <td><strong>4. Lunar Near-Side Aristarchus &amp; Schr&ouml;ter Lava Tubes</strong><br><em>(250 K Dual-Temp Partner)</em></td>
+      <td data-lang="en"><strong>Earth-Disk Monitor &amp; Periodic Dual-Temperature Regeneration Vault.</strong> 50 m basalt roof attenuates GCR by <code>1.93&times;10<sup>&minus;41</sup></code> and diurnal swings by <code>2.53&times;10<sup>&minus;29</sup></code> (l<sub>skin</sub>=0.759 m), locking stable 250 K (stealth cap <code>0.36 W/m<sup>2</sup></code>). Because Gyr KREEP dose (~3&times;10<sup>6</sup> Gy) forbids passive 250 K chip dormancy, architecture splits into <strong>18 K PSR seed + 250 K forge with ~10<sup>4</sup> yr anneal/lithography regeneration</strong> (11.50 ms lunar arc). Full Earth subtends <code>1.8993&deg;</code> (24.84 h scan); causal RTT <code>2.564 s</code>; vacuum PLOB <code>2.51&times;10<sup>&minus;6</sup></code> (&gt;10<sup>63</sup>&times; ocean).</td>
+      <td data-lang="zh"><strong>对地全景监测与双温区周期再生车间。</strong>50 m 玄武岩拱顶把 GCR 压至 <code>1.93&times;10<sup>&minus;41</sup></code>、昼夜温差压至 <code>2.53&times;10<sup>&minus;29</sup></code>（恒温 250 K）；受 KREEP 辐射制约改为<strong>极区 18 K 种子 + 250 K 车间万年退火光刻再生</strong>；正对地球 <code>1.8993&deg;</code>，地月延迟 <code>1.282 s</code>。</td>
+      <td data-lang="en"><span class="badge b-info">CONDITIONAL</span><br><em>Retracted:</em> <sup>232</sup>Th WEP violation (MICROSCOPE), TLP cavity outgassing, 1 Gyr passive 250 K dormancy.<br><em>Test:</em> mid-IR zero excess enthalpy on TLP vents.</td>
+      <td data-lang="zh"><span class="badge b-info">条件推演</span><br><em>已撤回：</em><sup>232</sup>Th WEP 破缺、TLP 相腔排气、250 K 死睡十亿年。<br><em>红线：</em>中红外零多余热焓。</td>
+    </tr>
+    <tr>
+      <td><strong>5. Jovian Subsurface Oceans (Europa &amp; Callisto)</strong><br><em>(15–30 km Ice Armor)</em></td>
+      <td data-lang="en"><strong>Autonomous Heavy-Archive Ark.</strong> 15–30 km ice shields Jovian radiation belts; global ocean (2–3&times; Earth volume) &amp; <code>10<sup>11</sup>–10<sup>12</sup> W</code> tidal heat mask massive Landauer loads; Branch B&prime; coherence gain <strong>55.6&times;</strong> (g<sup>2</sup>: 0.0180) or <strong>16.7&times;</strong> (R<sup>2</sup>: 0.0600); <code>34.9–51.6 min</code> light delay mandates full autonomy.</td>
+      <td data-lang="zh"><strong>自治型重资产灾备方舟。</strong>厚冰抗木星辐射带 + <code>10<sup>11</sup>–10<sup>12</sup> W</code> 潮汐热汇；相干优势 <strong>55.6&times; / 16.7&times;</strong>；<code>35–52 min</code> 光行时强迫完全自治。</td>
+      <td data-lang="en"><span class="badge b-open">UNFALSIFIABLE</span><br><em>Disclosure:</em> ~10<sup>7</sup> yr ice conduction lag renders steady-state waste heat thermally undetectable; retained purely as a Pareto corner.</td>
+      <td data-lang="zh"><span class="badge b-open">热学不可证伪</span><br><em>诚实披露：</em>千万年厚冰导热时标导致热学几乎不可证伪，仅作帕累托逻辑极角保留。</td>
+    </tr>
+    <tr>
+      <td><strong>6. Enceladus &amp; Small Low-g Icy Bodies</strong></td>
+      <td data-lang="en"><strong>High-Coherence Low-g Pareto Bridge.</strong> Branch B&prime; coherence suppression reaches <strong>7,530&times;</strong> (g<sup>2</sup>: <code>1.33&times;10<sup>&minus;4</sup></code>) or <strong>639&times;</strong> (R<sup>2</sup>: <code>1.57&times;10<sup>&minus;3</sup></code>) vs Earth, trading off smaller convective heat-sink capacity (~10<sup>5</sup> W).</td>
+      <td data-lang="zh"><strong>极低重力高相干帕累托桥。</strong>相干压制达 <strong>7,530&times;</strong>（g<sup>2</sup>）或 <strong>639&times;</strong>（R<sup>2</sup>），代价是对流热汇较小。</td>
+      <td data-lang="en"><span class="badge b-info">PARETO BRIDGE</span><br>Bridges heavy planetary oceans and free-fall orbits on Figure 2.</td>
+      <td data-lang="zh"><span class="badge b-info">帕累托桥接</span><br>衔接行星海洋与自由落体轨道。</td>
+    </tr>
+    <tr>
+      <td><strong>7. L4/L5 &amp; DRO Free-Fall Orbits (+ 600–900 AU SGL)</strong></td>
+      <td data-lang="en"><strong>Unique Legal Habitat for Compact Phase Relics &amp; Zero-AD Limit.</strong> Surface weight ceilings (&le;0.43 MeV) exile all QCD/EW-scale topological phase cavities from planetary crusts into free-fall orbits—landing in the unconstrained <strong>10<sup>12</sup>–10<sup>17</sup> g asteroid-mass dark-matter window</strong> (&lt;1 &mu;m drift over 10 Gyr), simultaneously achieving <strong>10<sup>14</sup>–10<sup>22</sup>&times;</strong> free-fall AD suppression. 600–900 AU SGL clears solar corona refraction.</td>
+      <td data-lang="zh"><strong>致密拓扑相腔遗迹唯一合法栖身区与零退相干极限。</strong>表面重量界把高密度遗迹全部逐出地/月表，精准落入 <strong>10<sup>12</sup>–10<sup>17</sup> g 小行星质量暗物质窗口</strong>，同时享有自由落体 <strong>10<sup>14</sup>–10<sup>22</sup>&times;</strong> 退相干消除；600–900 AU SGL 避开日冕折射。</td>
+      <td data-lang="en"><span class="badge b-ok">HIGH (Forced by Weight)</span><br><em>Test (R5):</em> microlensing, SKA-PTA &amp; L4/L5 gradiometry for 10<sup>12</sup>–10<sup>17</sup> g l=0,6,10,12 multipole sources.</td>
+      <td data-lang="zh"><span class="badge b-ok">高（重量界强制迁轨）</span><br><em>红线（R5）：</em>微引力透镜、SKA-PTA 与 L4/L5 多极梯度搜寻。</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-<h2 data-lang="en">4. Next Minimal Physics Targets (Stopping Horizontal Expansion)</h2>
-<h2 data-lang="zh">四、下一步唯一核心攻坚（停止横向堆砌）</h2>
-<p data-lang="en">No further narrative monographs will be added until three hard calculations are completed: (1) <strong>1-loop EFT survival of &omega; = &minus;3/2 (&chi;<sub>m</sub> = 0)</strong>; (2) <strong>N &le; 20 qubit code-switching numerical test</strong>; and (3) <strong>joint LIGO O3b / optical-clock / BMV-MAQRO exclusion suite</strong>. See <a href="research-statement.html">Research Statement</a> and <a href="verification/verification_output_2026-11-26.txt">Verification Log</a>.</p>
-<p data-lang="zh">在完成三项硬核计算之前，不再扩写新总册：(1) <strong>&omega; = &minus;3/2 单圈有效场论生存检验</strong>；(2) <strong>N &le; 20 量子比特改码数值实算</strong>；(3) <strong>LIGO O3b / 光钟 / BMV-MAQRO 联合排除管线</strong>。详见 <a href="research-statement.html">研究说明</a> 与 <a href="verification/verification_output_2026-11-26.txt">实机复算日志</a>。</p>
+
+<h2 data-lang="en">4. Full Verification &amp; Research Roadmap Links</h2>
+<h2 data-lang="zh">四、验证代码与下一步核心研究入口</h2>
+<p data-lang="en">All quantitative inequalities across Sections 1–3 are independently verified in <a href="verification/verify_nogo_bounds.py"><code>verify_nogo_bounds.py</code></a>, <a href="verification/verify_planetary_node_bounds.py"><code>verify_planetary_node_bounds.py</code></a>, <a href="verification/verify_closure_theorems.py"><code>verify_closure_theorems.py</code></a>, <a href="verification/check_Ih_Y6.py"><code>check_Ih_Y6.py</code></a>, <a href="verification/checks_constants_rates.py"><code>checks_constants_rates.py</code></a>, and <a href="verification/plot_ligo_o3b_bounds.py"><code>plot_ligo_o3b_bounds.py</code></a> (full stdout: <a href="verification/verification_output_2026-11-26.txt"><code>verification_output_2026-11-26.txt</code></a>). See <a href="research-statement.html">Research Statement</a> (<a href="VMAD_Research_Statement_2026-11-26.pdf">PDF</a>) for the 6-month computational milestones.</p>
+<p data-lang="zh">上述全部定量不等式均已通过五套 Python 套件实机核验（日志：<a href="verification/verification_output_2026-11-26.txt"><code>verification_output_2026-11-26.txt</code></a>）。六个月具体计算里程碑见 <a href="research-statement.html">研究说明</a>（<a href="VMAD_Research_Statement_2026-11-26.pdf">PDF</a>）。</p>
 
 </main>
 <footer>
-  <p data-lang="en">Xiaoyi Li · Independent Theoretical Physics Research (Unaffiliated, Non-Commercial) · ORCID: <a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · Last aligned: 26 November 2026 (Unified Arbitration Baseline: 21 November 2026).</p>
-  <p data-lang="zh">李小毅 · 无机构独立基础物理研究（非商业）· ORCID：<a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · 最新对齐：2026年11月26日（现行统合基线：2026年11月21日）。</p>
+  <p data-lang="en">Xiaoyi Li · Independent Theoretical Physics Research (Unaffiliated, Non-Commercial) · ORCID: <a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · Aligned 26 November 2026 (Unified Arbitration Baseline: 21 November 2026).</p>
+  <p data-lang="zh">李小毅 · 无机构独立基础物理研究（非商业）· ORCID：<a href="https://orcid.org/0009-0000-0482-2376">0009-0000-0482-2376</a> · 2026年11月26日全量对齐（现行统合基线：2026年11月21日）。</p>
 </footer>
 
 <script>

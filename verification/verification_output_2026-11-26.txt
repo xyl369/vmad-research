@@ -1,9 +1,9 @@
 ================================================================================
-VMAD Reproducible Verification Suite — Live Execution Log (2026-11-26)
-Aligned to Unified Arbitration Synthesis (2026-11-21)
+VMAD REPRODUCIBLE NUMERICAL & SYMBOLIC VERIFICATION LOG — 2026-11-26
+Repository: https://github.com/xyl369/vmad-research
 ================================================================================
 
->>> [SUITE 1/4] python3 verification/verify_nogo_bounds.py
+>>> [1/6] verification/verify_nogo_bounds.py
 === [1] UV Entanglement Rigidity & Firewall Bound ===
 l_P        = 1.616255e-35 m
 eta_0      = 9.570183e+68 m^-2
@@ -48,7 +48,37 @@ At 100 Hz: LIGO O3b ceiling ~ 3.0e-24 Hz^-1/2
 
 ALL NO-GO BOUNDS, PALATINI LIMIT, AD CROSSOVER & LIGO SPECTRAL ASSERTIONS PASSED.
 
->>> [SUITE 2/4] python3 verification/verify_closure_theorems.py
+>>> [2/6] verification/verify_planetary_node_bounds.py
+=== [1] Thermodynamic & Radiation Ceilings (Landauer / Stefan-Boltzmann / Convective) ===
+30 K blackbody flux = 0.0459 W/m^2  => 100 MW requires 2177.2 km^2
+18.10 K PSR flux (eps=0.9) = 5.47 mW/m^2 => 10 mW passive plate = 1.83 m^2
+Veto of 100 MW lunar PSR active node: needs 4.50 GW power & 11.13 km^2 rim radiators
+Deep-ocean convective cooling (dT <= 1 K): 1 MW requires 238.1 kg/s cold water throughput
+Antarctic 100 MW basal melt = 9.45 million tonnes/yr => ICESat-2 subsidence veto -> stealth cap <= 1-10 kW
+
+=== [2] EM Opacity, Cosmic-Ray Attenuation & Deep-Time Thermal/Arrhenius Physics ===
+Seawater tau_e = 1.77e-10 s; 3.3 GHz skin depth = 4.38 mm; 76 Hz ELF 4 km power atten = 4.34e-121
+Schroter 50 m basalt roof: GCR atten = 1.93e-41, thermal skin = 0.759 m (50 m damping = 2.53e-29), q_max = 0.36 W/m^2
+Arrhenius atomic diffusion ratio (18 K / 250 K, Ea=0.35 eV) = 1.15e-91 (~10^-91 freezing!)
+Lunar PSR Diviner 240 m pixel (T0=40 K) with 10 kW thermal leak: T = 48.69 K (dT = +8.69 K)
+
+=== [3] Relativistic Light-Time Causality Stratification ===
+Earth-Moon one-way = 1.282 s (RTT = 2.564 s); Earth angular dia from Moon = 1.8993 deg
+Aristarchus <-> Lunar South Pole arc = 3447.8 km (11.50 ms)
+Earth-Jupiter (Europa/Callisto) one-way = 34.9-51.6 min
+
+=== [4] Cross-Body Anomalous Decoherence Spatial Gradient (Branch B' g^2 & R^2 Regimes) ===
+  Earth Surface (Abyssal / Antarctica)  : g^2 ratio = 1.0000e+00,  R^2 ratio = 1.0000e+00
+  Moon (PSR / Aristarchus)              : g^2 ratio = 2.7458e-02,  R^2 ratio = 7.4368e-02
+  Europa (Subsurface Ocean)             : g^2 ratio = 1.7981e-02,  R^2 ratio = 6.0018e-02
+  Enceladus (Low-g Ice Shell)           : g^2 ratio = 1.3277e-04,  R^2 ratio = 1.5658e-03
+
+=== [5] Generating Publication-Grade Solar-System Node Pareto Phase-Space Figure ===
+VERIFIED: Generated /Users/xiaoyi/.gemini/antigravity/brain/d553fb60-9542-468d-973e-dcb55bb2c56d/scratch/vmad-research-work/assets/solar_system_node_pareto.png (311608 bytes)
+
+ALL PLANETARY NODE THERMODYNAMIC, SHIELDING, CAUSAL & DECOHERENCE ASSERTIONS PASSED.
+
+>>> [3/6] verification/verify_closure_theorems.py
 === [1] 基本常数与真空纠缠刚度 ===
 l_P  = 1.616255e-35 m
 eta0 = 9.570183e+68 m^-2
@@ -84,7 +114,7 @@ Verlinde exact dim(tau^12): S^2 (g=0) = 89 (6.48 qubits), T^2 (g=1) = 322 (8.33 
 
 ALL SYMBOLIC AND NUMERICAL CHECKS PASSED.
 
->>> [SUITE 3/4] python3 verification/check_Ih_Y6.py
+>>> [4/6] verification/check_Ih_Y6.py
 off 0 s 1 vertex spread 0.90676 0.0
 off 0 s -1 vertex spread 0.0 0.0
 off 0 s 1j vertex spread 0.45338 0.45338
@@ -94,7 +124,7 @@ off 0.628 s -1 vertex spread 0.90676 0.0
 off 0.628 s 1j vertex spread 0.45338 0.45338
 off 0.628 s (-0-1j) vertex spread 0.45338 0.45338
 
->>> [SUITE 4/4] python3 verification/checks_constants_rates.py
+>>> [5/6] verification/checks_constants_rates.py
 lP 1.61625502392855e-35 eta0 9.570182792894672e+68 K0 4.815453886722423e+42 check K=hbar c eta/2pi 4.8154538867224235e+42
 2pi/(hbar c eta0) vs 8piG/c^4 2.0766474428449717e-43 2.0766474428449717e-43
 DSW dS BMV 1e-14kg,100um 1.3469127137552696e-151
@@ -117,5 +147,7 @@ BB exponent ~ Mc^2/kT for 1kg 2.434010417032317e+69
 S_dS ~ pi c^2/(G hbar H^2)...  2.2331924001710845e+122
 TCC T<= 1997.2772796637832 Gyr
 
->>> [PLOT] python3 verification/plot_ligo_o3b_bounds.py
+>>> [6/6] verification/plot_ligo_o3b_bounds.py
 VERIFIED: Generated /Users/xiaoyi/.gemini/antigravity/brain/d553fb60-9542-468d-973e-dcb55bb2c56d/scratch/vmad-research-work/assets/ligo_o3b_vmad_bounds.png (271016 bytes)
+
+ALL 5 VERIFICATION SUITES + 2 PUBLICATION FIGURES COMPLETED WITH EXIT CODE 0.
